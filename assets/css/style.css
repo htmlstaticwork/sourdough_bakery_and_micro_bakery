@@ -1,0 +1,579 @@
+:root {
+    --bg-color: #FDF8F0;
+    --text-color: #2C1810;
+    --primary: #2C1810;
+    --secondary: #FDF8F0;
+    --accent: #C8602A;
+    --accent-gold: #D4A853;
+    --border-light: #E8D5C0;
+    --nav-icon-color: #2C1810;
+    --toggler-filter: invert(0);
+}
+
+/* Base Styles */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding-top: 64px;
+    /* Global offset for fixed header */
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 72px;
+    }
+}
+
+/* For pages with full-screen heroes starting at the very top */
+body:has(section.h-screen:first-child),
+body:has(section.h-screen:first-of-type) {
+    padding-top: 0;
+}
+
+header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.scrolled {
+    background-color: rgba(253, 248, 240, 0.9) !important;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    height: 60px !important;
+}
+
+[data-theme="dark"] header.scrolled {
+    background-color: rgba(26, 15, 8, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Linen Texture Overlay */
+.linen-texture {
+    background-image: repeating-linear-gradient(45deg,
+            rgba(44, 24, 16, 0.05) 0px,
+            rgba(44, 24, 16, 0.05) 1px,
+            transparent 1px,
+            transparent 4px);
+    pointer-events: none;
+}
+
+[data-theme="dark"] .linen-texture {
+    background-image: repeating-linear-gradient(45deg,
+            rgba(245, 230, 211, 0.04) 0px,
+            rgba(245, 230, 211, 0.04) 1px,
+            transparent 1px,
+            transparent 4px);
+}
+
+/* 🍞 BREAD ANIMATION SYSTEM — "RISE & WARMTH" */
+
+@keyframes breadRise {
+
+    0%,
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+
+    40% {
+        transform: translateY(-12px) scale(1.02);
+    }
+
+    70% {
+        transform: translateY(-6px) scale(1.01);
+    }
+}
+
+@keyframes flourDust {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.8);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: translateY(-20px) scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.6);
+    }
+}
+
+@keyframes doughExpand {
+    from {
+        transform: scale(0.92);
+        opacity: 0;
+        filter: blur(6px);
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes warmGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(200, 96, 42, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 40px 10px rgba(200, 96, 42, 0.18);
+    }
+}
+
+@keyframes crustReveal {
+    from {
+        clip-path: inset(0 100% 0 0);
+        opacity: 0;
+    }
+
+    to {
+        clip-path: inset(0 0% 0 0);
+        opacity: 1;
+    }
+}
+
+@keyframes steamRise {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scaleX(1);
+    }
+
+    30% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-30px) scaleX(1.5);
+    }
+}
+
+@keyframes scrollMarquee {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes heroReveal {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(35px);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes counterUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes splitReveal {
+    from {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+        opacity: 0;
+    }
+
+    to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        opacity: 1;
+    }
+}
+
+@keyframes timerPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+}
+
+@keyframes doughRise {
+    0% {
+        opacity: 0;
+        transform: scaleY(0.3) translateY(40px);
+        filter: blur(12px);
+        letter-spacing: -0.02em;
+    }
+
+    60% {
+        transform: scaleY(1.05) translateY(-8px);
+        filter: blur(2px);
+    }
+
+    85% {
+        transform: scaleY(0.98) translateY(2px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scaleY(1) translateY(0);
+        filter: blur(0);
+        letter-spacing: normal;
+    }
+}
+
+@keyframes textGlow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 0px rgba(200, 96, 42, 0);
+    }
+
+    50% {
+        text-shadow: 0 0 20px rgba(200, 96, 42, 0.4);
+    }
+}
+
+@keyframes lineFlow {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 40px 0%;
+    }
+}
+
+.animate-line-flow {
+    background-image: linear-gradient(to right, var(--accent) 50%, transparent 50%);
+    background-size: 20px 2px;
+    background-repeat: repeat-x;
+    animation: lineFlow 1s linear infinite;
+}
+
+.step-card img {
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.step-card:hover img {
+    transform: scale(1.1) rotate(-3deg);
+    box-shadow: 0 20px 40px rgba(200, 96, 42, 0.2);
+}
+
+.step-number {
+    transition: all 0.3s ease;
+}
+
+.step-card:hover .step-number {
+    transform: scale(1.2) translateY(-5px);
+    background-color: var(--primary);
+}
+
+/* Animation Utility Classes */
+@keyframes cardRise {
+    0% {
+        transform: translateY(60px) scale(0.95);
+        opacity: 0;
+        filter: blur(10px);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.animate-card-rise {
+    animation: cardRise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.subscription-card {
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.subscription-card:hover {
+    transform: translateY(-25px);
+    border-color: var(--accent);
+    box-shadow: 0 40px 80px -20px rgba(44, 24, 16, 0.15);
+    z-index: 10;
+}
+
+.subscription-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, var(--accent) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: -1;
+    border-radius: 0.75rem;
+    filter: blur(40px);
+}
+
+.subscription-card:hover::before {
+    opacity: 0.1;
+}
+
+.subscription-card .btn-primary {
+    transition: all 0.4s ease;
+}
+
+.subscription-card:hover .btn-primary {
+    background-color: var(--primary);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(200, 96, 42, 0.3);
+}
+
+.animate-doughRise {
+    display: inline-block;
+    opacity: 0;
+    animation: doughRise 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.glow-warmth {
+    animation: textGlow 4s ease-in-out infinite;
+}
+
+.animate-breadRise {
+    animation: breadRise 4s ease-in-out infinite;
+}
+
+.animate-flourDust {
+    animation: flourDust 3s ease-out infinite;
+}
+
+.animate-doughExpand {
+    animation: doughExpand 0.8s ease-out forwards;
+}
+
+.animate-warmGlow {
+    animation: warmGlow 3s ease-in-out infinite;
+}
+
+.animate-crustReveal {
+    animation: crustReveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.animate-steamRise {
+    animation: steamRise 3s ease-out infinite;
+}
+
+.animate-marquee {
+    display: flex;
+    animation: scrollMarquee 20s linear infinite;
+}
+
+.animate-heroReveal {
+    animation: heroReveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Sidebar Styling */
+.sidebar-nav {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-end: 0;
+    width: min(280px, 85vw);
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+    background-color: var(--secondary);
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-slide.active {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+.sidebar-nav.open {
+    transform: translateX(0);
+}
+
+[dir="rtl"] .sidebar-nav {
+    inset-inline-end: 0;
+    inset-inline-start: auto;
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .sidebar-nav.open {
+    transform: translateX(0);
+}
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 9998;
+}
+
+.sidebar-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Dashboard Sidebar Specifics */
+#dashboard-sidebar.open {
+    transform: translateX(0);
+}
+
+#dashboard-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Dashboard Styles */
+.dashboard-view {
+    display: none;
+}
+
+.dashboard-view.active {
+    display: block;
+}
+
+/* Custom Buttons */
+.btn-primary {
+    background-color: #C8602A;
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(200, 96, 42, 0.3);
+}
+
+.btn-secondary {
+    border: 2px solid var(--primary);
+    background-color: transparent;
+    color: var(--primary);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+/* Product Cards */
+.bread-card {
+    background-color: var(--secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.bread-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    animation: warmGlow 3s ease-in-out infinite;
+}
+
+/* Navbar Toggler */
+.navbar-toggler-icon {
+    filter: var(--toggler-filter);
+}
+
+/* Navigation Underline Effect */
+.nav-link-underline {
+    position: relative;
+}
+
+.nav-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-link-underline:hover::after {
+    width: 100%;
+}
+
+/* RTL Inversion for Slide Reveals */
+[dir="rtl"] .sidebar-nav {
+    inset-inline-end: auto;
+    inset-inline-start: 0;
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .sidebar-nav.open {
+    transform: translateX(0);
+}

@@ -1,0 +1,49 @@
+/* 🌍 RTL logical property overrides */
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+[dir="rtl"] .sidebar-nav {
+    inset-inline-end: 0;
+    inset-inline-start: auto;
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .sidebar-nav.open {
+    transform: translateX(0);
+}
+
+[dir="rtl"] .slide-reveal {
+    transform: translateX(30px);
+    opacity: 0;
+}
+
+[dir="rtl"] .slide-reveal.visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+[dir="rtl"] .nav-link-underline::after {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .text-start {
+    text-align: right !important;
+}
+
+[dir="rtl"] .text-end {
+    text-align: left !important;
+}
+
+[dir="rtl"] .ms-auto {
+    margin-right: auto !important;
+    margin-left: initial !important;
+}
+
+[dir="rtl"] .me-auto {
+    margin-left: auto !important;
+    margin-right: initial !important;
+}

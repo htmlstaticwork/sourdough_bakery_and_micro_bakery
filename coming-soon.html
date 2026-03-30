@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>The Rise is Coming | Aurore Sourdough</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C1810',
+                        secondary: '#FDF8F0',
+                        accent: '#C8602A',
+                        'accent-gold': '#D4A853',
+                        'dark-bg': '#1A0F08',
+                        'dark-surface': '#2A1810',
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        dm: ['DM Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body class="bg-[#FDF8F0] dark:bg-dark-bg text-primary transition-colors min-h-screen flex flex-col">
+    <!-- Header -->
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-[100] bg-secondary/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
+        <div class="container mx-auto flex items-center justify-between w-full">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="text-accent">
+                    <path
+                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="font-playfair text-xl md:text-2xl font-bold">Aurore Sourdough</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-6">
+                <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
+                <a href="home-2.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home
+                    2</a>
+                <a href="about.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">About</a>
+                <a href="service.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Service</a>
+                <a href="blog.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Blog</a>
+                <a href="contact.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
+                <a href="pricing.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Pricing</a>
+                <a href="dashboard.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Dashboard</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <button id="theme-toggle"
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+                    aria-label="Toggle Theme">
+                    <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-sun" class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button id="rtl-toggle"
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm"
+                    aria-label="Toggle RTL">RTL</button>
+
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
+                </div>
+
+                <!-- Hamburger -->
+                <button id="hamburger-btn"
+                    class="lg:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    aria-label="Menu" aria-expanded="false">
+                    <span class="navbar-toggler-icon pointer-events-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay bg-black/60 backdrop-blur-sm"></div>
+    <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6" role="dialog" aria-modal="true"
+        aria-label="Navigation Menu">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-playfair text-xl font-bold">Menu</span>
+            <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                aria-label="Close Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-4 text-lg font-medium">
+            <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
+            <a href="home-2.html" class="py-3 border-b border-border-light dark:border-dark-border">Home 2</a>
+            <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
+            <a href="service.html" class="py-3 border-b border-border-light dark:border-dark-border">Service</a>
+            <a href="blog.html" class="py-3 border-b border-border-light dark:border-dark-border">Blog</a>
+            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
+            <a href="pricing.html" class="py-3 border-b border-border-light dark:border-dark-border">Pricing</a>
+            <a href="dashboard.html" class="py-3 border-b border-border-light dark:border-dark-border">Dashboard</a>
+            <div class="mt-6 flex flex-col gap-4">
+                <a href="login.html" class="btn-secondary text-center">Sign In</a>
+            </div>
+        </nav>
+        <div class="mt-auto pb-8 flex justify-center gap-6 opacity-60">
+            <span class="w-6 h-6">FB</span>
+            <span class="w-6 h-6">IG</span>
+            <span class="w-6 h-6">TW</span>
+        </div>
+    </aside>
+
+    <main
+        class="container mx-auto max-w-4xl animate-heroReveal text-center flex-1 flex flex-col justify-center py-20 px-6">
+
+        <!-- Large Sourdough Graphic (Placeholder) -->
+        <div class="relative mb-20">
+            <div class="absolute inset-0 animate-warmGlow opacity-20 pointer-events-none"></div>
+            <img src="https://images.unsplash.com/photo-1549432646-6468449764a8?w=800&q=80" alt="Rise Anticipation"
+                class="w-full h-80 md:h-[500px] object-cover rounded-[50px] shadow-2xl border-8 border-accent/20 animate-breadRise">
+            <div
+                class="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-accent text-white px-12 py-4 rounded-full font-playfair text-3xl font-bold italic shadow-2xl animate-pulse">
+                EST. WINTER 2026</div>
+        </div>
+
+        <div class="max-w-3xl mx-auto mb-16 px-6">
+            <h1 class="font-playfair text-6xl md:text-8xl font-bold mb-8 italic italic">The Rise <br> <span
+                    class="text-accent underline underline-offset-8">Is Coming</span></h1>
+            <p class="text-xl md:text-2xl opacity-70 mb-12 italic italic leading-relaxed font-dm">Our stone-milled wheat
+                is resting. Our wild mother is feeding. Very soon, the neighborhood will wake up to the smell of fresh
+                rosemary and golden crust.</p>
+        </div>
+
+        <!-- Countdown Timer Row -->
+        <div id="countdown" class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 max-w-2xl mx-auto italic font-bold">
+            <div class="bread-card p-8 bg-white dark:bg-dark-surface shadow-xl">
+                <div id="days" class="text-4xl font-playfair font-bold text-accent mb-2">00</div>
+                <p class="text-xs uppercase opacity-40 font-bold italic">Days</p>
+            </div>
+            <div class="bread-card p-8 bg-white dark:bg-dark-surface shadow-xl">
+                <div id="hours" class="text-4xl font-playfair font-bold text-accent mb-2">00</div>
+                <p class="text-xs uppercase opacity-40 font-bold italic">Hours</p>
+            </div>
+            <div class="bread-card p-8 bg-white dark:bg-dark-surface shadow-xl">
+                <div id="minutes" class="text-4xl font-playfair font-bold text-accent mb-2">00</div>
+                <p class="text-xs uppercase opacity-40 font-bold italic">Minutes</p>
+            </div>
+            <div class="bread-card p-8 bg-white dark:bg-dark-surface shadow-xl">
+                <div id="seconds" class="text-4xl font-playfair font-bold text-accent mb-2">00</div>
+                <p class="text-xs uppercase opacity-40 font-bold italic">Seconds</p>
+            </div>
+        </div>
+
+        <!-- Notification Form -->
+        <div
+            class="max-w-xl mx-auto bread-card p-12 bg-primary text-secondary animate-warmGlow border-8 border-accent/20 mb-20">
+            <h3 class="font-playfair text-2xl font-bold mb-6 italic underline underline-offset-4 decoration-accent">Hear
+                the <span class="text-accent underline">Golden Pop</span></h3>
+            <p class="text-sm opacity-60 mb-8 italic">Add your email below. We'll send you a private invitation to the
+                soft-launch 24 hours before we open.</p>
+            <form class="flex flex-col sm:flex-row gap-4">
+                <input type="email" placeholder="Your Crust-Seeking Email..."
+                    class="bg-white/10 p-5 rounded-md text-white border border-white/20 grow outline-none italic font-bold h-16">
+                <button type="submit" class="btn-primary py-5 px-10 text-xl font-bold shadow-2xl">Invite Me →</button>
+            </form>
+        </div>
+
+        <!-- Social Sneak Peek -->
+        <div class="container mx-auto px-6 mb-12 text-center opacity-40 italic">
+            <p>Follow the daily bakes behind the scenes: <a href="#"
+                    class="underline hover:text-accent italic font-bold">@AuroreSourdough</a></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary pt-20 pb-8 px-6 md:px-12 text-[#D4B896]">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <!-- About -->
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-2">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" class="text-accent">
+                        <path
+                            d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span class="font-playfair text-2xl font-bold text-white">Aurore Sourdough</span>
+                </div>
+                <p class="text-sm leading-relaxed opacity-70">Slow-fermented. Wildly alive. Honestly baked. We are a
+                    neighborhood micro-bakery dedicated to the craft of artisan bread.</p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center border border-[#D4B896]/30 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110"
+                        aria-label="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-8.74h-2.94v-3.411h2.94v-2.518c0-2.91 1.777-4.496 4.375-4.496 1.244 0 2.315.093 2.627.135v3.044h-1.802c-1.411 0-1.685.67-1.685 1.654v2.181h3.371l-.439 3.411h-2.932v8.74h6.14c.731 0 1.325-.593 1.325-1.324v-21.351c0-.732-.594-1.325-1.325-1.325z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center border border-[#D4B896]/30 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110"
+                        aria-label="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center border border-[#D4B896]/30 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110"
+                        aria-label="X (Twitter)">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Menu -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Today's Selection</h4>
+                <ul class="flex flex-col gap-3 text-sm">
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Country Loaf</a></li>
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Rosemary Focaccia</a>
+                    </li>
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Dark Rye Batard</a></li>
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Seeded Boule</a></li>
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Artisan Pastries</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Quick Links</h4>
+                <ul class="flex flex-col gap-3 text-sm">
+                    <li><a href="pre-orders.html" class="hover:text-accent transition-colors">Pre-Order</a></li>
+                    <li><a href="subscriptions.html" class="hover:text-accent transition-colors">Subscriptions</a></li>
+                    <li><a href="how-it-works.html" class="hover:text-accent transition-colors">How It Works</a></li>
+                    <li><a href="blog.html" class="hover:text-accent transition-colors">Bread Journal</a></li>
+                    <li><a href="faq.html" class="hover:text-accent transition-colors">FAQ</a></li>
+                    <li><a href="pricing.html" class="hover:text-accent transition-colors">Pricing</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Contact</h4>
+                <ul class="flex flex-col gap-4 text-sm">
+                    <li class="flex items-start gap-3">
+                        <span>📍</span>
+                        <span>123 Baker St, Flour District<br>Paris, FR 75001</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span>✉️</span>
+                        <span>hello@aurore-sourdough.com</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span>📞</span>
+                        <span>+33 1 23 45 67 89</span>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn-primary mt-6 inline-block w-full text-center text-sm py-3">Book a
+                    Workshop</a>
+            </div>
+        </div>
+        <div
+            class="border-t border-[#D4B896]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-50">
+            <p>&copy; <span id="year"></span> Aurore Sourdough Artisan Bakery. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

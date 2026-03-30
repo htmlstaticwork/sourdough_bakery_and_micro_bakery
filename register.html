@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Join the Bakery | Aurore Sourdough</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C1810',
+                        secondary: '#FDF8F0',
+                        accent: '#C8602A',
+                        'accent-gold': '#D4A853',
+                        'dark-bg': '#1A0F08',
+                        'dark-surface': '#2A1810',
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        dm: ['DM Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body
+    class="bg-[#FDF8F0] dark:bg-dark-bg text-primary transition-colors min-h-screen flex items-center justify-center py-20 px-6">
+    <main class="container mx-auto max-w-xl animate-heroReveal">
+        <div
+            class="bg-white dark:bg-dark-surface rounded-[40px] shadow-2xl overflow-hidden animate-breadRise border-8 border-accent/20">
+            <!-- Right Side Form -->
+            <div class="p-12 lg:p-16 relative flex flex-col justify-center">
+                <div class="mb-12">
+                    <a href="index.html" class="inline-flex items-center gap-3 mb-8 group">
+                        <div
+                            class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 shadow-inner">
+                            <svg width="24" height="24" viewBox="0 0 32 32" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" class="text-accent">
+                                <path
+                                    d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <span class="font-playfair text-xl font-bold">Aurore Sourdough</span>
+                    </a>
+                    <h1
+                        class="font-playfair text-5xl font-bold mb-4 italic underline underline-offset-4 decoration-accent">
+                        Create <span class="text-accent italic">Account</span></h1>
+                    <p class="opacity-60 italic italics underline">Join us. It only takes a minute to secure your dawn
+                        bake.</p>
+                </div>
+
+                <form class="flex flex-col gap-8">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-xs font-bold uppercase tracking-widest opacity-40 italic font-bold">Full
+                            Identity</label>
+                        <input type="text" placeholder="Sophie Laurent"
+                            class="bg-secondary dark:bg-dark-bg p-5 rounded-md border border-border-light dark:border-dark-border outline-none focus:ring-4 focus:ring-accent/10 transition-all font-bold italic h-16">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-xs font-bold uppercase tracking-widest opacity-40 italic font-bold">Email
+                            Coordinate</label>
+                        <input type="email" placeholder="neighbor@bread.com"
+                            class="bg-secondary dark:bg-dark-bg p-5 rounded-md border border-border-light dark:border-dark-border outline-none focus:ring-4 focus:ring-accent/10 transition-all font-bold italic h-16">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-xs font-bold uppercase tracking-widest opacity-40 italic font-bold">Choose a
+                            Password</label>
+                        <input type="password" placeholder="••••••••"
+                            class="bg-secondary dark:bg-dark-bg p-5 rounded-md border border-border-light dark:border-dark-border outline-none focus:ring-4 focus:ring-accent/10 transition-all font-bold italic h-16">
+                    </div>
+
+                    <div
+                        class="flex items-center gap-4 py-4 px-6 bg-accent/5 rounded-2xl border border-accent/10 scroll-reveal">
+                        <input type="checkbox" id="terms"
+                            class="w-6 h-6 border-2 border-accent text-accent rounded-md cursor-pointer">
+                        <label for="terms" class="text-xs opacity-60 italic leading-relaxed leading-relaxed font-bold">I
+                            agree to the <a href="legal.html" class="font-bold underline">Baker's Agreement</a> and
+                            privacy policy regarding Maurice.</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary py-5 text-xl font-bold shadow-2xl">Initialize My Membership
+                        →</button>
+
+                    <!-- OR Divider -->
+                    <div class="flex items-center gap-6 my-4 opacity-30 italic font-bold">
+                        <div class="flex-grow h-px bg-primary/20"></div>
+                        <span>OR SIGNUP WITH</span>
+                        <div class="flex-grow h-px bg-primary/20"></div>
+                    </div>
+
+                    <!-- Social Row -->
+                    <div class="flex gap-4">
+                        <button
+                            class="flex-grow py-4 border border-border-light dark:border-dark-border rounded-lg font-bold hover:bg-white dark:hover:bg-dark-surface transition-all flex items-center justify-center gap-2">
+                            <span>FB</span> <span class="hidden sm:inline">Facebook</span>
+                        </button>
+                        <button
+                            class="flex-grow py-4 border border-border-light dark:border-dark-border rounded-lg font-bold hover:bg-white dark:hover:bg-dark-surface transition-all flex items-center justify-center gap-2">
+                            <span>G</span> <span class="hidden sm:inline">Google</span>
+                        </button>
+                    </div>
+
+                    <p class="text-center italic opacity-60 font-bold mb-4">Already a member? <a href="login.html"
+                            class="text-accent underline font-bold">Enter the Bakery Hub</a></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

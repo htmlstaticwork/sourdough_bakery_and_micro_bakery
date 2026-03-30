@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login | Aurore Sourdough</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C1810',
+                        secondary: '#FDF8F0',
+                        accent: '#C8602A',
+                        'accent-gold': '#D4A853',
+                        'dark-bg': '#1A0F08',
+                        'dark-surface': '#2A1810',
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        dm: ['DM Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+
+<body
+    class="bg-[#FDF8F0] dark:bg-dark-bg text-primary transition-colors min-h-screen flex items-center justify-center py-20 px-6">
+    <main class="container mx-auto max-w-xl animate-heroReveal">
+        <div
+            class="bg-white dark:bg-dark-surface p-12 lg:p-16 rounded-[40px] shadow-2xl animate-breadRise border-8 border-accent/20 relative overflow-hidden">
+            <!-- Background Texture -->
+            <div class="linen-texture absolute inset-0 opacity-10 pointer-events-none"></div>
+
+            <div class="text-center mb-16">
+                <a href="index.html" class="flex flex-col items-center gap-2 mb-8 group">
+                    <div
+                        class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 shadow-inner">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="text-accent">
+                            <path
+                                d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span class="font-playfair text-2xl font-bold">Aurore Sourdough</span>
+                </a>
+                <h1 class="font-playfair text-5xl font-bold mb-4 italic underline underline-offset-4 decoration-accent">
+                    Return to the <span class="text-accent italic">Crust</span></h1>
+                <p class="opacity-60 italic italics underline font-bold leading-relaxed">Enter your credentials to
+                    manage your sourdough subscription.</p>
+            </div>
+
+            <form class="flex flex-col gap-8 relative z-10">
+                <div class="flex flex-col gap-2">
+                    <label class="text-xs font-bold uppercase tracking-widest opacity-40 italic font-bold">Email
+                        Coordinate</label>
+                    <input type="email" placeholder="neighbor@bread.com"
+                        class="bg-secondary dark:bg-dark-bg p-5 rounded-md border border-border-light dark:border-dark-border outline-none focus:ring-4 focus:ring-accent/10 transition-all font-bold italic h-16">
+                </div>
+                <div class="flex flex-col gap-2">
+                    <div
+                        class="flex justify-between items-center text-xs font-bold uppercase tracking-widest opacity-40 italic font-bold">
+                        <label>Password</label>
+                        <a href="forgot-password.html"
+                            class="underline hover:text-accent italic transition-colors">Forgotten Profile?</a>
+                    </div>
+                    <input type="password" placeholder="••••••••"
+                        class="bg-secondary dark:bg-dark-bg p-5 rounded-md border border-border-light dark:border-dark-border outline-none focus:ring-4 focus:ring-accent/10 transition-all font-bold italic h-16">
+                </div>
+
+                <div
+                    class="flex items-center gap-4 py-4 px-6 bg-accent/5 rounded-2xl border border-accent/10 scroll-reveal">
+                    <input type="checkbox" id="remember"
+                        class="w-6 h-6 border-2 border-accent text-accent rounded-md cursor-pointer">
+                    <label for="remember" class="text-xs opacity-60 italic font-bold leading-relaxed italic">Stay logged
+                        in for the next morning bakes.</label>
+                </div>
+
+                <a href="dashboard.html"
+                    class="btn-primary py-5 text-xl font-bold shadow-2xl text-center flex items-center justify-center gap-2">Unlock
+                    My Dashboard →</a>
+
+                <!-- OR Divider -->
+                <div class="flex items-center gap-6 my-4 opacity-30 italic font-bold">
+                    <div class="flex-grow h-px bg-primary/20"></div>
+                    <span>OR LOGIN WITH</span>
+                    <div class="flex-grow h-px bg-primary/20"></div>
+                </div>
+
+                <!-- Social Row -->
+                <div class="flex gap-4">
+                    <button
+                        class="flex-grow py-4 border border-border-light dark:border-dark-border rounded-lg font-bold hover:bg-white dark:hover:bg-dark-surface transition-all flex items-center justify-center gap-2">
+                        <span>FB</span> <span class="hidden sm:inline">Facebook</span>
+                    </button>
+                    <button
+                        class="flex-grow py-4 border border-border-light dark:border-dark-border rounded-lg font-bold hover:bg-white dark:hover:bg-dark-surface transition-all flex items-center justify-center gap-2">
+                        <span>G</span> <span class="hidden sm:inline">Google</span>
+                    </button>
+                </div>
+
+                <p class="text-center italic opacity-60 font-bold mb-4">New neighborhood baker? <a href="register.html"
+                        class="text-accent underline font-bold">Join the Circle</a></p>
+            </form>
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

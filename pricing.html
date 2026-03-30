@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Baking Plans & Pricing | Aurore Sourdough</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta name="description"
+        content="Choose your sourdough subscription or bespoke bread bundle. Aurore Sourdough — Artisan pricing for artisanal passion.">
+
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C1810',
+                        secondary: '#FDF8F0',
+                        accent: '#C8602A',
+                        'accent-gold': '#D4A853',
+                        'dark-bg': '#1A0F08',
+                        'dark-surface': '#2A1810',
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        dm: ['DM Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-balance { text-wrap: balance; }
+        }
+        
+        .pricing-tier:hover .check-icon {
+            transform: scale(1.2) rotate(12deg);
+            color: #C8602A;
+        }
+
+        .check-icon {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    </style>
+</head>
+
+<body class="bg-secondary text-primary transition-colors duration-300">
+    <div class="linen-texture fixed inset-0 z-[-1] opacity-10"></div>
+
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-[100] bg-secondary/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
+        <div class="container mx-auto flex items-center justify-between w-full">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="text-accent">
+                    <path
+                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="font-playfair text-xl md:text-2xl font-bold">Aurore Sourdough</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-6">
+                <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
+                <a href="home-2.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home
+                    2</a>
+                <a href="about.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">About</a>
+                <a href="service.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Service</a>
+                <a href="blog.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Blog</a>
+                <a href="contact.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
+                <a href="pricing.html" class="nav-link-underline font-medium text-accent">Pricing</a>
+                <a href="dashboard.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Dashboard</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <button id="theme-toggle"
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+                    aria-label="Toggle Theme">
+                    <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-sun" class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button id="rtl-toggle"
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm"
+                    aria-label="Toggle RTL">RTL</button>
+
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
+                </div>
+
+                <!-- Hamburger -->
+                <button id="hamburger-btn"
+                    class="lg:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    aria-label="Menu" aria-expanded="false">
+                    <span class="navbar-toggler-icon pointer-events-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay bg-black/60 backdrop-blur-sm"></div>
+    <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6" role="dialog" aria-modal="true"
+        aria-label="Navigation Menu">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-playfair text-xl font-bold">Menu</span>
+            <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                aria-label="Close Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-4 text-lg font-medium">
+            <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
+            <a href="home-2.html" class="py-3 border-b border-border-light dark:border-dark-border">Home 2</a>
+            <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
+            <a href="service.html" class="py-3 border-b border-border-light dark:border-dark-border">Service</a>
+            <a href="blog.html" class="py-3 border-b border-border-light dark:border-dark-border">Blog</a>
+            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
+            <a href="pricing.html"
+                class="py-3 border-b border-border-light dark:border-dark-border text-accent">Pricing</a>
+            <a href="dashboard.html" class="py-3 border-b border-border-light dark:border-dark-border">Dashboard</a>
+            <div class="mt-6 flex flex-col gap-4">
+                <a href="login.html" class="btn-secondary text-center">Sign In</a>
+            </div>
+        </nav>
+        <div class="mt-auto pb-8 flex justify-center gap-6 opacity-60">
+            <span class="w-6 h-6">FB</span>
+            <span class="w-6 h-6">IG</span>
+            <span class="w-6 h-6">TW</span>
+        </div>
+    </aside>
+
+    <main>
+        <!-- Section 1: Hero -->
+        <section class="py-24 px-6 md:px-12 overflow-hidden relative bg-secondary dark:bg-dark-bg">
+            <div class="container mx-auto text-center animate-heroReveal">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+                    </span>
+                    HONEST PRICING
+                </div>
+                <h1 class="font-playfair text-5xl md:text-7xl font-bold mb-6">Choose Your <span
+                        class="text-accent italic">Daily Bread</span></h1>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto opacity-70 leading-relaxed text-balance">
+                    From occasional loaves to professional subscriptions. We’ve designed our plans to feed your passion
+                    for slow-fermented excellence.
+                </p>
+                <div class="mt-12 flex justify-center gap-8">
+                    <div class="animate-breadRise flex flex-col items-center">
+                        <img src="https://images.unsplash.com/photo-1589367920969-ab8e050bab0e?w=150&q=80" alt="Icon"
+                            class="w-20 h-20 object-cover rounded-full shadow-lg border-2 border-accent/20">
+                        <span class="mt-2 text-xs font-bold tracking-widest opacity-40">STARTER</span>
+                    </div>
+                    <div class="animate-breadRise flex flex-col items-center" style="animation-delay: 0.5s;">
+                        <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=150&q=80" alt="Icon"
+                            class="w-20 h-20 object-cover rounded-full shadow-lg border-2 border-accent/20">
+                        <span class="mt-2 text-xs font-bold tracking-widest opacity-40">ARTISAN</span>
+                    </div>
+                    <div class="animate-breadRise flex flex-col items-center" style="animation-delay: 1s;">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=150&q=80" alt="Icon"
+                            class="w-20 h-20 object-cover rounded-full shadow-lg border-2 border-accent/20">
+                        <span class="mt-2 text-xs font-bold tracking-widest opacity-40">MASTER</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Subscription Plans -->
+        <section class="py-24 px-6 md:px-12 bg-[#FDF8F0] dark:bg-dark-surface/10 relative">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Starter Plan -->
+                    <div
+                        class="pricing-tier subscription-card p-8 flex flex-col bg-secondary dark:bg-dark-surface rounded-2xl border border-border-light dark:border-dark-border scroll-reveal">
+                        <div class="mb-8">
+                            <h3 class="font-playfair text-3xl font-bold mb-2">Starter Boule</h3>
+                            <p class="text-sm opacity-60">Perfect for the weekend connoisseur.</p>
+                        </div>
+                        <div class="mb-8">
+                            <span class="text-5xl font-bold text-accent">$18</span> <span class="text-lg opacity-40">/
+                                month</span>
+                        </div>
+                        <ul class="flex flex-col gap-4 mb-10 grow">
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> 2 Hand-Scored Loaves / Month</li>
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> Weekend Mornings Delivery</li>
+                            <li class="flex items-center gap-3 text-sm opacity-40"><i class="fas fa-times"></i> Priority
+                                Special Releases</li>
+                            <li class="flex items-center gap-3 text-sm opacity-40"><i class="fas fa-times"></i> Live
+                                Starter Kit</li>
+                        </ul>
+                        <a href="register.html" class="btn-secondary text-center w-full">Join the Starter Plan</a>
+                    </div>
+
+                    <!-- Artisan Plan -->
+                    <div class="pricing-tier subscription-card p-8 flex flex-col bg-secondary dark:bg-dark-surface rounded-2xl border-2 border-accent shadow-2xl relative scroll-reveal"
+                        style="transition-delay: 0.1s;">
+                        <div
+                            class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold tracking-widest">
+                            MOST LOVED</div>
+                        <div class="mb-8">
+                            <h3 class="font-playfair text-3xl font-bold mb-2">Artisan Heart</h3>
+                            <p class="text-sm opacity-60">The core of our micro-bakery community.</p>
+                        </div>
+                        <div class="mb-8">
+                            <span class="text-5xl font-bold text-accent">$42</span> <span class="text-lg opacity-40">/
+                                month</span>
+                        </div>
+                        <ul class="flex flex-col gap-4 mb-10 grow">
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> 5 Hand-Scored Loaves / Month</li>
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> midweek & Weekend Delivery</li>
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> 1 Seasonal Focaccia Release</li>
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> Priority Special Releases</li>
+                        </ul>
+                        <a href="register.html" class="btn-primary text-center w-full">Join the Artisan Plan</a>
+                    </div>
+
+                    <!-- Master Baker Plan -->
+                    <div class="pricing-tier subscription-card p-8 flex flex-col bg-secondary dark:bg-dark-surface rounded-2xl border border-border-light dark:border-dark-border scroll-reveal"
+                        style="transition-delay: 0.2s;">
+                        <div class="mb-8">
+                            <h3 class="font-playfair text-3xl font-bold mb-2">Master Crumb</h3>
+                            <p class="text-sm opacity-60">The ultimate sourdough experience.</p>
+                        </div>
+                        <div class="mb-8">
+                            <span class="text-5xl font-bold text-accent">$85</span> <span class="text-lg opacity-40">/
+                                month</span>
+                        </div>
+                        <ul class="flex flex-col gap-4 mb-10 grow">
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> 10 Loaves / Month + Pastries</li>
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> Flexible Delivery Schedule</li>
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> Live Starter Kit + Guide</li>
+                            <li class="flex items-center gap-3 text-sm"><i
+                                    class="fas fa-check check-icon text-accent"></i> Annual Workshop Discount</li>
+                        </ul>
+                        <a href="register.html" class="btn-secondary text-center w-full">Join the Master Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Bespoke Bundles -->
+        <section class="py-24 px-6 md:px-12 bg-secondary dark:bg-dark-bg relative overflow-hidden">
+            <div class="absolute -right-24 top-0 w-96 h-96 bg-accent opacity-5 blur-[120px] rounded-full"></div>
+            <div class="container mx-auto">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="w-full lg:w-1/2 scroll-reveal">
+                        <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-6">Bespoke <span
+                                class="text-accent italic">Bake Bundles</span></h2>
+                        <p class="text-lg opacity-70 mb-10 leading-relaxed">Planning an event or a gathering? Our
+                            bespoke bundles allow you to curate the perfect bread selection for your table.</p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+                            <div
+                                class="p-6 bg-white dark:bg-dark-surface rounded-xl shadow-sm border border-border-light dark:border-dark-border hover:shadow-lg transition-shadow duration-300">
+                                <h4 class="font-playfair text-xl font-bold mb-2">The Banquet Mix</h4>
+                                <p class="text-xs opacity-50 mb-3 uppercase tracking-tighter">12 Mixed Loaves</p>
+                                <span class="text-2xl font-bold text-accent">$110</span>
+                            </div>
+                            <div
+                                class="p-6 bg-white dark:bg-dark-surface rounded-xl shadow-sm border border-border-light dark:border-dark-border hover:shadow-lg transition-shadow duration-300">
+                                <h4 class="font-playfair text-xl font-bold mb-2">Pastry Party</h4>
+                                <p class="text-xs opacity-50 mb-3 uppercase tracking-tighter">24 Mixed Pastries</p>
+                                <span class="text-2xl font-bold text-accent">$135</span>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn-secondary inline-block">Request A Custom Bundle</a>
+                    </div>
+                    <div class="w-full lg:w-1/2 relative scroll-reveal" style="transition-delay: 0.2s;">
+                        <img src="https://images.unsplash.com/photo-1549432646-6468449764a8?w=800&q=80" alt="Bundles"
+                            class="rounded-2xl shadow-2xl w-full h-[500px] object-cover animate-breadRise">
+                        <div
+                            class="absolute -bottom-6 -left-6 bg-accent text-white p-6 rounded-xl shadow-xl max-w-[200px] entrance-anim">
+                            <p class="font-playfair text-lg italic leading-tight">“The perfect crust for any
+                                celebration.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Perks & Values -->
+        <section class="py-24 px-6 md:px-12 bg-primary dark:bg-dark-bg text-secondary">
+            <div class="container mx-auto">
+                <div class="text-center mb-20 scroll-reveal">
+                    <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-4">Value Beyond the <span
+                            class="text-accent italic">Crust</span></h2>
+                    <p class="max-w-2xl mx-auto opacity-70">Joining Aurore Sourdough means more than just receiving
+                        bread. It’s an investment in tradition and quality.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                    <div class="flex flex-col items-center text-center scroll-reveal group">
+                        <div
+                            class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-500">
+                            <i
+                                class="fas fa-truck text-accent group-hover:text-white text-2xl transition-colors duration-500"></i>
+                        </div>
+                        <h4 class="font-playfair text-xl font-bold mb-2">Free Local Delivery</h4>
+                        <p class="text-sm opacity-60">All subscription plans include free delivery within 5 miles of the
+                            bakery.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center scroll-reveal group"
+                        style="transition-delay: 0.1s;">
+                        <div
+                            class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-500">
+                            <i
+                                class="fas fa-vial text-accent group-hover:text-white text-2xl transition-colors duration-500"></i>
+                        </div>
+                        <h4 class="font-playfair text-xl font-bold mb-2">Wild Starter Access</h4>
+                        <p class="text-sm opacity-60">Members get access to our 4-year-old sourdough starter for home
+                            baking.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center scroll-reveal group"
+                        style="transition-delay: 0.2s;">
+                        <div
+                            class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-500">
+                            <i
+                                class="fas fa-calendar-alt text-accent group-hover:text-white text-2xl transition-colors duration-500"></i>
+                        </div>
+                        <h4 class="font-playfair text-xl font-bold mb-2">Pause Anytime</h4>
+                        <p class="text-sm opacity-60">Headed out of town? Easily pause your subscription for up to 2
+                            weeks.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center scroll-reveal group"
+                        style="transition-delay: 0.3s;">
+                        <div
+                            class="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent transition-colors duration-500">
+                            <i
+                                class="fas fa-users text-accent group-hover:text-white text-2xl transition-colors duration-500"></i>
+                        </div>
+                        <h4 class="font-playfair text-xl font-bold mb-2">Community Events</h4>
+                        <p class="text-sm opacity-60">Exclusive invites to our monthly "Crust & Crumb" gathering at the
+                            bakery.</p>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="mt-24 text-center scroll-reveal">
+                    <p class="text-lg italic opacity-60 mb-8">Ready to taste the sourdough difference?</p>
+                    <a href="register.html" class="btn-primary px-12 py-5 text-lg">Create Your Account</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary pt-20 pb-8 px-6 md:px-12 text-[#D4B896]">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <!-- About -->
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-2">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" class="text-accent">
+                        <path
+                            d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span class="font-playfair text-2xl font-bold text-white">Aurore Sourdough</span>
+                </div>
+                <p class="text-sm leading-relaxed opacity-70">Slow-fermented. Wildly alive. Honestly baked. We are a
+                    neighborhood micro-bakery dedicated to the craft of artisan bread.</p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center border border-[#D4B896]/30 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110"
+                        aria-label="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-8.74h-2.94v-3.411h2.94v-2.518c0-2.91 1.777-4.496 4.375-4.496 1.244 0 2.315.093 2.627.135v3.044h-1.802c-1.411 0-1.685.67-1.685 1.654v2.181h3.371l-.439 3.411h-2.932v8.74h6.14c.731 0 1.325-.593 1.325-1.324v-21.351c0-.732-.594-1.325-1.325-1.325z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center border border-[#D4B896]/30 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110"
+                        aria-label="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center border border-[#D4B896]/30 rounded-full hover:border-accent hover:text-accent transition-all hover:scale-110"
+                        aria-label="X (Twitter)">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Menu -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Today's Selection</h4>
+                <ul class="flex flex-col gap-3 text-sm">
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Country Loaf</a></li>
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Rosemary Focaccia</a>
+                    </li>
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Dark Rye Batard</a></li>
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Seeded Boule</a></li>
+                    <li><a href="menu.html" class="hover:text-accent transition-colors italic">Artisan Pastries</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Quick Links</h4>
+                <ul class="flex flex-col gap-3 text-sm">
+                    <li><a href="pre-orders.html" class="hover:text-accent transition-colors">Pre-Order</a></li>
+                    <li><a href="subscriptions.html" class="hover:text-accent transition-colors">Subscriptions</a></li>
+                    <li><a href="how-it-works.html" class="hover:text-accent transition-colors">How It Works</a></li>
+                    <li><a href="blog.html" class="hover:text-accent transition-colors">Bread Journal</a></li>
+                    <li><a href="faq.html" class="hover:text-accent transition-colors">FAQ</a></li>
+                    <li><a href="pricing.html" class="hover:text-accent transition-colors">Pricing</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Contact</h4>
+                <ul class="flex flex-col gap-4 text-sm">
+                    <li class="flex items-start gap-3">
+                        <span>📍</span>
+                        <span>123 Baker St, Flour District<br>Paris, FR 75001</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span>✉️</span>
+                        <span>hello@aurore-sourdough.com</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span>📞</span>
+                        <span>+33 1 23 45 67 89</span>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn-primary mt-6 inline-block w-full text-center text-sm py-3">Book a
+                    Workshop</a>
+            </div>
+        </div>
+        <div
+            class="border-t border-[#D4B896]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-50">
+            <p>&copy; <span id="year"></span> Aurore Sourdough Artisan Bakery. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay bg-black/60 backdrop-blur-sm"></div>
+    <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-playfair text-xl font-bold">Menu</span>
+            <button id="sidebar-close" class="p-2"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="flex flex-col gap-4 text-lg font-medium">
+            <a href="index.html" class="py-3 border-b border-border-light">Home</a>
+            <a href="about.html" class="py-3 border-b border-border-light">About</a>
+            <a href="service.html" class="py-3 border-b border-border-light">Service</a>
+            <a href="blog.html" class="py-3 border-b border-border-light">Blog</a>
+            <a href="contact.html" class="py-3 border-b border-border-light">Contact</a>
+            <a href="pricing.html" class="py-3 border-b border-border-light text-accent">Pricing</a>
+            <a href="dashboard.html" class="py-3 border-b border-border-light">Dashboard</a>
+        </nav>
+    </aside>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Mobile Sidebar
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const sidebarClose = document.getElementById('sidebar-close');
+        const sidebarNav = document.getElementById('sidebar-nav');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        hamburgerBtn.addEventListener('click', () => {
+            sidebarNav.classList.add('open');
+            sidebarOverlay.classList.add('open');
+        });
+
+        const closeSidebar = () => {
+            sidebarNav.classList.remove('open');
+            sidebarOverlay.classList.remove('open');
+        };
+
+        sidebarClose.addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        // Scroll Reveal
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
