@@ -39,6 +39,12 @@
     border-color: #3D2418;
 }
 
+[data-theme="dark"] .subscription-card {
+    background-color: #231208 !important;
+    border-color: #3D2418;
+    color: #F5E6D3;
+}
+
 [data-theme="dark"] .dashboard-sidebar {
     background-color: #1A0F08;
     border-color: #3D2418;

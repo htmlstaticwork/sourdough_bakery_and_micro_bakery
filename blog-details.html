@@ -34,7 +34,114 @@
     <link rel="stylesheet" href="assets/css/rtl.css">
 </head>
 
-<body class="bg-secondary text-primary transition-colors">
+<body class="bg-secondary dark:bg-dark-bg text-primary transition-colors">
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-[100] bg-secondary/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
+        <div class="container mx-auto flex items-center justify-between w-full">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="text-accent">
+                    <path
+                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="font-playfair text-xl md:text-2xl font-bold">Aurore Sourdough</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-6">
+                <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
+                <a href="home-2.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home
+                    2</a>
+                <a href="about.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">About</a>
+                <a href="service.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Service</a>
+                <a href="blog.html" class="nav-link-underline font-medium text-accent">Blog</a>
+                <a href="contact.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
+                <a href="pricing.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Pricing</a>
+                <a href="dashboard.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Dashboard</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <button id="theme-toggle"
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+                    aria-label="Toggle Theme">
+                    <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-sun" class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button id="rtl-toggle"
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm"
+                    aria-label="Toggle RTL">RTL</button>
+
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
+                </div>
+
+                <!-- Hamburger -->
+                <button id="hamburger-btn"
+                    class="lg:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    aria-label="Menu" aria-expanded="false">
+                    <span class="navbar-toggler-icon pointer-events-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay bg-black/60 backdrop-blur-sm"></div>
+    <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6" role="dialog" aria-modal="true"
+        aria-label="Navigation Menu">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-playfair text-xl font-bold">Menu</span>
+            <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                aria-label="Close Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-4 text-lg font-medium">
+            <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
+            <a href="home-2.html" class="py-3 border-b border-border-light dark:border-dark-border">Home 2</a>
+            <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
+            <a href="service.html" class="py-3 border-b border-border-light dark:border-dark-border">Service</a>
+            <a href="blog.html" class="py-3 border-b border-border-light dark:border-dark-border text-accent">Blog</a>
+            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
+            <a href="pricing.html" class="py-3 border-b border-border-light dark:border-dark-border">Pricing</a>
+            <a href="dashboard.html" class="py-3 border-b border-border-light dark:border-dark-border">Dashboard</a>
+            <div class="mt-6 flex flex-col gap-4">
+                <a href="login.html" class="btn-secondary text-center">Sign In</a>
+            </div>
+        </nav>
+        <div class="mt-auto pb-8 flex justify-center gap-6 opacity-60">
+            <span class="w-6 h-6">FB</span>
+            <span class="w-6 h-6">IG</span>
+            <span class="w-6 h-6">TW</span>
+        </div>
+    </aside>
+
     <main>
         <!-- Article Hero -->
         <section class="h-[70vh] relative flex items-center justify-center text-center overflow-hidden">
@@ -93,7 +200,7 @@
                         frantic activity, and releases an aroma that can only be described as a cross between fresh
                         apples and lactic acid.</p>
 
-                    <img src="https://images.unsplash.com/photo-1549432646-6468449764a8?w=1200&q=80"
+                    <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=1200&q=80"
                         alt="Process Detail"
                         class="w-full h-[500px] object-cover rounded-3xl mb-12 shadow-2xl border-4 border-accent/10 scroll-reveal">
 
@@ -145,7 +252,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     <div class="bread-card p-4 scroll-reveal flex flex-col">
-                        <img src="https://images.unsplash.com/photo-1589367920969-ab8e050bab0e?w=800&q=80"
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
                             class="w-full h-56 object-cover rounded-2xl mb-6">
                         <h4 class="font-playfair text-xl font-bold mb-4 italic leading-tight">The 5 Mistakes New
                             Sourdough Bakers Make</h4>
@@ -182,12 +289,12 @@
             <!-- About -->
             <div class="flex flex-col gap-6">
                 <div class="flex items-center gap-2">
-                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" class="text-accent">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="text-accent">
                         <path
                             d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                     </svg>
-                    <span class="font-playfair text-2xl font-bold text-white">Aurore Sourdough</span>
+                    <span class="font-playfair text-2xl font-bold text-accent">Aurore Sourdough</span>
                 </div>
                 <p class="text-sm leading-relaxed opacity-70">Slow-fermented. Wildly alive. Honestly baked. We are a
                     neighborhood micro-bakery dedicated to the craft of artisan bread.</p>

@@ -83,20 +83,28 @@
         .logo-area {
             margin-bottom: 3rem;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .logo-area svg {
-            width: 45px;
-            color: var(--primary-amber);
-            margin-bottom: 0.5rem;
+        .logo-area svg,
+        .dashboard-brand-mark {
+            width: 32px;
+            height: 32px;
+            color: #C8602A;
+            flex-shrink: 0;
         }
 
-        .logo-text {
+        .logo-text,
+        .dashboard-brand-name {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--primary-crust);
-            letter-spacing: -0.5px;
+            font-size: 1.5rem;
+            line-height: 1;
+            color: #C8602A;
+            letter-spacing: 0;
         }
 
         .nav-menu {
@@ -385,6 +393,28 @@
             box-shadow: var(--glow-shadow);
         }
 
+        .dashboard-view {
+            display: none;
+        }
+
+        .dashboard-view.active {
+            display: block;
+        }
+
+        .overview-card-row>[class*="col-"] {
+            display: flex;
+        }
+
+        .overview-card {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .overview-card .card-bottom {
+            margin-top: auto;
+        }
+
         .magnetic {
             transition: transform 0.2s linear;
         }
@@ -462,6 +492,165 @@
             padding: 15px 20px;
             margin-bottom: 5px;
         }
+
+        /* --- DARK MODE --- */
+        [data-bs-theme="dark"] {
+            --bg-light: #0f0f0f;
+            --sidebar-bg: #1a1a1a;
+            --card-bg: #222222;
+            --text-main: #f0f0f0;
+            --text-muted: #b0b0b0;
+            --secondary-dough: #2d2620;
+            --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-bs-theme="dark"] body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+        }
+
+        [data-bs-theme="dark"] .sidebar,
+        [data-bs-theme="dark"] .right-panel,
+        [data-bs-theme="dark"] .offcanvas-bakery {
+            background: var(--sidebar-bg) !important;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-bs-theme="dark"] .premium-card,
+        [data-bs-theme="dark"] .compact-card {
+            background: var(--card-bg) !important;
+            border-color: var(--border-color);
+            color: var(--text-main);
+        }
+
+        [data-bs-theme="dark"] .nav-link {
+            color: var(--text-muted);
+        }
+
+        [data-bs-theme="dark"] .card-desc,
+        [data-bs-theme="dark"] .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        [data-bs-theme="dark"] .card-icon {
+            background: var(--secondary-dough);
+        }
+
+        [data-bs-theme="dark"] .hamburger-btn {
+            background: var(--card-bg);
+            border-color: var(--border-color);
+        }
+
+        [data-bs-theme="dark"] .form-control {
+            background-color: #1a1a1a;
+            border-color: var(--border-color);
+            color: white;
+        }
+
+        /* --- RTL SUPPORT --- */
+        [dir="rtl"] .sidebar {
+            left: auto;
+            right: 0;
+            box-shadow: -2px 0 20px rgba(0, 0, 0, 0.02);
+        }
+
+        [dir="rtl"] .main-content {
+            margin-left: var(--right-panel-width);
+            margin-right: var(--sidebar-width);
+        }
+
+        [dir="rtl"] .right-panel {
+            right: auto;
+            left: 0;
+            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.02);
+        }
+
+        [dir="rtl"] .nav-link i {
+            margin-right: 0;
+            margin-left: 15px;
+        }
+
+        [dir="rtl"] .logo-area svg {
+            margin-right: 0;
+        }
+
+        [dir="rtl"] .ms-auto {
+            margin-left: 0 !important;
+            margin-right: auto !important;
+        }
+
+        [dir="rtl"] .me-auto {
+            margin-right: 0 !important;
+            margin-left: auto !important;
+        }
+
+        [dir="rtl"] .text-end {
+            text-align: left !important;
+        }
+
+        [dir="rtl"] .offcanvas-end {
+            left: 0;
+            right: auto;
+            transform: translateX(-100%);
+        }
+
+        [dir="rtl"] .offcanvas-end.show {
+            transform: none;
+        }
+
+        [dir="rtl"] .tracking-list::before {
+            left: auto;
+            right: 7px;
+        }
+
+        [dir="rtl"] .tracking-item {
+            padding-left: 0;
+            padding-right: 25px;
+        }
+
+        [dir="rtl"] .tracking-item::after {
+            left: auto;
+            right: 0;
+        }
+
+        /* Toggle Buttons styling */
+        .theme-controls {
+            background: rgba(139, 94, 60, 0.05);
+            border-radius: 15px;
+            padding: 10px;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 10px;
+        }
+
+        .theme-btn {
+            flex: 1;
+            height: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 94, 60, 0.1);
+            background: #fff;
+            color: var(--primary-amber);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .theme-btn:hover {
+            background: var(--secondary-dough);
+        }
+
+        [data-bs-theme="dark"] .theme-btn {
+            background: #2a2a2a;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-bs-theme="dark"] .theme-btn:hover {
+            background: #3a3a3a;
+        }
     </style>
 </head>
 
@@ -470,8 +659,7 @@
     <div class="wrapper">
         <aside class="sidebar">
             <a href="index.html" class="logo-area text-decoration-none d-block">
-                <svg width="45" height="45" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    style="color: #C8602A;">
+                <svg class="dashboard-brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -480,20 +668,37 @@
             </a>
 
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#" class="nav-link active"><i class="bi bi-grid-fill"></i> Overview</a>
+                <li class="nav-item"><a href="#view-overview" class="nav-link dashboard-nav-link active"
+                        data-view="overview"><i class="bi bi-grid-fill"></i> Overview</a>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-basket"></i> Pre-Orders</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-calendar-check"></i> Subscriptions</a>
+                <li class="nav-item"><a href="#view-pre-orders" class="nav-link dashboard-nav-link"
+                        data-view="pre-orders"><i class="bi bi-basket"></i> Pre-Orders</a></li>
+                <li class="nav-item"><a href="#view-subscriptions" class="nav-link dashboard-nav-link"
+                        data-view="subscriptions"><i class="bi bi-calendar-check"></i> Subscriptions</a>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-bookmark-heart"></i> My
+                <li class="nav-item"><a href="#view-reservations" class="nav-link dashboard-nav-link"
+                        data-view="reservations"><i class="bi bi-bookmark-heart"></i> My
                         Reservations</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-download"></i> Downloads</a></li>
+                <li class="nav-item"><a href="#view-downloads" class="nav-link dashboard-nav-link"
+                        data-view="downloads"><i class="bi bi-download"></i> Downloads</a></li>
                 <div class="my-4 border-top opacity-25"></div>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-person-circle"></i> Profile</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-chat-dots"></i> Messages</a></li>
-                <li class="nav-item mt-3"><a href="#" class="nav-link text-danger"><i class="bi bi-box-arrow-right"></i>
+                <li class="nav-item"><a href="#view-profile" class="nav-link dashboard-nav-link" data-view="profile"><i
+                            class="bi bi-person-circle"></i> Profile</a></li>
+                <li class="nav-item"><a href="#view-messages" class="nav-link dashboard-nav-link"
+                        data-view="messages"><i class="bi bi-chat-dots"></i> Messages</a></li>
+                <li class="nav-item mt-3"><a href="index.html" class="nav-link text-danger"><i
+                            class="bi bi-box-arrow-right"></i>
                         Logout</a></li>
             </ul>
+
+            <div class="theme-controls">
+                <button id="themeToggle" class="theme-btn" title="Toggle Theme">
+                    <i class="bi bi-moon-stars-fill"></i>
+                </button>
+                <button id="rtlToggle" class="theme-btn" title="Toggle RTL Layout">
+                    <i class="bi bi-translate"></i>
+                </button>
+            </div>
 
             <div class="mt-auto pt-4">
                 <div class="premium-card p-3 d-flex align-items-center gap-3 floating-delayed">
@@ -511,8 +716,9 @@
         <main class="main-content">
             <header class="header-content d-flex justify-content-between align-items-center entrance-anim">
                 <div>
-                    <h1 class="fw-bold h3 mb-1">Baker's Hub</h1>
-                    <p class="text-muted mb-0">Good afternoon, Alex! Your dough is proofing nicely.</p>
+                    <h1 class="fw-bold h3 mb-1" data-dashboard-title>Baker's Hub</h1>
+                    <p class="text-muted mb-0" data-dashboard-subtitle>Good afternoon, Alex! Your dough is proofing
+                        nicely.</p>
                 </div>
                 <div class="d-flex gap-3">
                     <button class="btn btn-outline-secondary rounded-pill px-3 border-light-subtle"><i
@@ -525,71 +731,234 @@
                 </div>
             </header>
 
-            <section class="mb-5 entrance-anim" style="transition-delay: 0.1s;">
-                <div class="premium-card featured-card floating">
-                    <div class="featured-img-wrapper">
-                        <img src="assets/dashboard-hero.png" alt="Next Delivery Bread">
-                    </div>
-                    <div class="featured-body">
-                        <span class="badge-status status-pro mb-3 d-inline-block">PREMIUM CLUB</span>
-                        <h2>Next Delivery</h2>
-                        <p class="opacity-75">Your signature Heritage Sourdough loaf is scheduled for Saturday morning.
-                            Prepared with organic Einkorn flour and cold-proofed for 72 hours.</p>
-                        <div class="meta-info">
-                            <div class="meta-item"><i class="bi bi-calendar-event"></i> <span>April 4, 2026</span></div>
-                            <div class="meta-item"><i class="bi bi-clock"></i> <span>08:00 - 10:00 AM</span></div>
-                            <div class="meta-item"><i class="bi bi-gift"></i> <span>Weekly Artisan Plan</span></div>
+            <section id="view-overview" class="dashboard-view active" data-title="Baker's Hub"
+                data-subtitle="Good afternoon, Alex! Your dough is proofing nicely.">
+                <section class="mb-5 entrance-anim" style="transition-delay: 0.1s;">
+                    <div class="premium-card featured-card floating">
+                        <div class="featured-img-wrapper">
+                            <img src="assets/dashboard-hero.png" alt="Next Delivery Bread">
                         </div>
-                        <button class="btn btn-light rounded-pill mt-4 px-4 py-2 fw-bold text-dark">Manage
-                            Schedule</button>
+                        <div class="featured-body">
+                            <span class="badge-status status-pro mb-3 d-inline-block">PREMIUM CLUB</span>
+                            <h2>Next Delivery</h2>
+                            <p class="opacity-75">Your signature Heritage Sourdough loaf is scheduled for Saturday
+                                morning.
+                                Prepared with organic Einkorn flour and cold-proofed for 72 hours.</p>
+                            <div class="meta-info">
+                                <div class="meta-item"><i class="bi bi-calendar-event"></i> <span>April 4, 2026</span>
+                                </div>
+                                <div class="meta-item"><i class="bi bi-clock"></i> <span>08:00 - 10:00 AM</span></div>
+                                <div class="meta-item"><i class="bi bi-gift"></i> <span>Weekly Artisan Plan</span></div>
+                            </div>
+                            <button class="btn btn-light rounded-pill mt-4 px-4 py-2 fw-bold text-dark">Manage
+                                Schedule</button>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="row g-4 overview-card-row entrance-anim" style="transition-delay: 0.2s;">
+                    <div class="col-md-4">
+                        <div class="premium-card overview-card h-100 magnetic floating-delayed">
+                            <div class="card-icon"><i class="bi bi-patch-check"></i></div>
+                            <h3 class="card-title">Active Orders</h3>
+                            <p class="card-desc">You have 2 items being prepared for collection.</p>
+                            <div class="card-bottom">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span class="small fw-600">Focaccia x1</span>
+                                    <span class="badge-status status-active">Baking</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="premium-card overview-card h-100 magnetic floating-more-delayed">
+                            <div class="card-icon" style="background: #efebe9; color: #5d4037;"><i
+                                    class="bi bi-fire"></i>
+                            </div>
+                            <h3 class="card-title">Upcoming Bakes</h3>
+                            <p class="card-desc">Reserve your spot for next Tuesday's special release.</p>
+                            <div class="card-bottom">
+                                <ul class="list-unstyled small mb-0">
+                                    <li><i class="bi bi-dot text-primary"></i> Rosemary & Sea Salt</li>
+                                    <li><i class="bi bi-dot text-primary"></i> Dark Chocolate Rye</li>
+                                </ul>
+                                <button class="btn btn-link p-0 mt-3 text-decoration-none fw-bold small">Reserve Now
+                                    →</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="premium-card overview-card h-100 magnetic floating">
+                            <div class="card-icon" style="background: #e8f5e9; color: #2e7d32;"><i
+                                    class="bi bi-shield-check"></i></div>
+                            <h3 class="card-title">Subscription</h3>
+                            <p class="card-desc">"Crust & Crumb" Master Plan active since Jan 2026.</p>
+                            <div class="card-bottom">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="h5 mb-0 fw-bold">12 / 20</div>
+                                    <span class="small text-muted">Loaves remaining</span>
+                                </div>
+                                <div class="progress mt-2">
+                                    <div class="progress-bar bg-success" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <div class="row g-4 entrance-anim" style="transition-delay: 0.2s;">
-                <div class="col-md-4">
-                    <div class="premium-card h-100 magnetic floating-delayed">
-                        <div class="card-icon"><i class="bi bi-patch-check"></i></div>
-                        <h3 class="card-title">Active Orders</h3>
-                        <p class="card-desc">You have 2 items being prepared for collection.</p>
-                        <div class="d-flex justify-content-between align-items-center mb-1">
-                            <span class="small fw-600">Focaccia x1</span>
-                            <span class="badge-status status-active">Baking</span>
+            <!-- Additional Dashboard Views -->
+            <section id="view-pre-orders" class="dashboard-view" data-title="Pre-Orders"
+                data-subtitle="Your recent and upcoming artisan bread orders.">
+                <div class="premium-card p-5 text-center entrance-anim">
+                    <div class="card-icon mx-auto mb-4" style="width: 80px; height: 80px; font-size: 2.5rem;"><i
+                            class="bi bi-basket"></i></div>
+                    <h3 class="fw-bold mb-3">No Active Pre-Orders</h3>
+                    <p class="text-muted mb-4 mx-auto" style="max-width: 400px;">Hungry for some fresh crust? Your
+                        basket is
+                        currently empty. Start your sourdough journey by exploring our weekly specials.</p>
+                    <a href="index.html" class="btn btn-primary rounded-pill px-5 py-2 fw-bold"
+                        style="background: var(--primary-amber); border: none;">Browse Bakery</a>
+                </div>
+            </section>
+
+            <section id="view-subscriptions" class="dashboard-view" data-title="Subscriptions"
+                data-subtitle="Manage your recurring bread delivery plans.">
+                <div class="premium-card p-4 entrance-anim">
+                    <div class="d-flex justify-content-between align-items-start mb-4">
+                        <div>
+                            <span class="badge-status status-pro mb-2 d-inline-block">ACTIVE PLAN</span>
+                            <h3 class="fw-bold">Crust & Crumb Master Plan</h3>
+                            <p class="text-muted">Weekly delivery of artisan loaves since January 2026.</p>
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 75%"></div>
+                        <button class="btn btn-outline-secondary rounded-pill btn-sm">Edit Plan</button>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="compact-card mb-0 shadow-none border" style="background: white;">
+                                <div class="small text-muted mb-1">Loaves Remaining</div>
+                                <div class="h3 fw-bold">8 / 20</div>
+                                <div class="progress mt-2" style="height: 6px;">
+                                    <div class="progress-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="compact-card mb-0 shadow-none border" style="background: white;">
+                                <div class="small text-muted mb-1">Next Delivery</div>
+                                <div class="h3 fw-bold">Saturday, April 4</div>
+                                <div class="small text-success fw-bold mt-2">Confirmed</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="premium-card h-100 magnetic floating-more-delayed">
-                        <div class="card-icon" style="background: #efebe9; color: #5d4037;"><i class="bi bi-fire"></i>
+            </section>
+
+            <section id="view-reservations" class="dashboard-view" data-title="My Reservations"
+                data-subtitle="View your table bookings and special events.">
+                <div class="premium-card p-5 text-center entrance-anim">
+                    <div class="card-icon mx-auto mb-4"
+                        style="width: 80px; height: 80px; font-size: 2.5rem; background: #fff8e1; color: #ffa000;"><i
+                            class="bi bi-bookmark-heart"></i></div>
+                    <h3 class="fw-bold mb-3">No Upcoming Reservations</h3>
+                    <p class="text-muted mb-4 mx-auto" style="max-width: 400px;">Plan your next visit! Book a cozy table
+                        for our
+                        weekend sourdough brunch or join a workshop.</p>
+                    <button class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold"
+                        style="color: var(--primary-amber); border-color: var(--primary-amber);">Book a Table</button>
+                </div>
+            </section>
+
+            <section id="view-downloads" class="dashboard-view" data-title="Downloads"
+                data-subtitle="Access your baking guides, recipes, and digital assets.">
+                <div class="row g-4 entrance-anim">
+                    <div class="col-md-6">
+                        <div class="premium-card p-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="card-icon mb-0"><i class="bi bi-file-earmark-pdf"></i></div>
+                                <div>
+                                    <h5 class="fw-bold mb-0">Sourdough Starter Guide</h5>
+                                    <small class="text-muted">PDF • 2.4 MB</small>
+                                </div>
+                            </div>
+                            <button class="btn btn-light w-100 rounded-pill fw-bold"><i
+                                    class="bi bi-download me-2"></i>Download</button>
                         </div>
-                        <h3 class="card-title">Upcoming Bakes</h3>
-                        <p class="card-desc">Reserve your spot for next Tuesday's special release.</p>
-                        <ul class="list-unstyled small mb-0">
-                            <li><i class="bi bi-dot text-primary"></i> Rosemary & Sea Salt</li>
-                            <li><i class="bi bi-dot text-primary"></i> Dark Chocolate Rye</li>
-                        </ul>
-                        <button class="btn btn-link p-0 mt-3 text-decoration-none fw-bold small">Reserve Now →</button>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="premium-card p-4">
+                            <div class="d-flex align-items-center gap-3 mb-3">
+                                <div class="card-icon mb-0"><i class="bi bi-file-earmark-zip"></i></div>
+                                <div>
+                                    <h5 class="fw-bold mb-0">Artisan Recipe Pack</h5>
+                                    <small class="text-muted">ZIP • 15.8 MB</small>
+                                </div>
+                            </div>
+                            <button class="btn btn-light w-100 rounded-pill fw-bold"><i
+                                    class="bi bi-download me-2"></i>Download</button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="premium-card h-100 magnetic floating">
-                        <div class="card-icon" style="background: #e8f5e9; color: #2e7d32;"><i
-                                class="bi bi-shield-check"></i></div>
-                        <h3 class="card-title">Subscription</h3>
-                        <p class="card-desc">"Crust & Crumb" Master Plan active since Jan 2026.</p>
-                        <div class="d-flex align-items-center gap-2">
-                            <div class="h5 mb-0 fw-bold">12 / 20</div>
-                            <span class="small text-muted">Loaves remaining</span>
+            </section>
+
+            <section id="view-profile" class="dashboard-view" data-title="Your Profile"
+                data-subtitle="Manage your personal details and account security.">
+                <div class="premium-card p-4 entrance-anim">
+                    <div class="d-flex align-items-center gap-4 mb-5 pb-4 border-bottom">
+                        <div class="position-relative">
+                            <img src="https://ui-avatars.com/api/?name=Alex+Thompson&background=b07d50&color=fff&size=100"
+                                class="rounded-circle shadow-sm" alt="Profile">
+                            <button
+                                class="btn btn-sm btn-light position-absolute bottom-0 end-0 rounded-circle border shadow-sm"
+                                style="width: 32px; height: 32px; padding: 0;"><i class="bi bi-camera"></i></button>
                         </div>
-                        <div class="progress mt-2">
-                            <div class="progress-bar bg-success" style="width: 60%"></div>
+                        <div>
+                            <h3 class="fw-bold mb-1">Alex Thompson</h3>
+                            <p class="text-muted mb-0">Member since January 2026 • <span class="text-primary">Premium
+                                    Edition</span></p>
                         </div>
                     </div>
+                    <form>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-muted">First Name</label>
+                                <input type="text" class="form-control rounded-pill px-3 py-2" value="Alex">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold text-muted">Last Name</label>
+                                <input type="text" class="form-control rounded-pill px-3 py-2" value="Thompson">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label small fw-bold text-muted">Email Address</label>
+                                <input type="email" class="form-control rounded-pill px-3 py-2"
+                                    value="alex.thompson@example.com">
+                            </div>
+                            <div class="col-md-12 text-end mt-4">
+                                <button type="button" class="btn btn-primary rounded-pill px-4"
+                                    style="background: var(--primary-amber); border: none;">Save Changes</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
+            </section>
+
+            <section id="view-messages" class="dashboard-view" data-title="Messages"
+                data-subtitle="Chat with our artisan bakers and support team.">
+                <div class="premium-card p-5 text-center entrance-anim">
+                    <div class="card-icon mx-auto mb-4"
+                        style="width: 80px; height: 80px; font-size: 2.5rem; background: #e3f2fd; color: #1565c0;"><i
+                            class="bi bi-chat-dots"></i></div>
+                    <h3 class="fw-bold mb-3">No New Messages</h3>
+                    <p class="text-muted mb-4 mx-auto" style="max-width: 400px;">Everything is quiet! When you contact
+                        our
+                        baking team for advice or order questions, they'll appear here.</p>
+                    <button class="btn btn-primary rounded-pill px-5 py-2 fw-bold"
+                        style="background: var(--primary-amber); border: none;">New Message</button>
+                </div>
+            </section>
         </main>
 
         <aside class="right-panel entrance-anim" style="transition-delay: 0.3s;">
@@ -641,31 +1010,50 @@
         <div class="offcanvas-header border-bottom">
             <a href="index.html" class="offcanvas-title fw-bold text-decoration-none d-flex align-items-center gap-2"
                 style="color: #C8602A;">
-                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="dashboard-brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
-                <span style="font-family: 'Playfair Display', serif; font-size: 1.25rem;">Aurore Sourdough</span>
+                <span class="dashboard-brand-name">Aurore Sourdough</span>
             </a>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body d-flex flex-column">
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#" class="nav-link active"><i class="bi bi-grid-fill"></i> Overview</a>
+                <li class="nav-item"><a href="#view-overview" class="nav-link dashboard-nav-link active"
+                        data-view="overview" data-bs-dismiss="offcanvas"><i class="bi bi-grid-fill"></i> Overview</a>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-basket"></i> Pre-Orders</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-calendar-check"></i> Subscriptions</a>
+                <li class="nav-item"><a href="#view-pre-orders" class="nav-link dashboard-nav-link"
+                        data-view="pre-orders" data-bs-dismiss="offcanvas"><i class="bi bi-basket"></i> Pre-Orders</a>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-bookmark-heart"></i> My
+                <li class="nav-item"><a href="#view-subscriptions" class="nav-link dashboard-nav-link"
+                        data-view="subscriptions" data-bs-dismiss="offcanvas"><i class="bi bi-calendar-check"></i>
+                        Subscriptions</a>
+                </li>
+                <li class="nav-item"><a href="#view-reservations" class="nav-link dashboard-nav-link"
+                        data-view="reservations" data-bs-dismiss="offcanvas"><i class="bi bi-bookmark-heart"></i> My
                         Reservations</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-download"></i> Downloads</a></li>
+                <li class="nav-item"><a href="#view-downloads" class="nav-link dashboard-nav-link" data-view="downloads"
+                        data-bs-dismiss="offcanvas"><i class="bi bi-download"></i> Downloads</a></li>
                 <div class="my-4 border-top opacity-25"></div>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-person-circle"></i> Profile</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="bi bi-chat-dots"></i> Messages</a></li>
-                <li class="nav-item mt-3"><a href="#" class="nav-link text-danger"><i class="bi bi-box-arrow-right"></i>
+                <li class="nav-item"><a href="#view-profile" class="nav-link dashboard-nav-link" data-view="profile"
+                        data-bs-dismiss="offcanvas"><i class="bi bi-person-circle"></i> Profile</a></li>
+                <li class="nav-item"><a href="#view-messages" class="nav-link dashboard-nav-link" data-view="messages"
+                        data-bs-dismiss="offcanvas"><i class="bi bi-chat-dots"></i> Messages</a></li>
+                <li class="nav-item mt-3"><a href="index.html" class="nav-link text-danger"><i
+                            class="bi bi-box-arrow-right"></i>
                         Logout</a></li>
             </ul>
+
+            <div class="theme-controls mt-3">
+                <button id="themeToggleMobile" class="theme-btn" title="Toggle Theme">
+                    <i class="bi bi-moon-stars-fill"></i>
+                </button>
+                <button id="rtlToggleMobile" class="theme-btn" title="Toggle RTL Layout">
+                    <i class="bi bi-translate"></i>
+                </button>
+            </div>
 
             <div class="mt-auto pt-4 border-top">
                 <div class="premium-card p-3 d-flex align-items-center gap-3">
@@ -709,13 +1097,110 @@
                 observer.observe(item);
             });
 
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
+            // View Switching Logic
+            const dashboardNavLinks = document.querySelectorAll('.dashboard-nav-link');
+            const dashboardViews = document.querySelectorAll('.dashboard-view');
+            const dashboardTitle = document.querySelector('[data-dashboard-title]');
+            const dashboardSubtitle = document.querySelector('[data-dashboard-subtitle]');
+
+            dashboardNavLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const viewId = link.getAttribute('data-view');
+                    if (!viewId) return;
+
+                    // Update active state for all links with the same data-view
+                    dashboardNavLinks.forEach(l => {
+                        if (l.getAttribute('data-view') === viewId) {
+                            l.classList.add('active');
+                        } else {
+                            l.classList.remove('active');
+                        }
+                    });
+
+                    // Switch views
+                    dashboardViews.forEach(view => {
+                        if (view.id === `view-${viewId}`) {
+                            view.classList.add('active');
+
+                            // Update Header Title & Subtitle from data attributes
+                            if (dashboardTitle) dashboardTitle.textContent = view.getAttribute('data-title');
+                            if (dashboardSubtitle) dashboardSubtitle.textContent = view.getAttribute('data-subtitle');
+
+                            // Re-trigger entrance animation
+                            view.style.opacity = '0';
+                            view.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                view.style.opacity = '1';
+                                view.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            view.classList.remove('active');
+                        }
+                    });
+
+                    // Smooth scroll to top of content
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
+
+            // Theme & RTL Logic
+            const themeToggles = document.querySelectorAll('#themeToggle, #themeToggleMobile');
+            const rtlToggles = document.querySelectorAll('#rtlToggle, #rtlToggleMobile');
+            const html = document.documentElement;
+
+            // Load saved settings
+            const currentTheme = localStorage.getItem('bakery-theme') || 'light';
+            const currentDir = localStorage.getItem('bakery-dir') || 'ltr';
+
+            if (currentTheme === 'dark') {
+                html.setAttribute('data-bs-theme', 'dark');
+                updateThemeIcons(true);
+            }
+
+            if (currentDir === 'rtl') {
+                html.setAttribute('dir', 'rtl');
+                updateRTLIcons(true);
+            }
+
+            themeToggles.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const isDark = html.getAttribute('data-bs-theme') === 'dark';
+                    const newTheme = isDark ? 'light' : 'dark';
+                    html.setAttribute('data-bs-theme', newTheme);
+                    localStorage.setItem('bakery-theme', newTheme);
+                    updateThemeIcons(!isDark);
+                });
+            });
+
+            rtlToggles.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const isRTL = html.getAttribute('dir') === 'rtl';
+                    const newDir = isRTL ? 'ltr' : 'rtl';
+                    html.setAttribute('dir', newDir);
+                    localStorage.setItem('bakery-dir', newDir);
+                    updateRTLIcons(!isRTL);
+                });
+            });
+
+            function updateThemeIcons(isDark) {
+                themeToggles.forEach(btn => {
+                    const icon = btn.querySelector('i');
+                    icon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
+                });
+            }
+
+            function updateRTLIcons(isRTL) {
+                rtlToggles.forEach(btn => {
+                    btn.classList.toggle('active', isRTL);
+                    if (isRTL) {
+                        btn.style.background = 'var(--primary-amber)';
+                        btn.style.color = '#fff';
+                    } else {
+                        btn.style.background = '';
+                        btn.style.color = '';
+                    }
+                });
+            }
         });
     </script>
 </body>
