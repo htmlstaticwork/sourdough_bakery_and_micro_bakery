@@ -1,192 +1,198 @@
-// Theme Toggle Logic
-const themeToggle = document.getElementById('theme-toggle');
-const htmlElement = document.documentElement;
-const rtlToggles = document.querySelectorAll('[data-rtl-toggle]');
+/* 🍞 Aurore Sourdough — Main JS Logic */
 
-// Function to setTheme
-function setTheme(theme) {
-    if (theme === 'dark') {
-        htmlElement.classList.add('dark');
-        htmlElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        htmlElement.classList.remove('dark');
-        htmlElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    initTheme();
+    initRTL();
+    initHeaderScroll();
+    initMobileNav();
+    initScrollAnimations();
+    initCounters();
+    initTestimonialCarousel();
+    initComingSoonTimer();
+});
+
+// --- HEADER SCROLL ---
+function initHeaderScroll() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 }
 
-// Initial Theme Selection
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    setTheme(savedTheme);
-}
+// --- THEME ---
+function initTheme() {
+    const themeToggle = document.querySelector('#theme-toggle');
+    if (!themeToggle) return;
 
-if (themeToggle) {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    document.documentElement.classList.toggle('dark', currentTheme === 'dark');
+
     themeToggle.addEventListener('click', () => {
-        const currentTheme = htmlElement.classList.contains('dark') ? 'light' : 'dark';
-        setTheme(currentTheme);
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+        localStorage.setItem('theme', theme);
     });
 }
 
-function syncRtlToggles() {
-    const isRTL = htmlElement.getAttribute('dir') === 'rtl';
+// --- RTL ---
+function initRTL() {
+    const rtlToggle = document.querySelector('#rtl-toggle');
+    if (!rtlToggle) return;
 
-    rtlToggles.forEach(toggle => {
-        const dot = toggle.querySelector('.dot');
-        toggle.setAttribute('aria-pressed', String(isRTL));
+    const currentDir = localStorage.getItem('dir') || 'ltr';
+    document.documentElement.setAttribute('dir', currentDir);
 
-        if (dot) {
-            toggle.classList.toggle('active', isRTL);
-            dot.style.left = isRTL ? '22px' : '4px';
-        } else {
-            toggle.classList.toggle('rtl-toggle-active', isRTL);
+    rtlToggle.addEventListener('click', () => {
+        const dir = document.documentElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
+        document.documentElement.setAttribute('dir', dir);
+        localStorage.setItem('dir', dir);
+    });
+}
+
+// --- MOBILE NAV SIDEBAR ---
+function initMobileNav() {
+    const hamburger = document.querySelector('#hamburger-btn');
+    const sidebar = document.querySelector('#sidebar-nav');
+    const overlay = document.querySelector('#sidebar-overlay');
+    const closeBtn = document.querySelector('#sidebar-close');
+
+    if (!hamburger || !sidebar) return;
+
+    const toggleSidebar = (isOpen) => {
+        sidebar.classList.toggle('open', isOpen);
+        overlay.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+
+    hamburger.addEventListener('click', () => toggleSidebar(true));
+    closeBtn?.addEventListener('click', () => toggleSidebar(false));
+    overlay?.addEventListener('click', () => toggleSidebar(false));
+
+    // Escape Key to close
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+            toggleSidebar(false);
         }
     });
 }
 
-function setDirection(direction) {
-    htmlElement.setAttribute('dir', direction === 'rtl' ? 'rtl' : 'ltr');
-    localStorage.setItem('direction', htmlElement.getAttribute('dir'));
-    syncRtlToggles();
-}
-
-const savedDirection = localStorage.getItem('direction');
-setDirection(savedDirection === 'rtl' ? 'rtl' : 'ltr');
-
-rtlToggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
-        const nextDirection = htmlElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
-        setDirection(nextDirection);
-    });
-});
-
-// Mobile Navbar Logic
-const menuBtn = document.getElementById('menu-btn');
-const closeBtn = document.getElementById('close-btn');
-const drawer = document.getElementById('mobile-drawer');
-const overlay = document.getElementById('overlay');
-
-function openDrawer() {
-    if (drawer) {
-        drawer.classList.add('active');
-        if (overlay) overlay.classList.remove('hidden');
-        document.body.classList.add('overflow-hidden');
-    }
-}
-
-function closeDrawer() {
-    if (drawer) {
-        drawer.classList.remove('active');
-        if (overlay) overlay.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
-    }
-}
-
-if (menuBtn) menuBtn.addEventListener('click', openDrawer);
-if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-if (overlay) overlay.addEventListener('click', closeDrawer);
-
-// Close on ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeDrawer();
-});
-
-// Close drawer on link click
-const drawerLinks = document.querySelectorAll('#mobile-drawer a');
-drawerLinks.forEach(link => {
-    link.addEventListener('click', closeDrawer);
-});
-
-// Scroll Animations (Simple Intersection Observer)
-const observerOptions = {
-    root: null,
-    threshold: 0.1,
-    rootMargin: '0px'
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
-
-// Parallax Hero for Home (index.html)
-const parallaxContainer = document.querySelector('.parallax-container');
-if (parallaxContainer) {
-    window.addEventListener('scroll', () => {
-        const scrollPos = window.pageYOffset;
-        const layers = document.querySelectorAll('.parallax-layer');
-        layers.forEach(layer => {
-            const speed = layer.getAttribute('data-speed');
-            layer.style.transform = `translateY(${scrollPos * speed}px)`;
-        });
-    });
-}
-
-// Staggered load for shop (stagger-load)
-const staggerObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const children = entry.target.children;
-            Array.from(children).forEach((child, index) => {
-                setTimeout(() => {
-                    child.style.opacity = '1';
-                    child.style.transform = 'translateY(0)';
-                    child.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                }, index * 100);
-            });
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-const staggerElements = document.querySelectorAll('.stagger-load');
-staggerElements.forEach(el => staggerObserver.observe(el));
-
-// Back to top logic
-const backToTop = document.getElementById('back-to-top');
-if (backToTop) {
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 500) {
-            backToTop.classList.remove('hidden');
-            backToTop.classList.add('flex');
-        } else {
-            backToTop.classList.add('hidden');
-            backToTop.classList.remove('flex');
-        }
-    });
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
-
-// Counters (for home-2)
-const counters = document.querySelectorAll('.counter');
-if (counters.length > 0) {
-    const counterObserver = new IntersectionObserver((entries, observer) => {
+// --- SCROLL ANIMATIONS ---
+function initScrollAnimations() {
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const updateCount = () => {
-                    const target = +entry.target.getAttribute('data-target');
-                    const count = +entry.target.innerText;
-                    const inc = target / 100;
-                    if (count < target) {
-                        entry.target.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 20);
-                    } else {
-                        entry.target.innerText = target;
-                    }
-                };
-                updateCount();
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => observer.observe(el));
+}
+
+// --- COUNTERS ---
+function initCounters() {
+    const counters = document.querySelectorAll('.count-up');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startCounter(entry.target);
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
-    counters.forEach(counter => counterObserver.observe(counter));
+    }, { threshold: 1 });
+
+    counters.forEach(counter => observer.observe(counter));
 }
+
+function startCounter(el) {
+    const target = +el.getAttribute('data-target');
+    const speed = 200; // Lower is slower
+    const increment = target / speed;
+
+    let count = 0;
+    const updateCount = () => {
+        count += increment;
+        if (count < target) {
+            el.innerText = Math.ceil(count);
+            requestAnimationFrame(updateCount);
+        } else {
+            el.innerText = target;
+        }
+    };
+    updateCount();
+}
+
+// --- TESTIMONIAL CAROUSEL (Vanila JS) ---
+function initTestimonialCarousel() {
+    const container = document.querySelector('#testimonial-container');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    if (!container || slides.length === 0) return;
+
+    let current = 0;
+    const interval = 5000;
+
+    setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+    }, interval);
+}
+
+// --- COMING SOON TIMER ---
+function initComingSoonTimer() {
+    const timer = document.getElementById('countdown-timer');
+    if (!timer) return;
+
+    // Set countdown - 10 days from now
+    const nextBakeDate = new Date();
+    nextBakeDate.setDate(nextBakeDate.getDate() + 10);
+    nextBakeDate.setHours(6, 0, 0, 0);
+
+    const updateTimer = () => {
+        const now = new Date();
+        const diff = nextBakeDate - now;
+
+        if (diff <= 0) {
+            timer.innerHTML = "00 : 00 : 00 : 00";
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        timer.innerHTML = `
+            <div class="flex flex-col"><span class="text-4xl font-bold">${days.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Days</span></div>
+            <span class="text-2xl mt-2">:</span>
+            <div class="flex flex-col"><span class="text-4xl font-bold">${hours.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Hrs</span></div>
+            <span class="text-2xl mt-2">:</span>
+            <div class="flex flex-col"><span class="text-4xl font-bold">${minutes.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Min</span></div>
+            <span class="text-2xl mt-2">:</span>
+            <div class="flex flex-col"><span class="text-4xl font-bold">${seconds.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Sec</span></div>
+        `;
+    };
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+}
+
+// --- FORM REAL-TIME VALIDATION MOCK (Visual) ---
+document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('focus', () => {
+        input.style.boxShadow = '0 0 0 2px rgba(200, 96, 42, 0.4)';
+    });
+    input.addEventListener('blur', () => {
+        input.style.boxShadow = 'none';
+    });
+});

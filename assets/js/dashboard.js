@@ -1,72 +1,74 @@
+/* 🧑💻 The Baker's Atelier — Dashboard Dynamic Logic */
+
 document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.getElementById('dashboard-menu-btn');
-    const sidebar = document.querySelector('.sidebar');
-    const overlay = document.getElementById('dashboard-overlay');
-    const links = document.querySelectorAll('.sidebar-link');
-    const panels = document.querySelectorAll('.dashboard-panel');
-    const closeBtn = document.getElementById('close-sidebar-btn');
-
-    // Toggle Sidebar
-    if (menuBtn && sidebar && overlay) {
-        menuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('hidden');
-        });
-
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                sidebar.classList.remove('active');
-                overlay.classList.add('hidden');
-            });
-        }
-
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('active');
-            overlay.classList.add('hidden');
-        });
-    }
-
-    // Panel Switching Logic
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('data-target');
-            if (!targetId) return; // For logout or static links
-
-            e.preventDefault();
-
-            // Handle Mobile Close on click
-            if (window.innerWidth <= 1024) {
-                sidebar.classList.remove('active');
-                overlay.classList.add('hidden');
-            }
-
-            // Remove active from all links and panels
-            links.forEach(l => l.classList.remove('active'));
-            panels.forEach(p => p.classList.add('hidden'));
-
-            // Add active to current link and panel
-            link.classList.add('active');
-            const targetPanel = document.getElementById(targetId);
-            if (targetPanel) {
-                targetPanel.classList.remove('hidden');
-            }
-        });
-    });
-
-    // Theme Toggle (Sidebar version)
-    const sidebarThemeToggle = document.getElementById('theme-toggle-sidebar');
-    sidebarThemeToggle?.addEventListener('click', () => {
-        const currentTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-
-        // Manual toggle logic to ensure consistency
-        if (currentTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        }
-    });
+    initAtelierNav();
+    initAtelierSidebar();
 });
+
+function initAtelierNav() {
+    const allButtons = document.querySelectorAll('.view-btn');
+    const views = document.querySelectorAll('.view-section');
+
+    if (allButtons.length === 0 || views.length === 0) return;
+
+    allButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const viewId = button.getAttribute('data-view');
+
+            // 1. Update active state of ALL matching buttons (desktop and mobile)
+            allButtons.forEach(btn => {
+                if (btn.getAttribute('data-view') === viewId) {
+                    btn.classList.add('bg-white/10', 'text-accent');
+                    btn.classList.remove('hover:bg-white/5');
+                } else {
+                    btn.classList.remove('bg-white/10', 'text-accent');
+                    btn.classList.add('hover:bg-white/5');
+                }
+            });
+
+            // 2. Switch the active View Section with Animation
+            views.forEach(section => {
+                section.classList.add('hidden');
+                if (section.id === `view-${viewId}`) {
+                    section.classList.remove('hidden');
+                    section.classList.add('animate-heroReveal');
+                }
+            });
+
+            // 3. Close mobile sidebar/overlay if open
+            closeAtelierSidebar();
+        });
+    });
+
+    // Initialize with first view active (Overview)
+    const firstView = document.querySelector('.view-btn[data-view="overview"]');
+    if (firstView) firstView.click();
+}
+
+function initAtelierSidebar() {
+    const hamburger = document.querySelector('#dashboard-hamburger');
+    const sidebar = document.querySelector('#dashboard-sidebar');
+    const overlay = document.querySelector('#dashboard-overlay');
+    const closeBtn = document.querySelector('#dashboard-close');
+
+    if (!hamburger || !sidebar) return;
+
+    hamburger.addEventListener('click', () => {
+        sidebar.classList.remove('translate-x-[110%]');
+        overlay.classList.add('opacity-100', 'pointer-events-auto');
+        document.body.style.overflow = 'hidden';
+    });
+
+    [closeBtn, overlay].forEach(el => {
+        el?.addEventListener('click', closeAtelierSidebar);
+    });
+}
+
+function closeAtelierSidebar() {
+    const sidebar = document.querySelector('#dashboard-sidebar');
+    const overlay = document.querySelector('#dashboard-overlay');
+    if (sidebar) sidebar.classList.add('translate-x-[110%]');
+    if (overlay) overlay.classList.remove('opacity-100', 'pointer-events-auto');
+    document.body.style.overflow = '';
+}
