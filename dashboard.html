@@ -1,1208 +1,269 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baker's Hub | Aurore Sourdough Dashboard</title>
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts: Playfair Display & Outfit -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Outfit:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
+    <title>Customer Dashboard | Handmade Soap & Skincare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#3A4D39', secondary: '#FAF5EF', accent: '#A47E3B', dark: { bg: '#121212', card: '#1E1E1E', text: '#F5F5F5' } },
+                    fontFamily: { premium: ['Playfair Display', 'serif'], body: ['Outfit', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        :root {
-            --primary-amber: #b07d50;
-            --primary-crust: #8b5e3c;
-            --secondary-dough: #fdf5e6;
-            --bg-light: #faf9f6;
-            --sidebar-width: 280px;
-            --right-panel-width: 320px;
-            --glass-white: rgba(255, 255, 255, 0.7);
-            --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --soft-shadow: 0 10px 30px rgba(139, 94, 60, 0.08);
-            --glow-shadow: 0 15px 40px rgba(176, 125, 80, 0.2);
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-light);
-            color: #333;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* --- Scrollbar --- */
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #e0d0c0;
-            border-radius: 10px;
-        }
-
-        /* --- Layout Structure --- */
-        .wrapper {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* --- Sidebar --- */
         .sidebar {
-            width: var(--sidebar-width);
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            background: #fff;
-            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.02);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            padding: 2rem 1.5rem;
-            transition: var(--transition-smooth);
-            overflow-y: auto;
-            scrollbar-width: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 300px;
         }
 
-        .sidebar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .logo-area {
-            margin-bottom: 3rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-area svg,
-        .dashboard-brand-mark {
-            width: 32px;
-            height: 32px;
-            color: #C8602A;
-            flex-shrink: 0;
-        }
-
-        .logo-text,
-        .dashboard-brand-name {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.5rem;
-            line-height: 1;
-            color: #C8602A;
-            letter-spacing: 0;
-        }
-
-        .nav-menu {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .nav-item {
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            padding: 12px 18px;
-            border-radius: 15px;
-            color: #6c757d;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition-smooth);
-        }
-
-        .nav-link i {
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-amber);
-            background: var(--secondary-dough);
-            transform: translateX(5px);
-        }
-
-        .nav-link.active {
-            background: var(--primary-amber);
-            color: #fff;
-            box-shadow: 0 8px 20px rgba(176, 125, 80, 0.3);
-        }
-
-        /* --- Main Content --- */
-        .main-content {
-            margin-left: var(--sidebar-width);
-            margin-right: var(--right-panel-width);
-            flex: 1;
-            padding: 2.5rem 2rem;
-            min-width: 0;
-        }
-
-        .header-content {
-            margin-bottom: 2.5rem;
-        }
-
-        /* --- Right Compact Panel --- */
-        .right-panel {
-            width: var(--right-panel-width);
-            height: 100vh;
-            position: fixed;
-            right: 0;
-            top: 0;
-            background: #fff;
-            box-shadow: -2px 0 20px rgba(0, 0, 0, 0.02);
-            padding: 2.5rem 1.5rem;
-            overflow-y: auto;
-            z-index: 900;
-        }
-
-        /* --- Cards & Glassmorphism --- */
-        .premium-card {
-            background: #ffffff;
-            border-radius: 24px;
-            border: 1px solid rgba(139, 94, 60, 0.05);
-            box-shadow: var(--soft-shadow);
-            padding: 1.8rem;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-            background-clip: padding-box;
-            backdrop-filter: blur(5px);
-        }
-
-        .featured-card {
-            background: linear-gradient(135deg, #8b5e3c, #b07d50);
-            color: #fff;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 0;
-            border: none;
-        }
-
-        .featured-img-wrapper {
-            flex: 0 0 45%;
-            height: 350px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition-smooth);
-        }
-
-        .featured-body {
-            padding: 2.5rem;
-            flex: 1;
-        }
-
-        .featured-body h2 {
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-        }
-
-        .meta-info {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* --- Grid Cards --- */
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--secondary-dough);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-amber);
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .card-title {
-            font-weight: 700;
-            font-size: 1.15rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-desc {
-            color: #777;
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .badge-status {
-            font-size: 0.75rem;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .status-active {
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-
-        .status-pending {
-            background: #fff3e0;
-            color: #ef6c00;
-        }
-
-        .status-pro {
-            background: #e3f2fd;
-            color: #1565c0;
-        }
-
-        .progress {
-            height: 8px;
-            border-radius: 10px;
-            background-color: #eee;
-            margin-top: 1rem;
-        }
-
-        .progress-bar {
-            background-color: var(--primary-amber);
-            border-radius: 10px;
-        }
-
-        /* --- Right Panel Cards --- */
-        .compact-card {
-            background: #faf9f6;
-            border-radius: 20px;
-            padding: 1.2rem;
-            margin-bottom: 1.2rem;
-            border: 1px solid rgba(139, 94, 60, 0.05);
-            transition: var(--transition-smooth);
-        }
-
-        .compact-card h6 {
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary-crust);
-        }
-
-        /* --- Tracking Stepper --- */
-        .tracking-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            position: relative;
-        }
-
-        .tracking-list::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 5px;
-            bottom: 5px;
-            width: 2px;
-            background: #e0d0c0;
-        }
-
-        .tracking-item {
-            padding-left: 25px;
-            position: relative;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-        }
-
-        .tracking-item::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 4px;
-            width: 16px;
-            height: 16px;
-            background: #fff;
-            border: 3px solid var(--primary-amber);
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .tracking-item.done::after {
-            background: var(--primary-amber);
-        }
-
-        /* --- ANTI-GRAVITY ANIMATION SYSTEM --- */
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .floating {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .floating-delayed {
-            animation: float 4.5s ease-in-out infinite 0.5s;
-        }
-
-        .floating-more-delayed {
-            animation: float 5s ease-in-out infinite 1s;
-        }
-
-        .entrance-anim {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        .premium-card:hover {
-            transform: translateY(-8px) scale(1.02) !important;
-            box-shadow: var(--glow-shadow);
-        }
-
-        .dashboard-view {
-            display: none;
-        }
-
-        .dashboard-view.active {
-            display: block;
-        }
-
-        .overview-card-row>[class*="col-"] {
-            display: flex;
-        }
-
-        .overview-card {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .overview-card .card-bottom {
-            margin-top: auto;
-        }
-
-        .magnetic {
-            transition: transform 0.2s linear;
-        }
-
-        /* Responsive */
-        @media (max-width: 1400px) {
-            :root {
-                --sidebar-width: 240px;
-                --right-panel-width: 280px;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .right-panel {
-                position: relative;
-                width: 100%;
-                height: auto;
-                order: 3;
-            }
-
+        @media (max-width: 1024px) {
             .sidebar {
-                transform: translateX(-100%);
+                position: fixed;
+                left: -300px;
+                z-index: 200;
+                height: 100vh;
             }
 
-            .main-content {
-                margin: 0;
-                padding: 1.5rem;
-            }
-
-            .wrapper {
-                flex-direction: column;
+            .sidebar.active {
+                left: 0;
             }
         }
 
-        @media (max-width: 768px) {
-            .featured-card {
-                flex-direction: column;
-            }
-
-            .featured-img-wrapper {
-                flex: none;
-                width: 100%;
-                height: 200px;
-            }
-        }
-
-        .hamburger-btn {
-            display: none;
-            width: 45px;
-            height: 45px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background: #fff;
-            border: 1px solid rgba(139, 94, 60, 0.1);
-            color: var(--primary-amber);
-            font-size: 1.5rem;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-        }
-
-        @media (max-width: 1200px) {
-            .hamburger-btn {
-                display: flex;
-            }
-        }
-
-        .offcanvas-bakery {
-            background-color: var(--bg-light);
-            border-left: none;
-            width: 300px !important;
-        }
-
-        .offcanvas-bakery .nav-link {
-            padding: 15px 20px;
-            margin-bottom: 5px;
-        }
-
-        /* --- DARK MODE --- */
-        [data-bs-theme="dark"] {
-            --bg-light: #0f0f0f;
-            --sidebar-bg: #1a1a1a;
-            --card-bg: #222222;
-            --text-main: #f0f0f0;
-            --text-muted: #b0b0b0;
-            --secondary-dough: #2d2620;
-            --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --border-color: rgba(255, 255, 255, 0.05);
-        }
-
-        [data-bs-theme="dark"] body {
-            background-color: var(--bg-light);
-            color: var(--text-main);
-        }
-
-        [data-bs-theme="dark"] .sidebar,
-        [data-bs-theme="dark"] .right-panel,
-        [data-bs-theme="dark"] .offcanvas-bakery {
-            background: var(--sidebar-bg) !important;
-            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.2);
-        }
-
-        [data-bs-theme="dark"] .premium-card,
-        [data-bs-theme="dark"] .compact-card {
-            background: var(--card-bg) !important;
-            border-color: var(--border-color);
-            color: var(--text-main);
-        }
-
-        [data-bs-theme="dark"] .nav-link {
-            color: var(--text-muted);
-        }
-
-        [data-bs-theme="dark"] .card-desc,
-        [data-bs-theme="dark"] .text-muted {
-            color: var(--text-muted) !important;
-        }
-
-        [data-bs-theme="dark"] .card-icon {
-            background: var(--secondary-dough);
-        }
-
-        [data-bs-theme="dark"] .hamburger-btn {
-            background: var(--card-bg);
-            border-color: var(--border-color);
-        }
-
-        [data-bs-theme="dark"] .form-control {
-            background-color: #1a1a1a;
-            border-color: var(--border-color);
+        .sidebar-link.active {
+            background-color: var(--primary);
             color: white;
-        }
-
-        /* --- RTL SUPPORT --- */
-        [dir="rtl"] .sidebar {
-            left: auto;
-            right: 0;
-            box-shadow: -2px 0 20px rgba(0, 0, 0, 0.02);
-        }
-
-        [dir="rtl"] .main-content {
-            margin-left: var(--right-panel-width);
-            margin-right: var(--sidebar-width);
-        }
-
-        [dir="rtl"] .right-panel {
-            right: auto;
-            left: 0;
-            box-shadow: 2px 0 20px rgba(0, 0, 0, 0.02);
-        }
-
-        [dir="rtl"] .nav-link i {
-            margin-right: 0;
-            margin-left: 15px;
-        }
-
-        [dir="rtl"] .logo-area svg {
-            margin-right: 0;
-        }
-
-        [dir="rtl"] .ms-auto {
-            margin-left: 0 !important;
-            margin-right: auto !important;
-        }
-
-        [dir="rtl"] .me-auto {
-            margin-right: 0 !important;
-            margin-left: auto !important;
-        }
-
-        [dir="rtl"] .text-end {
-            text-align: left !important;
-        }
-
-        [dir="rtl"] .offcanvas-end {
-            left: 0;
-            right: auto;
-            transform: translateX(-100%);
-        }
-
-        [dir="rtl"] .offcanvas-end.show {
-            transform: none;
-        }
-
-        [dir="rtl"] .tracking-list::before {
-            left: auto;
-            right: 7px;
-        }
-
-        [dir="rtl"] .tracking-item {
-            padding-left: 0;
-            padding-right: 25px;
-        }
-
-        [dir="rtl"] .tracking-item::after {
-            left: auto;
-            right: 0;
-        }
-
-        /* Toggle Buttons styling */
-        .theme-controls {
-            background: rgba(139, 94, 60, 0.05);
-            border-radius: 15px;
-            padding: 10px;
-            margin-bottom: 2rem;
-            display: flex;
-            gap: 10px;
-        }
-
-        .theme-btn {
-            flex: 1;
-            height: 40px;
-            border-radius: 12px;
-            border: 1px solid rgba(139, 94, 60, 0.1);
-            background: #fff;
-            color: var(--primary-amber);
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-        }
-
-        .theme-btn:hover {
-            background: var(--secondary-dough);
-        }
-
-        [data-bs-theme="dark"] .theme-btn {
-            background: #2a2a2a;
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        [data-bs-theme="dark"] .theme-btn:hover {
-            background: #3a3a3a;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
         }
     </style>
 </head>
 
-<body>
+<body
+    class="bg-white dark:bg-dark-bg text-gray-800 dark:text-dark-text font-body transition-colors duration-300 overflow-hidden">
 
-    <div class="wrapper">
-        <aside class="sidebar">
-            <a href="index.html" class="logo-area text-decoration-none d-block">
-                <svg class="dashboard-brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-                <div class="logo-text">Aurore Sourdough</div>
-            </a>
+    <div class="flex h-screen overflow-hidden">
 
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#view-overview" class="nav-link dashboard-nav-link active"
-                        data-view="overview"><i class="bi bi-grid-fill"></i> Overview</a>
-                </li>
-                <li class="nav-item"><a href="#view-pre-orders" class="nav-link dashboard-nav-link"
-                        data-view="pre-orders"><i class="bi bi-basket"></i> Pre-Orders</a></li>
-                <li class="nav-item"><a href="#view-subscriptions" class="nav-link dashboard-nav-link"
-                        data-view="subscriptions"><i class="bi bi-calendar-check"></i> Subscriptions</a>
-                </li>
-                <li class="nav-item"><a href="#view-reservations" class="nav-link dashboard-nav-link"
-                        data-view="reservations"><i class="bi bi-bookmark-heart"></i> My
-                        Reservations</a></li>
-                <li class="nav-item"><a href="#view-downloads" class="nav-link dashboard-nav-link"
-                        data-view="downloads"><i class="bi bi-download"></i> Downloads</a></li>
-                <div class="my-4 border-top opacity-25"></div>
-                <li class="nav-item"><a href="#view-profile" class="nav-link dashboard-nav-link" data-view="profile"><i
-                            class="bi bi-person-circle"></i> Profile</a></li>
-                <li class="nav-item"><a href="#view-messages" class="nav-link dashboard-nav-link"
-                        data-view="messages"><i class="bi bi-chat-dots"></i> Messages</a></li>
-                <li class="nav-item mt-3"><a href="index.html" class="nav-link text-danger"><i
-                            class="bi bi-box-arrow-right"></i>
-                        Logout</a></li>
-            </ul>
-
-            <div class="theme-controls">
-                <button id="themeToggle" class="theme-btn" title="Toggle Theme">
-                    <i class="bi bi-moon-stars-fill"></i>
+        <!-- Sidebar -->
+        <aside
+            class="sidebar bg-secondary/50 dark:bg-dark-card border-r border-gray-100 dark:border-gray-800 flex flex-col p-8">
+            <div class="mb-16 flex justify-between items-center lg:block">
+                <a href="index.html" class="flex items-center space-x-2"><span
+                        class="text-primary text-2xl">🌱</span><span
+                        class="font-premium font-bold text-xl uppercase">Handmade Soap</span></a>
+                <button id="close-sidebar-btn"
+                    class="lg:hidden p-2 rounded-full bg-gray-100 dark:bg-dark-bg transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
                 </button>
-                <button id="rtlToggle" class="theme-btn" title="Toggle RTL Layout">
-                    <i class="bi bi-translate"></i>
+            </div>
+            <nav class="flex-1 space-y-2">
+                <a href="#" data-target="panel-orders"
+                    class="sidebar-link active block p-4 rounded-3xl font-bold flex items-center space-x-4 transition-all"><span>📦</span><span>Orders
+                        History</span></a>
+                <a href="#" data-target="panel-subscription"
+                    class="sidebar-link block p-4 rounded-3xl font-bold flex items-center space-x-4 transition-all"><span>🧴</span><span>My
+                        Subscription</span></a>
+                <a href="#" data-target="panel-profile"
+                    class="sidebar-link block p-4 rounded-3xl font-bold flex items-center space-x-4 transition-all"><span>👤</span><span>Profile
+                        Settings</span></a>
+                <a href="index.html"
+                    class="sidebar-link block p-4 rounded-3xl font-bold flex items-center space-x-4 transition-all text-red-400 hover:bg-red-50"><span>🚪</span><span>Logout</span></a>
+            </nav>
+
+            <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 space-y-2 font-body">
+                <button id="rtl-toggle" data-rtl-toggle
+                    class="w-full p-3 rounded-2xl bg-white dark:bg-dark-bg shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between hover:bg-primary/5 transition-all group scale-90 origin-left">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-xl">🌐</span>
+                        <span class="font-bold text-sm">RTL</span>
+                    </div>
+                    <div
+                        class="w-10 h-5 bg-gray-200 dark:bg-dark-card rounded-full relative transition-colors group-[.active]:bg-primary">
+                        <div class="dot absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-all"></div>
+                    </div>
+                </button>
+
+                <button id="theme-toggle-sidebar"
+                    class="w-full p-3 rounded-2xl bg-white dark:bg-dark-bg shadow-sm border border-gray-100 dark:border-gray-800 flex items-center justify-between hover:bg-primary/5 transition-all group scale-90 origin-left">
+                    <div class="flex items-center space-x-3 text-gray-800 dark:text-white">
+                        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                            </path>
+                        </svg>
+                        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                            </path>
+                        </svg>
+                        <span class="font-bold text-sm">Theme</span>
+                    </div>
+                    <span
+                        class="text-[10px] uppercase font-bold text-gray-400 group-hover:text-primary transition-colors">Switch</span>
                 </button>
             </div>
 
-            <div class="mt-auto pt-4">
-                <div class="premium-card p-3 d-flex align-items-center gap-3 floating-delayed">
-                    <div class="rounded-circle overflow-hidden" style="width: 40px; height: 40px; background: #eee;">
-                        <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User">
-                    </div>
-                    <div>
-                        <div class="fw-bold" style="font-size: 0.85rem;">Alex Thompson</div>
-                        <div class="text-muted" style="font-size: 0.75rem;">Premium Member</div>
-                    </div>
+            <div
+                class="mt-4 p-4 bg-white dark:bg-dark-bg rounded-[2rem] shadow-sm flex items-center space-x-4 scale-90 origin-left">
+                <div
+                    class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">
+                    EC
+                </div>
+                <div>
+                    <p class="font-bold text-sm">Emilia Clarson</p>
+                    <p class="text-[10px] uppercase tracking-widest text-primary font-bold">Gold Member</p>
                 </div>
             </div>
         </aside>
 
-        <main class="main-content">
-            <header class="header-content d-flex justify-content-between align-items-center entrance-anim">
-                <div>
-                    <h1 class="fw-bold h3 mb-1" data-dashboard-title>Baker's Hub</h1>
-                    <p class="text-muted mb-0" data-dashboard-subtitle>Good afternoon, Alex! Your dough is proofing
-                        nicely.</p>
-                </div>
-                <div class="d-flex gap-3">
-                    <button class="btn btn-outline-secondary rounded-pill px-3 border-light-subtle"><i
-                            class="bi bi-search"></i></button>
-                    <button class="btn btn-outline-secondary rounded-pill px-3 border-light-subtle"><i
-                            class="bi bi-bell"></i></button>
-                    <button class="hamburger-btn" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
-                        <i class="bi bi-list"></i>
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto main-content">
+            <!-- Mobile Header -->
+            <header
+                class="lg:hidden p-6 bg-white dark:bg-dark-bg border-b border-gray-100 dark:border-gray-800 flex justify-between items-center sticky top-0 z-50">
+                <span class="font-bold text-primary">DASHBOARD</span>
+                <div class="flex items-center gap-2">
+                    <button type="button" data-rtl-toggle
+                        class="px-3 py-2 rounded-full border border-gray-200 dark:border-gray-700 text-xs font-bold uppercase tracking-widest text-primary hover:bg-gray-100 dark:hover:bg-dark-card transition-colors">
+                        RTL
+                    </button>
+                    <button id="dashboard-menu-btn" class="p-2 rounded-full bg-gray-100 dark:bg-dark-card">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
                     </button>
                 </div>
             </header>
 
-            <section id="view-overview" class="dashboard-view active" data-title="Baker's Hub"
-                data-subtitle="Good afternoon, Alex! Your dough is proofing nicely.">
-                <section class="mb-5 entrance-anim" style="transition-delay: 0.1s;">
-                    <div class="premium-card featured-card floating">
-                        <div class="featured-img-wrapper">
-                            <img src="assets/dashboard-hero.png" alt="Next Delivery Bread">
-                        </div>
-                        <div class="featured-body">
-                            <span class="badge-status status-pro mb-3 d-inline-block">PREMIUM CLUB</span>
-                            <h2>Next Delivery</h2>
-                            <p class="opacity-75">Your signature Heritage Sourdough loaf is scheduled for Saturday
-                                morning.
-                                Prepared with organic Einkorn flour and cold-proofed for 72 hours.</p>
-                            <div class="meta-info">
-                                <div class="meta-item"><i class="bi bi-calendar-event"></i> <span>April 4, 2026</span>
-                                </div>
-                                <div class="meta-item"><i class="bi bi-clock"></i> <span>08:00 - 10:00 AM</span></div>
-                                <div class="meta-item"><i class="bi bi-gift"></i> <span>Weekly Artisan Plan</span></div>
-                            </div>
-                            <button class="btn btn-light rounded-pill mt-4 px-4 py-2 fw-bold text-dark">Manage
-                                Schedule</button>
-                        </div>
-                    </div>
-                </section>
+            <div class="p-8 lg:p-16">
+                <!-- Welcome Section -->
+                <div class="mb-16 scroll-animate">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome back, <span
+                            class="text-primary italic">Emilia.</span></h1>
+                    <p class="text-gray-500 font-body">Your natural ritual is scheduled for next Tuesday.</p>
+                </div>
 
-                <div class="row g-4 overview-card-row entrance-anim" style="transition-delay: 0.2s;">
-                    <div class="col-md-4">
-                        <div class="premium-card overview-card h-100 magnetic floating-delayed">
-                            <div class="card-icon"><i class="bi bi-patch-check"></i></div>
-                            <h3 class="card-title">Active Orders</h3>
-                            <p class="card-desc">You have 2 items being prepared for collection.</p>
-                            <div class="card-bottom">
-                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                    <span class="small fw-600">Focaccia x1</span>
-                                    <span class="badge-status status-active">Baking</span>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 75%"></div>
-                                </div>
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 scroll-animate">
+                    <div class="bg-primary p-10 rounded-[2.5rem] text-white shadow-xl shadow-primary/20">
+                        <span class="text-sm font-bold uppercase tracking-widest opacity-80 font-body">Earned
+                            Points</span>
+                        <h3 class="text-5xl font-bold mt-4 font-premium">2,540</h3>
+                    </div>
+                    <div class="bg-secondary p-10 rounded-[2.5rem] dark:bg-dark-card">
+                        <span class="text-sm font-bold uppercase tracking-widest text-gray-500 font-body">Active
+                            Subscriptions</span>
+                        <h3 class="text-5xl font-bold mt-4 text-primary font-premium">1</h3>
+                    </div>
+                    <div class="bg-secondary p-10 rounded-[2.5rem] dark:bg-dark-card">
+                        <span class="text-sm font-bold uppercase tracking-widest text-gray-500 font-body">Bars
+                            Saved</span>
+                        <h3 class="text-5xl font-bold mt-4 text-primary font-premium">42</h3>
+                    </div>
+                </div>
+
+                <!-- Panelled Content -->
+                <div id="panel-orders" class="dashboard-panel scroll-animate space-y-8">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <h2 class="text-2xl font-bold font-premium">Recent Rituals</h2>
+                        <a href="shop.html" class="text-primary font-bold hover:underline font-body text-sm">Shop New
+                            Bars</a>
+                    </div>
+                    <div
+                        class="bg-white dark:bg-dark-card border border-gray-100 dark:border-gray-800 rounded-[2.5rem] overflow-x-auto">
+                        <table class="w-full text-left font-body min-w-[600px]">
+                            <thead class="bg-gray-50 dark:bg-dark-bg/50 border-b border-gray-100 dark:border-gray-800">
+                                <tr>
+                                    <th class="p-8 text-xs font-bold uppercase tracking-widest text-gray-400">Order ID
+                                    </th>
+                                    <th class="p-8 text-xs font-bold uppercase tracking-widest text-gray-400">Date</th>
+                                    <th class="p-8 text-xs font-bold uppercase tracking-widest text-gray-400">Status
+                                    </th>
+                                    <th class="p-8 text-xs font-bold uppercase tracking-widest text-gray-400">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    class="border-b border-gray-50 dark:border-gray-800/50 hover:bg-gray-50 dark:hover:bg-dark-bg/30 transition-colors">
+                                    <td class="p-8 font-bold">#HS-9284</td>
+                                    <td class="p-8 text-gray-500">March 24, 2026</td>
+                                    <td class="p-8"><span
+                                            class="bg-green-100 text-green-600 px-4 py-1 rounded-full text-xs font-bold">Delivered</span>
+                                    </td>
+                                    <td class="p-8 font-bold">$42.00</td>
+                                </tr>
+                                <tr
+                                    class="border-b border-gray-50 dark:border-gray-800/50 hover:bg-gray-50 dark:hover:bg-dark-bg/30 transition-colors">
+                                    <td class="p-8 font-bold">#HS-9211</td>
+                                    <td class="p-8 text-gray-500">Feb 18, 2026</td>
+                                    <td class="p-8"><span
+                                            class="bg-gray-100 text-gray-500 px-4 py-1 rounded-full text-xs font-bold">Delivered</span>
+                                    </td>
+                                    <td class="p-8 font-bold">$18.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="panel-subscription" class="dashboard-panel hidden scroll-animate space-y-8">
+                    <h2 class="text-2xl font-bold font-premium">Artisan Club Membership</h2>
+                    <div
+                        class="bg-secondary/30 dark:bg-dark-card p-10 rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-8 border-2 border-primary font-body">
+                        <div class="flex items-center space-x-6">
+                            <div class="w-20 h-20 bg-primary/20 rounded-3xl flex items-center justify-center text-3xl">
+                                🌿</div>
+                            <div>
+                                <h4 class="font-bold text-xl">The Essential Pack</h4>
+                                <p class="text-gray-500">Next Delivery: April 14th</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="premium-card overview-card h-100 magnetic floating-more-delayed">
-                            <div class="card-icon" style="background: #efebe9; color: #5d4037;"><i
-                                    class="bi bi-fire"></i>
-                            </div>
-                            <h3 class="card-title">Upcoming Bakes</h3>
-                            <p class="card-desc">Reserve your spot for next Tuesday's special release.</p>
-                            <div class="card-bottom">
-                                <ul class="list-unstyled small mb-0">
-                                    <li><i class="bi bi-dot text-primary"></i> Rosemary & Sea Salt</li>
-                                    <li><i class="bi bi-dot text-primary"></i> Dark Chocolate Rye</li>
-                                </ul>
-                                <button class="btn btn-link p-0 mt-3 text-decoration-none fw-bold small">Reserve Now
-                                    →</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="premium-card overview-card h-100 magnetic floating">
-                            <div class="card-icon" style="background: #e8f5e9; color: #2e7d32;"><i
-                                    class="bi bi-shield-check"></i></div>
-                            <h3 class="card-title">Subscription</h3>
-                            <p class="card-desc">"Crust & Crumb" Master Plan active since Jan 2026.</p>
-                            <div class="card-bottom">
-                                <div class="d-flex align-items-center gap-2">
-                                    <div class="h5 mb-0 fw-bold">12 / 20</div>
-                                    <span class="small text-muted">Loaves remaining</span>
-                                </div>
-                                <div class="progress mt-2">
-                                    <div class="progress-bar bg-success" style="width: 60%"></div>
-                                </div>
-                            </div>
+                        <div class="flex space-x-4">
+                            <button class="bg-white dark:bg-dark-bg px-8 py-4 rounded-full font-bold shadow-sm">Pause
+                                Habit</button>
+                            <button class="btn-primary">Manage Ritual</button>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Additional Dashboard Views -->
-            <section id="view-pre-orders" class="dashboard-view" data-title="Pre-Orders"
-                data-subtitle="Your recent and upcoming artisan bread orders.">
-                <div class="premium-card p-5 text-center entrance-anim">
-                    <div class="card-icon mx-auto mb-4" style="width: 80px; height: 80px; font-size: 2.5rem;"><i
-                            class="bi bi-basket"></i></div>
-                    <h3 class="fw-bold mb-3">No Active Pre-Orders</h3>
-                    <p class="text-muted mb-4 mx-auto" style="max-width: 400px;">Hungry for some fresh crust? Your
-                        basket is
-                        currently empty. Start your sourdough journey by exploring our weekly specials.</p>
-                    <a href="index.html" class="btn btn-primary rounded-pill px-5 py-2 fw-bold"
-                        style="background: var(--primary-amber); border: none;">Browse Bakery</a>
-                </div>
-            </section>
-
-            <section id="view-subscriptions" class="dashboard-view" data-title="Subscriptions"
-                data-subtitle="Manage your recurring bread delivery plans.">
-                <div class="premium-card p-4 entrance-anim">
-                    <div class="d-flex justify-content-between align-items-start mb-4">
-                        <div>
-                            <span class="badge-status status-pro mb-2 d-inline-block">ACTIVE PLAN</span>
-                            <h3 class="fw-bold">Crust & Crumb Master Plan</h3>
-                            <p class="text-muted">Weekly delivery of artisan loaves since January 2026.</p>
+                <div id="panel-profile" class="dashboard-panel hidden scroll-animate space-y-8">
+                    <h2 class="text-2xl font-bold font-premium">Profile Rituals</h2>
+                    <form
+                        class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white dark:bg-dark-card p-12 rounded-[3rem] border border-gray-100 dark:border-gray-800 font-body">
+                        <div class="space-y-4">
+                            <label class="text-xs uppercase font-bold text-gray-400">Full Name</label>
+                            <input type="text" value="Emilia Clarson"
+                                class="w-full bg-gray-50 dark:bg-dark-bg p-5 rounded-2xl outline-none focus:ring-2 focus:ring-primary border-none">
                         </div>
-                        <button class="btn btn-outline-secondary rounded-pill btn-sm">Edit Plan</button>
-                    </div>
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="compact-card mb-0 shadow-none border" style="background: white;">
-                                <div class="small text-muted mb-1">Loaves Remaining</div>
-                                <div class="h3 fw-bold">8 / 20</div>
-                                <div class="progress mt-2" style="height: 6px;">
-                                    <div class="progress-bar" style="width: 40%"></div>
-                                </div>
-                            </div>
+                        <div class="space-y-4">
+                            <label class="text-xs uppercase font-bold text-gray-400">Email Ritual</label>
+                            <input type="email" value="emilia@bloom.com"
+                                class="w-full bg-gray-50 dark:bg-dark-bg p-5 rounded-2xl outline-none focus:ring-2 focus:ring-primary border-none">
                         </div>
-                        <div class="col-md-6">
-                            <div class="compact-card mb-0 shadow-none border" style="background: white;">
-                                <div class="small text-muted mb-1">Next Delivery</div>
-                                <div class="h3 fw-bold">Saturday, April 4</div>
-                                <div class="small text-success fw-bold mt-2">Confirmed</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="view-reservations" class="dashboard-view" data-title="My Reservations"
-                data-subtitle="View your table bookings and special events.">
-                <div class="premium-card p-5 text-center entrance-anim">
-                    <div class="card-icon mx-auto mb-4"
-                        style="width: 80px; height: 80px; font-size: 2.5rem; background: #fff8e1; color: #ffa000;"><i
-                            class="bi bi-bookmark-heart"></i></div>
-                    <h3 class="fw-bold mb-3">No Upcoming Reservations</h3>
-                    <p class="text-muted mb-4 mx-auto" style="max-width: 400px;">Plan your next visit! Book a cozy table
-                        for our
-                        weekend sourdough brunch or join a workshop.</p>
-                    <button class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold"
-                        style="color: var(--primary-amber); border-color: var(--primary-amber);">Book a Table</button>
-                </div>
-            </section>
-
-            <section id="view-downloads" class="dashboard-view" data-title="Downloads"
-                data-subtitle="Access your baking guides, recipes, and digital assets.">
-                <div class="row g-4 entrance-anim">
-                    <div class="col-md-6">
-                        <div class="premium-card p-4">
-                            <div class="d-flex align-items-center gap-3 mb-3">
-                                <div class="card-icon mb-0"><i class="bi bi-file-earmark-pdf"></i></div>
-                                <div>
-                                    <h5 class="fw-bold mb-0">Sourdough Starter Guide</h5>
-                                    <small class="text-muted">PDF • 2.4 MB</small>
-                                </div>
-                            </div>
-                            <button class="btn btn-light w-100 rounded-pill fw-bold"><i
-                                    class="bi bi-download me-2"></i>Download</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="premium-card p-4">
-                            <div class="d-flex align-items-center gap-3 mb-3">
-                                <div class="card-icon mb-0"><i class="bi bi-file-earmark-zip"></i></div>
-                                <div>
-                                    <h5 class="fw-bold mb-0">Artisan Recipe Pack</h5>
-                                    <small class="text-muted">ZIP • 15.8 MB</small>
-                                </div>
-                            </div>
-                            <button class="btn btn-light w-100 rounded-pill fw-bold"><i
-                                    class="bi bi-download me-2"></i>Download</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="view-profile" class="dashboard-view" data-title="Your Profile"
-                data-subtitle="Manage your personal details and account security.">
-                <div class="premium-card p-4 entrance-anim">
-                    <div class="d-flex align-items-center gap-4 mb-5 pb-4 border-bottom">
-                        <div class="position-relative">
-                            <img src="https://ui-avatars.com/api/?name=Alex+Thompson&background=b07d50&color=fff&size=100"
-                                class="rounded-circle shadow-sm" alt="Profile">
-                            <button
-                                class="btn btn-sm btn-light position-absolute bottom-0 end-0 rounded-circle border shadow-sm"
-                                style="width: 32px; height: 32px; padding: 0;"><i class="bi bi-camera"></i></button>
-                        </div>
-                        <div>
-                            <h3 class="fw-bold mb-1">Alex Thompson</h3>
-                            <p class="text-muted mb-0">Member since January 2026 • <span class="text-primary">Premium
-                                    Edition</span></p>
-                        </div>
-                    </div>
-                    <form>
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <label class="form-label small fw-bold text-muted">First Name</label>
-                                <input type="text" class="form-control rounded-pill px-3 py-2" value="Alex">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label small fw-bold text-muted">Last Name</label>
-                                <input type="text" class="form-control rounded-pill px-3 py-2" value="Thompson">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label small fw-bold text-muted">Email Address</label>
-                                <input type="email" class="form-control rounded-pill px-3 py-2"
-                                    value="alex.thompson@example.com">
-                            </div>
-                            <div class="col-md-12 text-end mt-4">
-                                <button type="button" class="btn btn-primary rounded-pill px-4"
-                                    style="background: var(--primary-amber); border: none;">Save Changes</button>
-                            </div>
-                        </div>
+                        <button type="submit" class="btn-primary md:col-span-2 py-5 text-xl">Save Changes</button>
                     </form>
                 </div>
-            </section>
-
-            <section id="view-messages" class="dashboard-view" data-title="Messages"
-                data-subtitle="Chat with our artisan bakers and support team.">
-                <div class="premium-card p-5 text-center entrance-anim">
-                    <div class="card-icon mx-auto mb-4"
-                        style="width: 80px; height: 80px; font-size: 2.5rem; background: #e3f2fd; color: #1565c0;"><i
-                            class="bi bi-chat-dots"></i></div>
-                    <h3 class="fw-bold mb-3">No New Messages</h3>
-                    <p class="text-muted mb-4 mx-auto" style="max-width: 400px;">Everything is quiet! When you contact
-                        our
-                        baking team for advice or order questions, they'll appear here.</p>
-                    <button class="btn btn-primary rounded-pill px-5 py-2 fw-bold"
-                        style="background: var(--primary-amber); border: none;">New Message</button>
-                </div>
-            </section>
+            </div>
         </main>
-
-        <aside class="right-panel entrance-anim" style="transition-delay: 0.3s;">
-            <h4 class="fw-bold mb-4">Live Updates</h4>
-            <div class="compact-card floating-delayed">
-                <h6>Active Order Status</h6>
-                <div class="d-flex align-items-center gap-3">
-                    <div class="spinner-grow spinner-grow-sm text-warning" role="status"></div>
-                    <div>
-                        <div class="small fw-bold">Batch #4429</div>
-                        <div class="text-muted" style="font-size: 0.75rem;">Proofing Phase (Room Temp)</div>
-                    </div>
-                </div>
-            </div>
-            <div class="compact-card floating-more-delayed">
-                <h6>Delivery Tracking</h6>
-                <div class="tracking-list">
-                    <div class="tracking-item done">
-                        <div class="fw-bold">Mixed & Folded</div>
-                        <div class="text-muted small">06:00 AM Today</div>
-                    </div>
-                    <div class="tracking-item done">
-                        <div class="fw-bold">Shaped & Panned</div>
-                        <div class="text-muted small">10:30 AM Today</div>
-                    </div>
-                    <div class="tracking-item">
-                        <div class="fw-bold text-muted">Cold Proof</div>
-                        <div class="text-muted small">Currently in retarder</div>
-                    </div>
-                </div>
-            </div>
-            <div class="compact-card floating">
-                <h6>Artisan Summary</h6>
-                <div class="d-flex flex-column gap-3">
-                    <div>
-                        <div class="d-flex justify-content-between small"><span class="small">Whole Grain
-                                Impact</span><span class="fw-bold">85%</span></div>
-                        <div class="progress" style="height: 4px;">
-                            <div class="progress-bar" style="width: 85%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </aside>
     </div>
 
-    <!-- Mobile Offcanvas Menu -->
-    <div class="offcanvas offcanvas-end offcanvas-bakery" tabindex="-1" id="mobileMenu">
-        <div class="offcanvas-header border-bottom">
-            <a href="index.html" class="offcanvas-title fw-bold text-decoration-none d-flex align-items-center gap-2"
-                style="color: #C8602A;">
-                <svg class="dashboard-brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-                <span class="dashboard-brand-name">Aurore Sourdough</span>
-            </a>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body d-flex flex-column">
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#view-overview" class="nav-link dashboard-nav-link active"
-                        data-view="overview" data-bs-dismiss="offcanvas"><i class="bi bi-grid-fill"></i> Overview</a>
-                </li>
-                <li class="nav-item"><a href="#view-pre-orders" class="nav-link dashboard-nav-link"
-                        data-view="pre-orders" data-bs-dismiss="offcanvas"><i class="bi bi-basket"></i> Pre-Orders</a>
-                </li>
-                <li class="nav-item"><a href="#view-subscriptions" class="nav-link dashboard-nav-link"
-                        data-view="subscriptions" data-bs-dismiss="offcanvas"><i class="bi bi-calendar-check"></i>
-                        Subscriptions</a>
-                </li>
-                <li class="nav-item"><a href="#view-reservations" class="nav-link dashboard-nav-link"
-                        data-view="reservations" data-bs-dismiss="offcanvas"><i class="bi bi-bookmark-heart"></i> My
-                        Reservations</a></li>
-                <li class="nav-item"><a href="#view-downloads" class="nav-link dashboard-nav-link" data-view="downloads"
-                        data-bs-dismiss="offcanvas"><i class="bi bi-download"></i> Downloads</a></li>
-                <div class="my-4 border-top opacity-25"></div>
-                <li class="nav-item"><a href="#view-profile" class="nav-link dashboard-nav-link" data-view="profile"
-                        data-bs-dismiss="offcanvas"><i class="bi bi-person-circle"></i> Profile</a></li>
-                <li class="nav-item"><a href="#view-messages" class="nav-link dashboard-nav-link" data-view="messages"
-                        data-bs-dismiss="offcanvas"><i class="bi bi-chat-dots"></i> Messages</a></li>
-                <li class="nav-item mt-3"><a href="index.html" class="nav-link text-danger"><i
-                            class="bi bi-box-arrow-right"></i>
-                        Logout</a></li>
-            </ul>
+    <!-- Dashboard Overlay -->
+    <div id="dashboard-overlay"
+        class="fixed inset-0 bg-black/60 z-[150] hidden backdrop-blur-sm lg:hidden transition-all duration-300"></div>
 
-            <div class="theme-controls mt-3">
-                <button id="themeToggleMobile" class="theme-btn" title="Toggle Theme">
-                    <i class="bi bi-moon-stars-fill"></i>
-                </button>
-                <button id="rtlToggleMobile" class="theme-btn" title="Toggle RTL Layout">
-                    <i class="bi bi-translate"></i>
-                </button>
-            </div>
-
-            <div class="mt-auto pt-4 border-top">
-                <div class="premium-card p-3 d-flex align-items-center gap-3">
-                    <div class="rounded-circle overflow-hidden" style="width: 45px; height: 45px; background: #eee;">
-                        <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User">
-                    </div>
-                    <div>
-                        <div class="fw-bold" style="font-size: 0.95rem;">Alex Thompson</div>
-                        <div class="text-muted" style="font-size: 0.8rem;">Premium Member</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const magneticElements = document.querySelectorAll('.magnetic, .nav-link, .featured-card');
-            magneticElements.forEach(el => {
-                el.addEventListener('mousemove', (e) => {
-                    const rect = el.getBoundingClientRect();
-                    const factor = el.classList.contains('nav-link') ? 8 : 12;
-                    const xMove = ((e.clientX - rect.left - rect.width / 2) / (rect.width / 2)) * factor;
-                    const yMove = ((e.clientY - rect.top - rect.height / 2) / (rect.height / 2)) * factor;
-                    el.style.transform = `translate(${xMove}px, ${yMove}px) scale(1.02)`;
-                });
-                el.addEventListener('mouseleave', () => el.style.transform = '');
-            });
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.entrance-anim').forEach((item) => {
-                observer.observe(item);
-            });
-
-            // View Switching Logic
-            const dashboardNavLinks = document.querySelectorAll('.dashboard-nav-link');
-            const dashboardViews = document.querySelectorAll('.dashboard-view');
-            const dashboardTitle = document.querySelector('[data-dashboard-title]');
-            const dashboardSubtitle = document.querySelector('[data-dashboard-subtitle]');
-
-            dashboardNavLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const viewId = link.getAttribute('data-view');
-                    if (!viewId) return;
-
-                    // Update active state for all links with the same data-view
-                    dashboardNavLinks.forEach(l => {
-                        if (l.getAttribute('data-view') === viewId) {
-                            l.classList.add('active');
-                        } else {
-                            l.classList.remove('active');
-                        }
-                    });
-
-                    // Switch views
-                    dashboardViews.forEach(view => {
-                        if (view.id === `view-${viewId}`) {
-                            view.classList.add('active');
-
-                            // Update Header Title & Subtitle from data attributes
-                            if (dashboardTitle) dashboardTitle.textContent = view.getAttribute('data-title');
-                            if (dashboardSubtitle) dashboardSubtitle.textContent = view.getAttribute('data-subtitle');
-
-                            // Re-trigger entrance animation
-                            view.style.opacity = '0';
-                            view.style.transform = 'translateY(20px)';
-                            setTimeout(() => {
-                                view.style.opacity = '1';
-                                view.style.transform = 'translateY(0)';
-                            }, 50);
-                        } else {
-                            view.classList.remove('active');
-                        }
-                    });
-
-                    // Smooth scroll to top of content
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            });
-
-            // Theme & RTL Logic
-            const themeToggles = document.querySelectorAll('#themeToggle, #themeToggleMobile');
-            const rtlToggles = document.querySelectorAll('#rtlToggle, #rtlToggleMobile');
-            const html = document.documentElement;
-
-            // Load saved settings
-            const currentTheme = localStorage.getItem('bakery-theme') || 'light';
-            const currentDir = localStorage.getItem('bakery-dir') || 'ltr';
-
-            if (currentTheme === 'dark') {
-                html.setAttribute('data-bs-theme', 'dark');
-                updateThemeIcons(true);
-            }
-
-            if (currentDir === 'rtl') {
-                html.setAttribute('dir', 'rtl');
-                updateRTLIcons(true);
-            }
-
-            themeToggles.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const isDark = html.getAttribute('data-bs-theme') === 'dark';
-                    const newTheme = isDark ? 'light' : 'dark';
-                    html.setAttribute('data-bs-theme', newTheme);
-                    localStorage.setItem('bakery-theme', newTheme);
-                    updateThemeIcons(!isDark);
-                });
-            });
-
-            rtlToggles.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const isRTL = html.getAttribute('dir') === 'rtl';
-                    const newDir = isRTL ? 'ltr' : 'rtl';
-                    html.setAttribute('dir', newDir);
-                    localStorage.setItem('bakery-dir', newDir);
-                    updateRTLIcons(!isRTL);
-                });
-            });
-
-            function updateThemeIcons(isDark) {
-                themeToggles.forEach(btn => {
-                    const icon = btn.querySelector('i');
-                    icon.className = isDark ? 'bi bi-sun-fill' : 'bi bi-moon-stars-fill';
-                });
-            }
-
-            function updateRTLIcons(isRTL) {
-                rtlToggles.forEach(btn => {
-                    btn.classList.toggle('active', isRTL);
-                    if (isRTL) {
-                        btn.style.background = 'var(--primary-amber)';
-                        btn.style.color = '#fff';
-                    } else {
-                        btn.style.background = '';
-                        btn.style.color = '';
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
 </body>
 
 </html>
