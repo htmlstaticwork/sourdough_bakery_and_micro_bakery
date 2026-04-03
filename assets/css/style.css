@@ -571,7 +571,8 @@ h6,
 
 /* Navbar Toggler */
 .navbar-toggler-icon {
-    filter: var(--toggler-filter);
+    color: var(--nav-icon-color);
+    filter: none;
 }
 
 /* Navigation Underline Effect */
