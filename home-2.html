@@ -76,7 +76,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center gap-6">
+            <nav class="hidden xl:flex items-center gap-6">
                 <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
                 <a href="home-2.html" class="nav-link-underline font-medium text-accent">Home 2</a>
                 <a href="about.html"
@@ -95,7 +95,7 @@
             <!-- Actions -->
             <div class="flex items-center gap-3 md:gap-4">
                 <button id="theme-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
                     aria-label="Toggle Theme">
                     <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
                         viewBox="0 0 20 20">
@@ -109,16 +109,16 @@
                     </svg>
                 </button>
                 <button id="rtl-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm rtl-toggle"
                     aria-label="Toggle RTL">RTL</button>
 
-                <div class="hidden md:flex items-center gap-3">
+                <div class="hidden xl:flex items-center gap-3">
                     <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
                 </div>
 
                 <!-- Hamburger -->
                 <button id="hamburger-btn"
-                    class="lg:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    class="xl:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
                     aria-label="Menu" aria-expanded="false">
                     <span class="navbar-toggler-icon pointer-events-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -138,13 +138,30 @@
         aria-label="Navigation Menu">
         <div class="flex items-center justify-between mb-8">
             <span class="font-playfair text-xl font-bold">Menu</span>
-            <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
-                aria-label="Close Menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg>
-            </button>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-xs rtl-toggle"
+                    aria-label="Toggle RTL">RTL</button>
+                <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                    aria-label="Close Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
         <nav class="flex flex-col gap-4 text-lg font-medium">
             <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
@@ -170,13 +187,13 @@
     <main>
         <!-- Home-2 Hero Section: Full Bleed Editorial -->
         <section
-            class="h-screen relative flex items-center justify-center text-center overflow-hidden pt-[64px] md:pt-[72px]">
+            class="h-[calc(100vh-64px)] md:h-[calc(100vh-72px)] relative flex items-center justify-center text-center overflow-hidden">
             <!-- Background Image -->
             <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1549432646-6468449764a8?w=1600&q=80" alt=""
-                    class="w-full h-full object-cover grayscale opacity-60">
-                <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
-                <div class="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/40"></div>
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&q=80" alt=""
+                    class="w-full h-full object-cover opacity-80">
+                <div class="absolute inset-0 bg-primary/30 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-primary/30"></div>
             </div>
 
             <!-- Floating Elements -->
@@ -195,9 +212,9 @@
             <!-- Content -->
             <div class="relative z-10 px-6 max-w-5xl animate-heroReveal">
                 <h1 class="font-playfair text-6xl md:text-9xl text-white font-bold mb-8 italic drop-shadow-2xl">
-                    Every Loaf <br> Writes a <span class="text-accent underline underline-offset-8">Story</span>
+                    Every Loaf <br> Writes a <span class="text-accent-gold  offset-8">Story</span>
                 </h1>
-                <p id="typewriter" class="text-xl md:text-2xl text-white/90 mb-12 h-8 font-dm tracking-wide"></p>
+                <p id="typewriter" class="text-xl md:text-2xl text-accent-gold mb-12 h-8 font-dm tracking-wide"></p>
 
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-12 opacity-0 animate-heroReveal"
                     style="animation-delay: 1.2s;">
@@ -208,7 +225,7 @@
                 </div>
 
                 <!-- Timer HUD -->
-                <div class="mt-20 flex flex-col items-center gap-4 text-white/60">
+                <div class="mt-10 md:mt-20 flex flex-col items-center gap-4 text-white/60">
                     <span class="text-xs uppercase font-bold tracking-[0.3em]">Nest Bake Dispatch In</span>
                     <div id="countdown-timer" class="flex gap-4 font-playfair">
                         <!-- Filled via JS -->
@@ -222,36 +239,36 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 scroll-reveal" style="display: block;">
                     <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-4 italic">Our Artisan <span
-                            class="text-accent underline">Categories</span></h2>
+                            class="text-accent">Categories</span></h2>
                     <p class="max-w-2xl mx-auto opacity-70">Filtered by time, texture, and grain.</p>
                 </div>
-                <div class="overflow-x-auto scrollbar-hide flex gap-4 items-center justify-start lg:justify-center">
+                <div class="flex flex-col xl:flex-row gap-4 items-center justify-center">
                     <button
-                        class="flex-shrink-0 px-6 py-3 rounded-full bg-accent text-white font-bold border border-accent flex items-center gap-3 active-chip">
+                        class="w-full lg:w-auto flex-shrink-0 px-6 py-3 rounded-full bg-accent text-white font-bold border border-accent flex items-center justify-center lg:justify-start gap-3 active-chip">
                         <img src="https://images.unsplash.com/photo-1585478259715-876a6a81fc08?w=50&q=80"
                             class="w-6 h-6 rounded-full object-cover">
                         All Bakes
                     </button>
                     <button
-                        class="flex-shrink-0 px-6 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border flex items-center gap-3">
+                        class="w-full lg:w-auto flex-shrink-0 px-6 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border flex items-center justify-center lg:justify-start gap-3">
                         <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=50&q=80"
                             class="w-6 h-6 rounded-full object-cover">
                         Sourdough
                     </button>
                     <button
-                        class="flex-shrink-0 px-6 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border flex items-center gap-3">
+                        class="w-full lg:w-auto flex-shrink-0 px-6 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border flex items-center justify-center lg:justify-start gap-3">
                         <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=50&q=80"
                             class="w-6 h-6 rounded-full object-cover">
                         Rye
                     </button>
                     <button
-                        class="flex-shrink-0 px-6 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border flex items-center gap-3">
+                        class="w-full lg:w-auto flex-shrink-0 px-6 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border flex items-center justify-center lg:justify-start gap-3">
                         <img src="https://chefindisguise.com/wp-content/uploads/2011/04/rosemary-and-salt-focaccia.jpg?w=800"
                             class="w-6 h-6 rounded-full object-cover">
                         Focaccia
                     </button>
                     <button
-                        class="flex-shrink-0 px-6 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border flex items-center gap-3">
+                        class="w-full lg:w-auto flex-shrink-0 px-6 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border flex items-center justify-center lg:justify-start gap-3">
                         <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=50&q=80"
                             class="w-6 h-6 rounded-full object-cover">
                         Pastries
@@ -264,8 +281,7 @@
         <section class="py-24 px-6 md:px-12 bg-secondary dark:bg-dark-bg text-center">
             <div class="container mx-auto">
                 <div class="text-center mb-16 scroll-reveal">
-                    <h2
-                        class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4 whitespace-nowrap overflow-visible">
+                    <h2 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4 overflow-visible">
                         The <span class="text-accent">Aurore</span> Philosophy</h2>
                     <p class="max-w-2xl mx-auto opacity-70">Traditional techniques, modern precision.</p>
                 </div>
@@ -488,7 +504,7 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal">
                     <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-4 centered-heading">The Face Behind <span
-                            class="text-accent underline">the Oven</span></h2>
+                            class="text-accent">the Oven</span></h2>
                     <p class="max-w-2xl mx-auto opacity-70 italic font-medium">"Baking is a dialogue with life itself."
                     </p>
                 </div>
@@ -571,7 +587,8 @@
                     </div>
 
                     <!-- Feature 03 -->
-                    <div class="group scroll-reveal" style="transition-delay: 0.4s;">
+                    <div class="group scroll-reveal md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-md lg:max-w-none"
+                        style="transition-delay: 0.4s;">
                         <div class="aspect-[3/4] overflow-hidden rounded-[2rem] mb-10 relative shadow-2xl">
                             <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]">

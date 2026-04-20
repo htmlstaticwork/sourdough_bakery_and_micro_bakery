@@ -3,13 +3,13 @@
 [data-theme="dark"] {
     --primary: #F5E6D3;
     /* Light text in dark mode */
-    --secondary: #1A0F08;
-    /* Deep Walnut - Website Primary Dark Color */
+    --secondary: #000000;
+    /* Pure Black - Dark Mode Background */
     --accent: #C8602A;
     --accent-gold: #D4A853;
     --text-muted-light: #B89880;
-    --border-light: #3D2418;
-    --bg-color: #1A0F08;
+    --border-light: #2A2A2A;
+    --bg-color: #000000;
     --text-color: #F5E6D3;
     --nav-icon-color: #F5E6D3;
     --toggler-filter: invert(1);
@@ -35,19 +35,19 @@
 }
 
 [data-theme="dark"] .bread-card {
-    background-color: #231208;
-    border-color: #3D2418;
+    background-color: #111111;
+    border-color: #2A2A2A;
 }
 
 [data-theme="dark"] .subscription-card {
-    background-color: #231208 !important;
-    border-color: #3D2418;
+    background-color: #111111 !important;
+    border-color: #2A2A2A;
     color: #F5E6D3;
 }
 
 [data-theme="dark"] .dashboard-sidebar {
-    background-color: #1A0F08;
-    border-color: #3D2418;
+    background-color: #000000;
+    border-color: #2A2A2A;
 }
 
 [data-theme="dark"] h1,
@@ -63,5 +63,5 @@
 
 [data-theme="dark"] .btn-secondary:hover {
     background-color: #F5E6D3;
-    color: #1A0F08;
+    color: #000000;
 }

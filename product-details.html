@@ -52,9 +52,13 @@
     <header
         class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-2"><span class="text-primary text-2xl">🌱</span><span
-                    class="font-Playfair Display font-bold text-xl uppercase">Handmade Soap</span></div>
-            <nav class="hidden lg:flex items-center space-x-8">
+            <div class="flex items-center space-x-2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-accent">
+                    <path d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span class="font-Playfair Display font-bold text-xl uppercase">Aurore Sourdough</span>
+            </div>
+            <nav class="hidden xl:flex items-center space-x-8">
                 <a href="index.html" class="hover:text-primary transition-colors font-medium">Home</a>
                 <a href="home-2.html" class="hover:text-primary transition-colors font-medium">Home 2</a>
                 <a href="shop.html" class="hover:text-primary transition-colors font-medium text-primary">Shop</a>
@@ -63,12 +67,12 @@
                 <a href="gallery.html" class="hover:text-primary transition-colors font-medium">Gallery</a>
                 <a href="dashboard.html" class="hover:text-primary transition-colors font-medium">Dashboard</a>
             </nav>
-            <div class="hidden lg:flex items-center space-x-4">
-                <button type="button" data-rtl-toggle
-                    class="px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-widest text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            <div class="flex items-center space-x-4">
+                <button type="button"
+                    class="hidden xl:flex px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-widest text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rtl-toggle"
                     title="Toggle RTL layout">RTL</button>
                 <button id="theme-toggle"
-                    class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                    class="hidden xl:flex p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors theme-toggle">
                     <svg class="w-6 h-6 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
@@ -80,13 +84,12 @@
                         </path>
                     </svg>
                 </button>
-                <a href="register.html" class="btn-secondary py-2 text-sm">Login</a>
-                <a href="shop.html" class="btn-primary py-2 text-sm">Join Club</a>
+                <div class="hidden xl:flex items-center gap-3">
+                    <a href="login.html" class="btn-secondary py-2 text-sm">Sign In</a>
+                    <a href="shop.html" class="btn-primary py-2 text-sm">Join Club</a>
+                </div>
             </div>
-            <div class="flex items-center gap-2 lg:hidden">
-                <button type="button" data-rtl-toggle
-                    class="px-3 py-2 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-widest text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                    title="Toggle RTL layout">RTL</button>
+            <div class="flex items-center gap-2 xl:hidden">
                 <button id="menu-btn"
                     class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,12 +105,33 @@
     <div id="overlay" class="fixed inset-0 bg-black/50 z-[60] hidden"></div>
     <div id="mobile-drawer"
         class="fixed top-0 right-0 h-full w-80 bg-white dark:bg-dark-bg z-[70] shadow-2xl p-8 flex flex-col">
-        <div class="flex items-center justify-between mb-12"><span
-                class="font-Playfair Display font-bold text-xl uppercase">Handmade Soap</span><button id="close-btn"
-                class="p-2"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg></button></div>
+        <div class="flex items-center justify-between mb-12">
+            <span class="font-Playfair Display font-bold text-xl uppercase">Aurore Sourdough</span>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors theme-toggle">
+                    <svg class="w-6 h-6 dark:hidden text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                        </path>
+                    </svg>
+                    <svg class="w-6 h-6 hidden dark:block text-accent" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                </button>
+                <button
+                    class="px-3 py-2 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-widest text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rtl-toggle">RTL</button>
+                <button id="close-btn" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
         <nav class="flex flex-col space-y-6 text-lg font-medium">
             <a href="index.html">Home</a>
             <a href="home-2.html">Home 2</a>
@@ -117,7 +141,7 @@
             <a href="gallery.html">Gallery</a>
             <a href="dashboard.html">Dashboard</a>
             <hr class="border-gray-100 dark:border-gray-800">
-            <a href="register.html" class="btn-secondary text-center">Login</a>
+            <a href="login.html" class="btn-secondary text-center">Sign In</a>
             <a href="shop.html" class="btn-primary text-center">Shop Now</a>
         </nav>
     </div>
@@ -135,16 +159,16 @@
                     </div>
                     <div class="grid grid-cols-4 gap-4 mt-8">
                         <img src="assets/images/skincare_oils.jpg"
-                            class="h-24 w-full object-cover rounded-2xl cursor-poOutfit border-2 border-primary"
+                            class="h-24 w-full object-cover rounded-2xl cursor-pointer border-2 border-primary"
                             onclick="changeImage(this.src)">
                         <img src="assets/images/hero_soap_making.jpg"
-                            class="h-24 w-full object-cover rounded-2xl cursor-poOutfit opacity-50 hover:opacity-100"
+                            class="h-24 w-full object-cover rounded-2xl cursor-pointer opacity-50 hover:opacity-100"
                             onclick="changeImage(this.src)">
                         <img src="assets/images/natural_ingredients.jpg"
-                            class="h-24 w-full object-cover rounded-2xl cursor-poOutfit opacity-50 hover:opacity-100"
+                            class="h-24 w-full object-cover rounded-2xl cursor-pointer opacity-50 hover:opacity-100"
                             onclick="changeImage(this.src)">
                         <img src="assets/images/skincare_oils.jpg"
-                            class="h-24 w-full object-cover rounded-2xl cursor-poOutfit opacity-50 hover:opacity-100"
+                            class="h-24 w-full object-cover rounded-2xl cursor-pointer opacity-50 hover:opacity-100"
                             onclick="changeImage(this.src)">
                     </div>
                 </div>
@@ -334,9 +358,9 @@
             document.getElementById('main-product-image').src = src;
         }
 
-        const revealObserver = new OutfitsectionObserver((entries) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isOutfitsecting) {
+                if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
                 }
             });

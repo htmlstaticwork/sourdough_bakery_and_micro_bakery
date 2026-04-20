@@ -52,7 +52,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center gap-6">
+            <nav class="hidden xl:flex items-center gap-6">
                 <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
                 <a href="home-2.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home
                     2</a>
@@ -61,10 +61,10 @@
                 <a href="service.html"
                     class="nav-link-underline font-medium hover:text-accent transition-colors">Service</a>
                 <a href="blog.html" class="nav-link-underline font-medium text-accent">Blog</a>
-                <a href="contact.html"
-                    class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
                 <a href="pricing.html"
                     class="nav-link-underline font-medium hover:text-accent transition-colors">Pricing</a>
+                <a href="contact.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
                 <a href="dashboard.html"
                     class="nav-link-underline font-medium hover:text-accent transition-colors">Dashboard</a>
             </nav>
@@ -72,7 +72,7 @@
             <!-- Actions -->
             <div class="flex items-center gap-3 md:gap-4">
                 <button id="theme-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
                     aria-label="Toggle Theme">
                     <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
                         viewBox="0 0 20 20">
@@ -86,16 +86,16 @@
                     </svg>
                 </button>
                 <button id="rtl-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm rtl-toggle"
                     aria-label="Toggle RTL">RTL</button>
 
-                <div class="hidden md:flex items-center gap-3">
+                <div class="hidden xl:flex items-center gap-3">
                     <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
                 </div>
 
                 <!-- Hamburger -->
                 <button id="hamburger-btn"
-                    class="lg:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    class="xl:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
                     aria-label="Menu" aria-expanded="false">
                     <span class="navbar-toggler-icon pointer-events-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -114,14 +114,31 @@
     <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6" role="dialog" aria-modal="true"
         aria-label="Navigation Menu">
         <div class="flex items-center justify-between mb-8">
-            <span class="font-playfair text-xl font-bold">Menu</span>
-            <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
-                aria-label="Close Menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg>
-            </button>
+            <span class="font-playfair text-xl font-bold text-primary dark:text-secondary">Menu</span>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-xs rtl-toggle"
+                    aria-label="Toggle RTL">RTL</button>
+                <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                    aria-label="Close Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
         <nav class="flex flex-col gap-4 text-lg font-medium">
             <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
@@ -129,8 +146,8 @@
             <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
             <a href="service.html" class="py-3 border-b border-border-light dark:border-dark-border">Service</a>
             <a href="blog.html" class="py-3 border-b border-border-light dark:border-dark-border text-accent">Blog</a>
-            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
             <a href="pricing.html" class="py-3 border-b border-border-light dark:border-dark-border">Pricing</a>
+            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
             <a href="dashboard.html" class="py-3 border-b border-border-light dark:border-dark-border">Dashboard</a>
             <div class="mt-6 flex flex-col gap-4">
                 <a href="login.html" class="btn-secondary text-center">Sign In</a>
@@ -144,16 +161,30 @@
     </aside>
 
     <main>
-        <!-- Featured Post Hero -->
-        <section class="py-24 px-6 md:px-12 bg-secondary dark:bg-dark-bg">
-            <div class="container mx-auto">
-                <div class="text-center mb-16 animate-heroReveal">
-                    <h1 class="font-playfair text-5xl md:text-7xl font-bold mb-6 italic italic">The Bread <span
-                            class="text-accent underline underline-offset-8">Journal</span></h1>
-                    <p class="opacity-70 max-w-lg mx-auto italic">Stories of soil, yeast, and the hands that bring them
-                        together.</p>
-                </div>
+        <!-- Blog Hero -->
+        <section class="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=1400&q=80" alt="Blog Hero"
+                    class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/65 to-primary/90"></div>
+            </div>
+            <div class="relative z-10 text-center px-6 animate-heroReveal">
+                <p class="text-accent-gold font-bold uppercase tracking-[0.4em] text-sm mb-4">Aurore Sourdough</p>
+                <h1 class="font-playfair text-6xl md:text-8xl font-bold text-white mb-6 italic leading-tight">The Bread
+                    <span class="text-accent">Journal</span>
+                </h1>
+                <p class="text-white/70 max-w-xl mx-auto text-lg italic leading-relaxed">Stories of soil, yeast, and the
+                    hands that bring them together.</p>
 
+            </div>
+            <div
+                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-secondary dark:from-dark-bg to-transparent">
+            </div>
+        </section>
+
+        <!-- Featured Post -->
+        <section class="py-20 px-6 md:px-12 bg-secondary dark:bg-dark-bg">
+            <div class="container mx-auto">
                 <div
                     class="bread-card flex flex-col lg:flex-row items-stretch overflow-hidden bg-white dark:bg-dark-surface shadow-2xl group scroll-reveal border-2 border-accent/20">
                     <div class="lg:w-3/5 relative overflow-hidden h-96 lg:h-auto">
@@ -176,7 +207,7 @@
                             alive sourdough starter and how she defines the flavor profile of every golden crust we bake
                             at sunrise.</p>
                         <a href="blog-details.html"
-                            class="btn-primary w-full sm:w-auto px-10 py-5 text-lg font-bold shadow-xl shadow-accent/20">Read
+                            class="btn-primary w-full sm:w-auto px-10 py-5 text-lg font-bold shadow-xl shadow-accent/20 text-white hover:text-white whitespace-nowrap">Read
                             This Post →</a>
                     </div>
                 </div>
@@ -187,22 +218,22 @@
         <section
             class="py-12 bg-secondary/50 dark:bg-dark-surface/10 border-y border-border-light dark:border-dark-border">
             <div
-                class="container mx-auto px-6 overflow-x-auto scrollbar-hide flex gap-4 items-center justify-start lg:justify-center">
+                class="container mx-auto px-6 flex flex-col xl:flex-row gap-4 items-center justify-center">
                 <button
-                    class="flex-shrink-0 px-8 py-3 rounded-full bg-accent text-white font-bold border border-accent italic">All
+                    class="w-full lg:w-auto px-8 py-3 rounded-full bg-accent text-white font-bold border border-accent italic">All
                     Stories</button>
                 <button
-                    class="flex-shrink-0 px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Recipes</button>
+                    class="w-full lg:w-auto px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Recipes</button>
                 <button
-                    class="flex-shrink-0 px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Sourdough
+                    class="w-full lg:w-auto px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Sourdough
                     Tips</button>
                 <button
-                    class="flex-shrink-0 px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Behind
+                    class="w-full lg:w-auto px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Behind
                     the Bake</button>
                 <button
-                    class="flex-shrink-0 px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Community</button>
+                    class="w-full lg:w-auto px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Community</button>
                 <button
-                    class="flex-shrink-0 px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Seasonal</button>
+                    class="w-full lg:w-auto px-8 py-3 rounded-full hover:bg-accent/10 transition-colors bg-white dark:bg-dark-surface font-bold border border-border-light dark:border-dark-border italic">Seasonal</button>
             </div>
         </section>
 
@@ -211,7 +242,7 @@
             <div class="container mx-auto flex flex-col lg:flex-row gap-20">
                 <!-- Blog Grid -->
                 <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-                    <div class="bread-card flex flex-col group scroll-reveal border-none bg-transparent h-full">
+                    <div class="bread-card flex flex-col group scroll-reveal border-none bg-transparent h-full pb-12">
                         <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=800&q=80"
                             alt="Rosemary Focaccia"
                             class="w-full h-72 object-cover rounded-2xl mb-8 group-hover:scale-105 transition duration-500">
@@ -223,10 +254,10 @@
                         <p class="text-sm opacity-60 mb-8 italic mb-auto">Learn the salt-and-thyme secret to achieving
                             that deep, wood-fired bubbles at home.</p>
                         <a href="blog-details.html"
-                            class="font-bold text-accent italic flex items-center gap-2 group">Continue Reading <span
+                            class="font-bold text-accent italic flex items-center gap-2 group mt-auto pt-10">Continue Reading <span
                                 class="group-hover:translate-x-2 transition-transform">→</span></a>
                     </div>
-                    <div class="bread-card flex flex-col group scroll-reveal border-none bg-transparent h-full"
+                    <div class="bread-card flex flex-col group scroll-reveal border-none bg-transparent h-full pb-12"
                         style="transition-delay: 0.1s;">
                         <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?w=800&q=80" alt="Farmer"
                             class="w-full h-72 object-cover rounded-2xl mb-8 group-hover:scale-105 transition duration-500">
@@ -238,10 +269,10 @@
                         <p class="text-sm opacity-60 mb-8 italic mb-auto">A morning spent with the masters of
                             river-stone milling in rural France.</p>
                         <a href="blog-details.html"
-                            class="font-bold text-accent italic flex items-center gap-2 group">Continue Reading <span
+                            class="font-bold text-accent italic flex items-center gap-2 group mt-auto pt-10">Continue Reading <span
                                 class="group-hover:translate-x-2 transition-transform">→</span></a>
                     </div>
-                    <div class="bread-card flex flex-col group scroll-reveal border-none bg-transparent h-full">
+                    <div class="bread-card flex flex-col group scroll-reveal border-none bg-transparent h-full pb-12">
                         <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=800&q=80" alt="Process"
                             class="w-full h-72 object-cover rounded-2xl mb-8 group-hover:scale-105 transition duration-500">
                         <span
@@ -252,10 +283,10 @@
                         <p class="text-sm opacity-60 mb-8 italic mb-auto">Understanding hydration percentages from 65%
                             to 85% for that perfect crumb profile.</p>
                         <a href="blog-details.html"
-                            class="font-bold text-accent italic flex items-center gap-2 group">Continue Reading <span
+                            class="font-bold text-accent italic flex items-center gap-2 group mt-auto pt-10">Continue Reading <span
                                 class="group-hover:translate-x-2 transition-transform">→</span></a>
                     </div>
-                    <div class="bread-card flex flex-col group scroll-reveal border-none bg-transparent h-full"
+                    <div class="bread-card flex flex-col group scroll-reveal border-none bg-transparent h-full pb-12"
                         style="transition-delay: 0.1s;">
                         <img src="https://images.unsplash.com/photo-1597079910443-60c43fc4f729?w=800&q=80"
                             alt="Autumn Harvest Bread"
@@ -267,7 +298,7 @@
                         <p class="text-sm opacity-60 mb-8 italic mb-auto">A warming addition to our sunrise bake,
                             celebrating the change in colors.</p>
                         <a href="blog-details.html"
-                            class="font-bold text-accent italic flex items-center gap-2 group">Continue Reading <span
+                            class="font-bold text-accent italic flex items-center gap-2 group mt-auto pt-10">Continue Reading <span
                                 class="group-hover:translate-x-2 transition-transform">→</span></a>
                     </div>
                 </div>

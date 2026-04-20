@@ -72,7 +72,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center gap-6">
+            <nav class="hidden xl:flex items-center gap-6">
                 <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
                 <a href="home-2.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home
                     2</a>
@@ -81,9 +81,9 @@
                 <a href="service.html"
                     class="nav-link-underline font-medium hover:text-accent transition-colors">Service</a>
                 <a href="blog.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Blog</a>
+                <a href="pricing.html" class="nav-link-underline font-medium text-accent">Pricing</a>
                 <a href="contact.html"
                     class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
-                <a href="pricing.html" class="nav-link-underline font-medium text-accent">Pricing</a>
                 <a href="dashboard.html"
                     class="nav-link-underline font-medium hover:text-accent transition-colors">Dashboard</a>
             </nav>
@@ -91,7 +91,7 @@
             <!-- Actions -->
             <div class="flex items-center gap-3 md:gap-4">
                 <button id="theme-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
                     aria-label="Toggle Theme">
                     <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
                         viewBox="0 0 20 20">
@@ -105,16 +105,16 @@
                     </svg>
                 </button>
                 <button id="rtl-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm rtl-toggle"
                     aria-label="Toggle RTL">RTL</button>
 
-                <div class="hidden md:flex items-center gap-3">
+                <div class="hidden xl:flex items-center gap-3">
                     <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
                 </div>
 
                 <!-- Hamburger -->
                 <button id="hamburger-btn"
-                    class="lg:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    class="xl:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
                     aria-label="Menu" aria-expanded="false">
                     <span class="navbar-toggler-icon pointer-events-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -134,13 +134,30 @@
         aria-label="Navigation Menu">
         <div class="flex items-center justify-between mb-8">
             <span class="font-playfair text-xl font-bold">Menu</span>
-            <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
-                aria-label="Close Menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg>
-            </button>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-xs rtl-toggle"
+                    aria-label="Toggle RTL">RTL</button>
+                <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                    aria-label="Close Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
         <nav class="flex flex-col gap-4 text-lg font-medium">
             <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
@@ -148,9 +165,9 @@
             <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
             <a href="service.html" class="py-3 border-b border-border-light dark:border-dark-border">Service</a>
             <a href="blog.html" class="py-3 border-b border-border-light dark:border-dark-border">Blog</a>
-            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
             <a href="pricing.html"
                 class="py-3 border-b border-border-light dark:border-dark-border text-accent">Pricing</a>
+            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
             <a href="dashboard.html" class="py-3 border-b border-border-light dark:border-dark-border">Dashboard</a>
             <div class="mt-6 flex flex-col gap-4">
                 <a href="login.html" class="btn-secondary text-center">Sign In</a>
@@ -165,47 +182,32 @@
 
     <main>
         <!-- Section 1: Hero -->
-        <section class="py-24 px-6 md:px-12 overflow-hidden relative bg-secondary dark:bg-dark-bg">
-            <div class="container mx-auto text-center animate-heroReveal">
-                <div
-                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-6">
-                    <span class="relative flex h-2 w-2">
-                        <span
-                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-                    </span>
-                    HONEST PRICING
-                </div>
-                <h1 class="font-playfair text-5xl md:text-7xl font-bold mb-6">Choose Your <span
-                        class="text-accent italic">Daily Bread</span></h1>
-                <p class="text-lg md:text-xl max-w-2xl mx-auto opacity-70 leading-relaxed text-balance">
-                    From occasional loaves to professional subscriptions. We’ve designed our plans to feed your passion
-                    for slow-fermented excellence.
-                </p>
-                <div class="mt-12 flex justify-center gap-8">
-                    <div class="animate-breadRise flex flex-col items-center">
-                        <img src="https://images.unsplash.com/photo-1585478259715-876a6a81fc08?w=150&q=80" alt="Icon"
-                            class="w-20 h-20 object-cover rounded-full shadow-lg border-2 border-accent/20">
-                        <span class="mt-2 text-xs font-bold tracking-widest opacity-40">STARTER</span>
-                    </div>
-                    <div class="animate-breadRise flex flex-col items-center" style="animation-delay: 0.5s;">
-                        <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=150&q=80" alt="Icon"
-                            class="w-20 h-20 object-cover rounded-full shadow-lg border-2 border-accent/20">
-                        <span class="mt-2 text-xs font-bold tracking-widest opacity-40">ARTISAN</span>
-                    </div>
-                    <div class="animate-breadRise flex flex-col items-center" style="animation-delay: 1s;">
-                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=150&q=80" alt="Icon"
-                            class="w-20 h-20 object-cover rounded-full shadow-lg border-2 border-accent/20">
-                        <span class="mt-2 text-xs font-bold tracking-widest opacity-40">MASTER</span>
-                    </div>
-                </div>
+        <!-- Pricing Hero -->
+        <section class="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1400&q=80" alt="Pricing Hero"
+                    class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/65 to-primary/90"></div>
+            </div>
+            <div class="relative z-10 text-center px-6 animate-heroReveal">
+                <p class="text-accent-gold font-bold uppercase tracking-[0.4em] text-sm mb-4">Aurore Sourdough</p>
+                <h1 class="font-playfair text-6xl md:text-8xl font-bold text-white mb-6 italic leading-tight">Choose
+                    Your
+                    <span class="text-accent">Daily Bread</span>
+                </h1>
+                <p class="text-white/70 max-w-xl mx-auto text-lg italic leading-relaxed">Honest pricing for honest
+                    bread. Choose a plan that fits your lifestyle.</p>
+
+            </div>
+            <div
+                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-secondary dark:from-dark-bg to-transparent">
             </div>
         </section>
 
         <!-- Section 2: Subscription Plans -->
         <section class="py-24 px-6 md:px-12 bg-[#FDF8F0] dark:bg-dark-surface/10 relative">
             <div class="container mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Starter Plan -->
                     <div
                         class="pricing-tier subscription-card p-8 flex flex-col bg-secondary dark:bg-dark-surface rounded-2xl border border-border-light dark:border-dark-border scroll-reveal">
@@ -254,11 +256,12 @@
                             <li class="flex items-center gap-3 text-sm"><i
                                     class="fas fa-check check-icon text-accent"></i> Priority Special Releases</li>
                         </ul>
-                        <a href="register.html" class="btn-primary text-center w-full">Join the Artisan Plan</a>
+                        <a href="register.html" class="btn-primary text-center w-full text-white hover:text-white">Join
+                            the Artisan Plan</a>
                     </div>
 
                     <!-- Master Baker Plan -->
-                    <div class="pricing-tier subscription-card p-8 flex flex-col bg-secondary dark:bg-dark-surface rounded-2xl border border-border-light dark:border-dark-border scroll-reveal"
+                    <div class="pricing-tier subscription-card p-8 flex flex-col bg-secondary dark:bg-dark-surface rounded-2xl border border-border-light dark:border-dark-border scroll-reveal md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-md lg:max-w-none"
                         style="transition-delay: 0.2s;">
                         <div class="mb-8">
                             <h3 class="font-playfair text-3xl font-bold mb-2">Master Crumb</h3>
@@ -383,7 +386,8 @@
                 <!-- CTA -->
                 <div class="mt-24 text-center scroll-reveal">
                     <p class="text-lg italic opacity-60 mb-8">Ready to taste the sourdough difference?</p>
-                    <a href="register.html" class="btn-primary px-12 py-5 text-lg">Create Your Account</a>
+                    <a href="register.html" class="btn-primary px-12 py-5 text-lg text-white hover:text-white">Create
+                        Your Account</a>
                 </div>
             </div>
         </section>
@@ -490,69 +494,7 @@
         </div>
     </footer>
 
-    <!-- Mobile Sidebar -->
-    <div id="sidebar-overlay" class="sidebar-overlay bg-black/60 backdrop-blur-sm"></div>
-    <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6">
-        <div class="flex items-center justify-between mb-8">
-            <span class="font-playfair text-xl font-bold">Menu</span>
-            <button id="sidebar-close" class="p-2"><i class="fas fa-times"></i></button>
-        </div>
-        <nav class="flex flex-col gap-4 text-lg font-medium">
-            <a href="index.html" class="py-3 border-b border-border-light">Home</a>
-            <a href="about.html" class="py-3 border-b border-border-light">About</a>
-            <a href="service.html" class="py-3 border-b border-border-light">Service</a>
-            <a href="blog.html" class="py-3 border-b border-border-light">Blog</a>
-            <a href="contact.html" class="py-3 border-b border-border-light">Contact</a>
-            <a href="pricing.html" class="py-3 border-b border-border-light text-accent">Pricing</a>
-            <a href="dashboard.html" class="py-3 border-b border-border-light">Dashboard</a>
-        </nav>
-    </aside>
-
-    <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        document.documentElement.classList.toggle('dark', currentTheme === 'dark');
-
-        themeToggle.addEventListener('click', () => {
-            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', theme);
-            document.documentElement.classList.toggle('dark', theme === 'dark');
-            localStorage.setItem('theme', theme);
-        });
-
-        // Mobile Sidebar
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const sidebarClose = document.getElementById('sidebar-close');
-        const sidebarNav = document.getElementById('sidebar-nav');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
-
-        hamburgerBtn.addEventListener('click', () => {
-            sidebarNav.classList.add('open');
-            sidebarOverlay.classList.add('open');
-        });
-
-        const closeSidebar = () => {
-            sidebarNav.classList.remove('open');
-            sidebarOverlay.classList.remove('open');
-        };
-
-        sidebarClose.addEventListener('click', closeSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar);
-
-        // Scroll Reveal
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-    </script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

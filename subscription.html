@@ -4,20 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscription Club | Handmade Soap & Skincare</title>
+    <title>Sourdough Club | Aurore Sourdough Subscription</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: { primary: '#3A4D39', secondary: '#FAF5EF', accent: '#A47E3B', dark: { bg: '#121212', card: '#1E1E1E', text: '#F5F5F5' } },
-                    fontFamily: { Playfair Display: ['Playfair Display', 'sans-serif'], Outfit: ['Outfit', 'sans-serif'] }
+                    colors: {
+                        primary: '#2C1810',
+                        secondary: '#FDF8F0',
+                        accent: '#C8602A',
+                        'accent-gold': '#D4A853',
+                        'dark-bg': '#1A0F08',
+                        'dark-surface': '#2A1810',
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        dm: ['DM Sans', 'sans-serif'],
+                    },
                 }
             }
         }
     </script>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
     <style>
         .step-panel {
             display: none;
@@ -33,7 +45,7 @@
         }
 
         .step-pill.active {
-            background-color: var(--primary-color, #3A4D39);
+            background-color: #C8602A;
             color: white;
             transform: scale(1.1);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -41,25 +53,53 @@
     </style>
 </head>
 
-<body
-    class="bg-white dark:bg-dark-bg text-gray-800 dark:text-dark-text font-Outfit transition-colors duration-300 min-h-screen flex flex-col">
+<body class="bg-secondary dark:bg-dark-bg text-primary transition-colors">
+    <!-- Header -->
+    <header
+        class="sticky top-0 z-[100] bg-secondary/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
+        <div class="container mx-auto flex items-center justify-between w-full">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="text-accent">
+                    <path
+                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <span class="font-playfair text-xl md:text-2xl font-bold">Aurore Sourdough</span>
+            </a>
 
-    <!-- Header (Simple for conversion focus) -->
-    <header class="py-12 text-center scroll-animate relative">
-        <button type="button" data-rtl-toggle
-            class="absolute right-4 top-1/2 -translate-y-1/2 px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-widest text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            title="Toggle RTL layout">RTL</button>
-        <a href="index.html" class="flex items-center justify-center space-x-2 text-primary">
-            <span class="text-4xl">🌱</span>
-            <span class="font-Playfair Display font-bold text-3xl uppercase text-gray-800 dark:text-white">Handmade
-                Soap</span>
-        </a>
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <button id="theme-toggle"
+                    class="hidden lg:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-sun" class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button id="rtl-toggle"
+                    class="hidden lg:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm rtl-toggle"
+                    aria-label="Toggle RTL">RTL</button>
+
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main class="flex-1 flex items-center justify-center py-20">
+    <main class="py-20">
         <div class="container mx-auto px-4 max-w-4xl">
-            <!-- Step Track -->
-            <div class="flex items-center justify-between mb-20 relative px-10 scroll-animate">
+            <!-- Step Progress -->
+            <div class="flex items-center justify-between mb-20 relative px-10">
                 <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-100 dark:bg-gray-800 -z-10 -translate-y-1/2">
                 </div>
                 <div id="step-1-pill"
@@ -75,38 +115,38 @@
 
             <!-- Panel Container -->
             <div
-                class="bg-secondary/30 dark:bg-dark-card p-12 md:p-20 rounded-[4rem] shadow-2xl relative overflow-hidden scroll-animate">
+                class="bg-white dark:bg-dark-surface p-12 md:p-20 rounded-[4rem] shadow-2xl relative overflow-hidden border border-border-light dark:border-dark-border">
 
                 <!-- Step 1: Select Plan -->
                 <div id="panel-1" class="step-panel active space-y-12">
                     <div class="text-center">
-                        <h2 class="text-4xl font-bold mb-4">Choose Your Lather Ritual</h2>
-                        <p class="text-gray-500">Select the plan that fits your skincare routine.</p>
+                        <h2 class="text-4xl font-bold mb-4 font-playfair">Choose Your Bread Ritual</h2>
+                        <p class="text-gray-500">Select the plan that fits your lifestyle.</p>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="bg-white dark:bg-dark-bg p-10 rounded-[2.5rem] border-4 border-transparent hover:border-primary cursor-poOutfit transition-all hover:scale-105 group"
+                        <div class="bg-secondary/30 dark:bg-dark-bg p-10 rounded-[2.5rem] border-4 border-transparent hover:border-accent cursor-pointer transition-all hover:scale-105 group"
                             onclick="nextStep(2)">
-                            <span class="text-4xl mb-6 block">🧼</span>
-                            <h3 class="text-2xl font-bold mb-4">Essential Pack</h3>
-                            <p class="text-gray-500 text-sm mb-6">3 Artisan Soap Bars <br> + Surprise Botanical Sample
+                            <span class="text-4xl mb-6 block">🥖</span>
+                            <h3 class="text-2xl font-bold mb-4 font-playfair">Classic Crust</h3>
+                            <p class="text-gray-500 text-sm mb-6">4 Artisan Sourdough Loaves <br> + Seasonal Bread Flour Sample
                             </p>
-                            <div class="text-4xl font-bold text-primary mb-8">$39<span class="text-sm">/mo</span></div>
+                            <div class="text-4xl font-bold text-accent mb-8">$39<span class="text-sm">/mo</span></div>
                             <div
-                                class="bg-primary/10 text-primary p-3 rounded-xl text-center group-hover:bg-primary group-hover:text-white transition-all font-bold">
+                                class="bg-accent/10 text-accent p-3 rounded-xl text-center group-hover:bg-accent group-hover:text-white transition-all font-bold">
                                 Select Plan</div>
                         </div>
-                        <div class="bg-white dark:bg-dark-bg p-10 rounded-[2.5rem] border-4 border-transparent hover:border-primary cursor-poOutfit transition-all hover:scale-105 group relative overflow-hidden"
+                        <div class="bg-secondary/30 dark:bg-dark-bg p-10 rounded-[2.5rem] border-4 border-transparent hover:border-accent cursor-pointer transition-all hover:scale-105 group relative overflow-hidden"
                             onclick="nextStep(2)">
                             <div
                                 class="absolute top-0 right-0 bg-accent text-white px-8 py-2 rotate-45 translate-x-8 translate-y-2 text-xs font-bold uppercase">
                                 Popular</div>
-                            <span class="text-4xl mb-6 block">🧴</span>
-                            <h3 class="text-2xl font-bold mb-4">Full Glow Bundle</h3>
-                            <p class="text-gray-500 text-sm mb-6">2 Soap Bars + 1 Face Oil <br> + FREE Bamboo Soap Dish
+                            <span class="text-4xl mb-6 block">🍞</span>
+                            <h3 class="text-2xl font-bold mb-4 font-playfair">Baker's Choice</h3>
+                            <p class="text-gray-500 text-sm mb-6">6 Loaves + 2 Pastries <br> + FREE Canvas Bread Bag
                             </p>
-                            <div class="text-4xl font-bold text-primary mb-8">$65<span class="text-sm">/mo</span></div>
+                            <div class="text-4xl font-bold text-accent mb-8">$65<span class="text-sm">/mo</span></div>
                             <div
-                                class="bg-primary/10 text-primary p-3 rounded-xl text-center group-hover:bg-primary group-hover:text-white transition-all font-bold">
+                                class="bg-accent/10 text-accent p-3 rounded-xl text-center group-hover:bg-accent group-hover:text-white transition-all font-bold">
                                 Select Plan</div>
                         </div>
                     </div>
@@ -116,27 +156,21 @@
                 <div id="panel-2" class="step-panel space-y-12">
                     <div class="text-center">
                         <button onclick="prevStep(1)"
-                            class="text-primary font-bold hover:underline mb-8 flex items-center justify-center mx-auto space-x-2"><span>←</span><span>Choose
+                            class="text-accent font-bold hover:underline mb-8 flex items-center justify-center mx-auto space-x-2"><span>←</span><span>Choose
                                 different plan</span></button>
-                        <h2 class="text-4xl font-bold mb-4">How often?</h2>
-                        <p class="text-gray-500">Sync with your shower schedule.</p>
+                        <h2 class="text-4xl font-bold mb-4 font-playfair">How often?</h2>
+                        <p class="text-gray-500">Sync with your breakfast table.</p>
                     </div>
                     <div class="flex flex-col space-y-4 max-w-sm mx-auto">
-                        <div class="bg-white dark:bg-dark-bg p-6 rounded-3xl border-2 border-primary cursor-poOutfit flex items-center justify-between"
+                        <div class="bg-secondary/30 dark:bg-dark-bg p-6 rounded-3xl border-2 border-accent cursor-pointer flex items-center justify-between"
                             onclick="nextStep(3)">
-                            <span class="font-bold">Monthly Reflection</span>
-                            <span class="bg-primary text-white px-4 py-1 rounded-full text-xs">Standard</span>
+                            <span class="font-bold">Weekly Freshness</span>
+                            <span class="bg-accent text-white px-4 py-1 rounded-full text-xs">Standard</span>
                         </div>
-                        <div class="bg-white dark:bg-dark-bg p-6 rounded-3xl border-2 border-transparent hover:border-primary cursor-poOutfit flex items-center justify-between transition-all"
+                        <div class="bg-secondary/30 dark:bg-dark-bg p-6 rounded-3xl border-2 border-transparent hover:border-accent cursor-pointer flex items-center justify-between transition-all"
                             onclick="nextStep(3)">
-                            <span class="font-bold">Every 2 Months</span>
-                            <span class="bg-gray-100 text-gray-500 px-4 py-1 rounded-full text-xs">Calm Pace</span>
-                        </div>
-                        <div class="bg-white dark:bg-dark-bg p-6 rounded-3xl border-2 border-transparent hover:border-primary cursor-poOutfit flex items-center justify-between transition-all"
-                            onclick="nextStep(3)">
-                            <span class="font-bold">Every 3 Months</span>
-                            <span class="bg-gray-100 text-gray-500 px-4 py-1 rounded-full text-xs">Quarterly
-                                Ritual</span>
+                            <span class="font-bold">Bi-Weekly Bake</span>
+                            <span class="bg-gray-100 dark:bg-dark-surface text-gray-500 px-4 py-1 rounded-full text-xs">Calm Pace</span>
                         </div>
                     </div>
                 </div>
@@ -145,116 +179,105 @@
                 <div id="panel-3" class="step-panel space-y-12">
                     <div class="text-center">
                         <div
-                            class="w-24 h-24 bg-primary text-white rounded-full flex items-center justify-center text-5xl mx-auto mb-8 animate-bounce">
-                            🌿</div>
-                        <h2 class="text-4xl font-bold mb-4">Complete Your Journey</h2>
-                        <p class="text-gray-500 mb-12">Your skin will thank you. Welcome to the club.</p>
+                            class="w-24 h-24 bg-accent text-white rounded-full flex items-center justify-center text-5xl mx-auto mb-8 animate-bounce">
+                            🌾</div>
+                        <h2 class="text-4xl font-bold mb-4 font-playfair">Complete Your Journey</h2>
+                        <p class="text-gray-500 mb-12">Your table will thank you. Welcome to the club.</p>
 
                         <div
-                            class="bg-white dark:bg-dark-bg p-8 rounded-3xl mb-12 text-left space-y-4 max-w-sm mx-auto shadow-sm">
-                            <div class="flex justify-between font-bold"><span>Essential Pack</span><span>$39.00</span>
+                            class="bg-secondary/30 dark:bg-dark-bg p-8 rounded-3xl mb-12 text-left space-y-4 max-w-sm mx-auto shadow-sm">
+                            <div class="flex justify-between font-bold"><span>Classic Crust</span><span>$39.00</span>
                             </div>
-                            <div class="flex justify-between text-gray-500"><span>Monthly
+                            <div class="flex justify-between text-gray-500"><span>Weekly
                                     Delivery</span><span>FREE</span></div>
                             <hr class="border-gray-100 dark:border-gray-800">
-                            <div class="flex justify-between text-2xl font-bold text-primary">
+                            <div class="flex justify-between text-2xl font-bold text-accent">
                                 <span>Total</span><span>$39.00</span>
                             </div>
                         </div>
 
                         <button id="finish-btn"
-                            class="btn-primary w-full max-w-sm py-5 text-xl font-bold shadow-xl shadow-primary/20 hover:scale-105 transition-transform"
+                            class="bg-accent text-white w-full max-w-sm py-5 text-xl font-bold rounded-2xl shadow-xl shadow-accent/20 hover:scale-105 transition-transform"
                             onclick="window.location.href='dashboard.html'">Finalize My Ritual</button>
                         <p class="mt-8 text-sm text-gray-400">Cancel anytime. No lock-in contracts.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-secondary dark:bg-black py-20 border-t border-gray-100 dark:border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 stagger-load">
-                <div class="flex flex-col">
-                    <div class="flex items-center space-x-2 mb-6">
-                        <span class="text-primary text-2xl">🌱</span>
-                        <span
-                            class="font-premium font-bold text-xl uppercase tracking-tighter text-gray-800 dark:text-white">Handmade
-                            Soap</span>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-xs">Naturally crafted skincare for the
-                        conscious soul. Pure, sustainable, and organic.</p>
-                    <div class="flex space-x-4">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">FB</a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">IG</a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">TW</a>
-                    </div>
-                </div>
-
-                <div class="text-center md:text-left">
-                    <h4 class="font-premium font-bold uppercase mb-8 text-primary">Quick Links</h4>
-                    <ul class="space-y-4">
-                        <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Shop</a></li>
-                        <li><a href="subscription.html" class="hover:text-primary transition-colors">Subscriptions</a>
-                        </li>
-                        <li><a href="gallery.html" class="hover:text-primary transition-colors">Gallery</a></li>
-                    </ul>
-                </div>
-
-                <div class="text-center md:text-left">
-                    <h4 class="font-premium font-bold uppercase mb-8 text-primary">Categories</h4>
-                    <ul class="space-y-4">
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Artisan Soaps</a></li>
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Body Lotions</a></li>
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Serum Oils</a></li>
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Bath Salts</a></li>
-                    </ul>
-                </div>
-
-                <div class="text-center md:text-left">
-                    <h4 class="font-premium font-bold uppercase mb-8 text-primary">Newsletter</h4>
-                    <p class="text-gray-600 dark:text-gray-400 mb-6">Join for 10% off your first artisan order.</p>
-                    <form class="flex flex-col space-y-4">
-                        <input type="email" placeholder="Email Address"
-                            class="bg-white dark:bg-dark-card border border-gray-200 dark:border-gray-700 py-3 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition-all">
-                        <button type="submit" class="btn-primary">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-
-            <div
-                class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
-                <p>© 2026 Handmade Soap & Skincare Company. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-primary">Privacy Policy</a>
-                    <a href="#" class="hover:text-primary">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
     <script>
-        function nextStep(step) {
-            document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.step-pill').forEach(pill => pill.classList.remove('active'));
+        let currentStep = 1;
 
-            document.getElementById(`panel-${step}`).classList.add('active');
-            for (let i = 1; i <= step; i++) {
-                document.getElementById(`step-${i}-pill`).classList.add('active');
-            }
+        function nextStep(step) {
+            document.getElementById(`panel-${currentStep}`).classList.remove('active');
+            setTimeout(() => {
+                document.getElementById(`panel-${currentStep}`).style.display = 'none';
+                currentStep = step;
+                document.getElementById(`panel-${currentStep}`).style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById(`panel-${currentStep}`).classList.add('active');
+                }, 50);
+                updatePills();
+            }, 600);
         }
 
         function prevStep(step) {
-            nextStep(step);
-            document.getElementById(`step-${step + 1}-pill`).classList.remove('active');
+            document.getElementById(`panel-${currentStep}`).classList.remove('active');
+            setTimeout(() => {
+                document.getElementById(`panel-${currentStep}`).style.display = 'none';
+                currentStep = step;
+                document.getElementById(`panel-${currentStep}`).style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById(`panel-${currentStep}`).classList.add('active');
+                }, 50);
+                updatePills();
+            }, 600);
         }
+
+        function updatePills() {
+            for (let i = 1; i <= 3; i++) {
+                if (i <= currentStep) {
+                    document.getElementById(`step-${i}-pill`).classList.add('active');
+                } else {
+                    document.getElementById(`step-${i}-pill`).classList.remove('active');
+                }
+            }
+        }
+
+        // Initialize display
+        document.querySelectorAll('.step-panel').forEach((panel, idx) => {
+            if (idx === 0) panel.style.display = 'block';
+            else panel.style.display = 'none';
+        });
+
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const isDark = html.classList.contains('dark');
+            if (isDark) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        // RTL Toggle
+        const rtlToggle = document.querySelector('.rtl-toggle');
+        rtlToggle.addEventListener('click', () => {
+            const isRTL = html.getAttribute('dir') === 'rtl';
+            html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        });
     </script>
 </body>
 

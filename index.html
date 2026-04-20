@@ -105,7 +105,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center gap-6">
+            <nav class="hidden xl:flex items-center gap-6">
                 <a href="index.html" class="nav-link-underline font-medium text-accent">Home</a>
                 <a href="home-2.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home
                     2</a>
@@ -114,10 +114,10 @@
                 <a href="service.html"
                     class="nav-link-underline font-medium hover:text-accent transition-colors">Service</a>
                 <a href="blog.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Blog</a>
-                <a href="contact.html"
-                    class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
                 <a href="pricing.html"
                     class="nav-link-underline font-medium hover:text-accent transition-colors">Pricing</a>
+                <a href="contact.html"
+                    class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
                 <a href="dashboard.html"
                     class="nav-link-underline font-medium hover:text-accent transition-colors">Dashboard</a>
             </nav>
@@ -125,7 +125,7 @@
             <!-- Actions -->
             <div class="flex items-center gap-3 md:gap-4">
                 <button id="theme-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
                     aria-label="Toggle Theme">
                     <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
                         viewBox="0 0 20 20">
@@ -139,16 +139,16 @@
                     </svg>
                 </button>
                 <button id="rtl-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm rtl-toggle"
                     aria-label="Toggle RTL">RTL</button>
 
-                <div class="hidden md:flex items-center gap-3">
+                <div class="hidden xl:flex items-center gap-3">
                     <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
                 </div>
 
                 <!-- Hamburger -->
                 <button id="hamburger-btn"
-                    class="lg:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    class="xl:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
                     aria-label="Menu" aria-expanded="false">
                     <span class="navbar-toggler-icon pointer-events-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -168,13 +168,30 @@
         aria-label="Navigation Menu">
         <div class="flex items-center justify-between mb-8">
             <span class="font-playfair text-xl font-bold">Menu</span>
-            <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
-                aria-label="Close Menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg>
-            </button>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-xs rtl-toggle"
+                    aria-label="Toggle RTL">RTL</button>
+                <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                    aria-label="Close Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
         <nav class="flex flex-col gap-4 text-lg font-medium">
             <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border text-accent">Home</a>
@@ -182,8 +199,8 @@
             <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
             <a href="service.html" class="py-3 border-b border-border-light dark:border-dark-border">Service</a>
             <a href="blog.html" class="py-3 border-b border-border-light dark:border-dark-border">Blog</a>
-            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
             <a href="pricing.html" class="py-3 border-b border-border-light dark:border-dark-border">Pricing</a>
+            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
             <a href="dashboard.html" class="py-3 border-b border-border-light dark:border-dark-border">Dashboard</a>
             <div class="mt-6 flex flex-col gap-4">
                 <a href="login.html" class="btn-secondary text-center">Sign In</a>
@@ -200,8 +217,8 @@
     <main>
         <!-- Hero Section -->
         <section
-            class="min-h-[calc(100vh-72px)] flex items-center py-12 md:py-20 px-6 md:px-12 overflow-hidden bg-[#FDF8F0] dark:bg-dark-bg relative">
-            <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            class="min-h-[calc(100vh-72px)] flex items-center pt-6 pb-12 md:pt-10 md:pb-20 px-6 md:px-12 overflow-hidden bg-[#FDF8F0] dark:bg-dark-bg relative">
+            <div class="container mx-auto grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
                 <!-- Hero Content -->
                 <div class="animate-heroReveal">
                     <div
@@ -233,7 +250,8 @@
                         fresh bake at your door by 7am.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="pre-orders.html" class="btn-primary text-lg px-8 py-4">Pre-Order Your Loaf</a>
+                        <a href="pre-orders.html"
+                            class="btn-primary text-lg px-8 py-4 text-white hover:text-white">Pre-Order Your Loaf</a>
                         <a href="menu.html" class="btn-secondary text-lg px-8 py-4">See Today's Menu</a>
                     </div>
                     <!-- Trust Badges -->
@@ -263,7 +281,7 @@
                 </div>
 
                 <!-- Hero Visual -->
-                <div class="relative flex justify-center lg:justify-end animate-heroReveal"
+                <div class="relative flex justify-center xl:justify-end animate-heroReveal"
                     style="animation-delay: 0.3s;">
                     <div class="absolute inset-0 bg-accent/10 blur-[100px] rounded-full scale-75 animate-pulse"></div>
                     <div class="relative z-10 w-full max-w-[500px] animate-breadRise">
@@ -381,7 +399,7 @@
                         </div>
                     </div>
 
-                    <div class="bread-card relative group md:rotate-[1.5deg] hover:rotate-0 transition-transform duration-500 scroll-reveal"
+                    <div class="bread-card relative group md:rotate-[1.5deg] hover:rotate-0 transition-transform duration-500 scroll-reveal md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-md lg:max-w-none"
                         style="transition-delay: 0.2s;">
                         <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80"
                             alt="Dark Rye Batard"
@@ -485,7 +503,8 @@
                             <div class="mt-auto">
                                 <span class="text-3xl font-bold text-accent">$28</span> <span
                                     class="text-sm opacity-50">/ month</span>
-                                <a href="subscriptions.html" class="btn-primary w-full mt-6 block text-center">Start
+                                <a href="subscriptions.html"
+                                    class="btn-primary w-full mt-6 block text-center text-white hover:text-white">Start
                                     Your Subscription</a>
                             </div>
                         </div>
@@ -504,13 +523,14 @@
                             <div class="mt-auto">
                                 <span class="text-3xl font-bold text-accent">$45</span> <span
                                     class="text-sm opacity-50">/ month</span>
-                                <a href="subscriptions.html" class="btn-primary w-full mt-6 block text-center">Start
+                                <a href="subscriptions.html"
+                                    class="btn-primary w-full mt-6 block text-center text-white hover:text-white">Start
                                     Your Subscription</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="subscription-card p-4 flex flex-col animate-card-rise bg-secondary dark:bg-dark-surface rounded-xl border border-border-light dark:border-dark-border"
+                    <div class="subscription-card p-4 flex flex-col animate-card-rise bg-secondary dark:bg-dark-surface rounded-xl border border-border-light dark:border-dark-border md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-md lg:max-w-none"
                         style="animation-delay: 0.3s;">
                         <img src="https://images.unsplash.com/photo-1597072689227-8882273e8f6a?w=800&q=80"
                             alt="Family Feast" class="w-full h-56 object-cover rounded-xl mb-6 shadow-inner">
@@ -523,7 +543,8 @@
                             <div class="mt-auto">
                                 <span class="text-3xl font-bold text-accent">$72</span> <span
                                     class="text-sm opacity-50">/ month</span>
-                                <a href="subscriptions.html" class="btn-primary w-full mt-6 block text-center">Start
+                                <a href="subscriptions.html"
+                                    class="btn-primary w-full mt-6 block text-center text-white hover:text-white">Start
                                     Your Subscription</a>
                             </div>
                         </div>
@@ -718,7 +739,9 @@
                         <span>+33 1 23 45 67 89</span>
                     </li>
                 </ul>
-                <a href="contact.html" class="btn-primary mt-6 inline-block w-full text-center text-sm py-3">Book a
+                <a href="contact.html"
+                    class="btn-primary mt-6 inline-block w-full text-center text-sm py-3 text-white hover:text-white">Book
+                    a
                     Workshop</a>
             </div>
         </div>

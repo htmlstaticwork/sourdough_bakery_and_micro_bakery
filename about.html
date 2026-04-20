@@ -51,7 +51,7 @@
             </a>
 
             <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center gap-6">
+            <nav class="hidden xl:flex items-center gap-6">
                 <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
                 <a href="home-2.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home
                     2</a>
@@ -70,7 +70,7 @@
             <!-- Actions -->
             <div class="flex items-center gap-3 md:gap-4">
                 <button id="theme-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
                     aria-label="Toggle Theme">
                     <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
                         viewBox="0 0 20 20">
@@ -84,16 +84,16 @@
                     </svg>
                 </button>
                 <button id="rtl-toggle"
-                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm rtl-toggle"
                     aria-label="Toggle RTL">RTL</button>
 
-                <div class="hidden md:flex items-center gap-3">
+                <div class="hidden xl:flex items-center gap-3">
                     <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
                 </div>
 
                 <!-- Hamburger -->
                 <button id="hamburger-btn"
-                    class="lg:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    class="xl:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
                     aria-label="Menu" aria-expanded="false">
                     <span class="navbar-toggler-icon pointer-events-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -113,13 +113,30 @@
         aria-label="Navigation Menu">
         <div class="flex items-center justify-between mb-8">
             <span class="font-playfair text-xl font-bold">Menu</span>
-            <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
-                aria-label="Close Menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
-                    </path>
-                </svg>
-            </button>
+            <div class="flex items-center gap-2">
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <button
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-xs rtl-toggle"
+                    aria-label="Toggle RTL">RTL</button>
+                <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                    aria-label="Close Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
         <nav class="flex flex-col gap-4 text-lg font-medium">
             <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
@@ -142,28 +159,24 @@
     </aside>
 
     <main>
-        <!-- ABOUT HERO SECTION -->
-        <section class="relative h-[65vh] flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&q=80"
-                    class="w-full h-full object-cover scale-110 animate-breadRise" alt="Artisan Bakery Background">
-                <div class="absolute inset-0 bg-primary/40 dark:bg-black/60 backdrop-blur-[2px]"></div>
+        <!-- About Hero -->
+        <section class="relative min-h-[55vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&q=80" alt="About Hero"
+                    class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/65 to-primary/90"></div>
             </div>
+            <div class="relative z-10 text-center px-6 animate-heroReveal">
+                <p class="text-accent-gold font-bold uppercase tracking-[0.4em] text-sm mb-4">Aurore Sourdough</p>
+                <h1 class="font-playfair text-6xl md:text-8xl font-bold text-white mb-6 italic leading-tight">Our
+                    <span class="text-accent">Story</span>
+                </h1>
+                <p class="text-white/70 max-w-xl mx-auto text-lg italic leading-relaxed">Born of flour, fire, and the
+                    art of patience.</p>
 
-            <div class="container mx-auto px-6 relative z-10 text-center text-white scroll-reveal">
-                <span
-                    class="text-accent-gold font-bold uppercase tracking-[0.5em] text-sm mb-6 block drop-shadow-lg">Since
-                    2018</span>
-                <h1 class="font-playfair text-6xl md:text-8xl font-bold mb-6 drop-shadow-2xl">Our <span
-                        class="italic text-accent">Story</span></h1>
-                <div class="w-24 h-1 bg-accent mx-auto mb-8"></div>
-                <p class="text-xl md:text-2xl font-light tracking-wide max-w-2xl mx-auto opacity-90 drop-shadow-md">Born
-                    of flour, fire, and the art of patience.</p>
             </div>
-
-            <!-- Bottom Fade effect to seamless connection -->
             <div
-                class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-secondary dark:from-dark-bg to-transparent z-20">
+                class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-secondary dark:from-dark-bg to-transparent">
             </div>
         </section>
 
@@ -280,7 +293,7 @@
             <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div class="scroll-reveal">
                     <h2 class="font-playfair text-5xl md:text-6xl font-bold mb-8 italic">Meet <span
-                            class="text-accent underline underline-offset-8">Maurice</span></h2>
+                            class="text-accent offset-8">Maurice</span></h2>
                     <p class="text-xl opacity-80 leading-relaxed mb-6">Maurice is our 4-year-old sourdough mother. She's
                         a complex, living ecosystem of wild yeast and beneficial bacteria, fed daily with the finest
                         stone-milled rye flour and Paris spring water.</p>
@@ -319,7 +332,7 @@
                     <p class="opacity-70 max-w-2xl mx-auto italic">Crafting bread is a responsibility to the soil and
                         the community.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     <div class="bread-card p-10 flex flex-col items-center text-center scroll-reveal">
                         <img src="https://images.unsplash.com/photo-1534620808146-d33bb39128b2?w=400&q=80"
                             alt="Local Ingredients"
@@ -336,7 +349,7 @@
                         <p class="text-sm opacity-60">From compostable packaging to repurposing day-old bread for local
                             soup kitchens, we close the loop.</p>
                     </div>
-                    <div class="bread-card p-10 flex flex-col items-center text-center scroll-reveal"
+                    <div class="bread-card p-10 flex flex-col items-center text-center scroll-reveal md:col-span-2 lg:col-span-1 md:mx-auto md:max-w-md lg:max-w-none"
                         style="transition-delay: 0.2s;">
                         <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400&q=80"
                             alt="Community Support"

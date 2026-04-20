@@ -27,33 +27,37 @@ function initHeaderScroll() {
 
 // --- THEME ---
 function initTheme() {
-    const themeToggle = document.querySelector('#theme-toggle');
-    if (!themeToggle) return;
+    const themeToggles = document.querySelectorAll('.theme-toggle, #theme-toggle, #theme-toggle-mobile');
+    if (themeToggles.length === 0) return;
 
     const currentTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', currentTheme);
     document.documentElement.classList.toggle('dark', currentTheme === 'dark');
 
-    themeToggle.addEventListener('click', () => {
-        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-        localStorage.setItem('theme', theme);
+    themeToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+            localStorage.setItem('theme', theme);
+        });
     });
 }
 
 // --- RTL ---
 function initRTL() {
-    const rtlToggle = document.querySelector('#rtl-toggle');
-    if (!rtlToggle) return;
+    const rtlToggles = document.querySelectorAll('.rtl-toggle, #rtl-toggle, #rtl-toggle-mobile');
+    if (rtlToggles.length === 0) return;
 
     const currentDir = localStorage.getItem('dir') || 'ltr';
     document.documentElement.setAttribute('dir', currentDir);
 
-    rtlToggle.addEventListener('click', () => {
-        const dir = document.documentElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
-        document.documentElement.setAttribute('dir', dir);
-        localStorage.setItem('dir', dir);
+    rtlToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const dir = document.documentElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
+            document.documentElement.setAttribute('dir', dir);
+            localStorage.setItem('dir', dir);
+        });
     });
 }
 
@@ -173,13 +177,13 @@ function initComingSoonTimer() {
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
         timer.innerHTML = `
-            <div class="flex flex-col"><span class="text-4xl font-bold">${days.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Days</span></div>
-            <span class="text-2xl mt-2">:</span>
-            <div class="flex flex-col"><span class="text-4xl font-bold">${hours.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Hrs</span></div>
-            <span class="text-2xl mt-2">:</span>
-            <div class="flex flex-col"><span class="text-4xl font-bold">${minutes.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Min</span></div>
-            <span class="text-2xl mt-2">:</span>
-            <div class="flex flex-col"><span class="text-4xl font-bold">${seconds.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Sec</span></div>
+            <div class="flex flex-col"><span class="text-2xl md:text-4xl font-bold">${days.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Days</span></div>
+            <span class="text-xl md:text-2xl mt-2">:</span>
+            <div class="flex flex-col"><span class="text-2xl md:text-4xl font-bold">${hours.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Hrs</span></div>
+            <span class="text-xl md:text-2xl mt-2">:</span>
+            <div class="flex flex-col"><span class="text-2xl md:text-4xl font-bold">${minutes.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Min</span></div>
+            <span class="text-xl md:text-2xl mt-2">:</span>
+            <div class="flex flex-col"><span class="text-2xl md:text-4xl font-bold">${seconds.toString().padStart(2, '0')}</span><span class="text-xs uppercase">Sec</span></div>
         `;
     };
 
