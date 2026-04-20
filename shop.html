@@ -1,104 +1,155 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" dir="ltr" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Artisan Collection | Handmade Soap & Skincare</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Artisan Shop | Aurore Sourdough Bakery</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta name="description"
+        content="Browse our collection of slow-fermented sourdough loaves, artisan pastries, and baking essentials. Baked fresh at dawn.">
+
+    <!-- Tailwind CSS v3 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: { primary: '#3A4D39', secondary: '#FAF5EF', accent: '#A47E3B', dark: { bg: '#121212', card: '#1E1E1E', text: '#F5F5F5' } },
-                    fontFamily: { premium: ['Playfair Display', 'serif'], body: ['Outfit', 'sans-serif'] }
+                    colors: {
+                        primary: '#2C1810',
+                        secondary: '#FDF8F0',
+                        accent: '#C8602A',
+                        'accent-gold': '#D4A853',
+                        'dark-bg': '#1A0F08',
+                        'dark-surface': '#2A1810',
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        dm: ['DM Sans', 'sans-serif'],
+                    },
                 }
             }
         }
     </script>
+
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-balance { text-wrap: balance; }
+        }
+    </style>
 </head>
 
-<body class="bg-white dark:bg-dark-bg text-gray-800 dark:text-dark-text font-body transition-colors duration-300">
+<body class="bg-secondary text-primary transition-colors duration-300">
+    <div class="linen-texture fixed inset-0 z-[-1] opacity-10"></div>
 
-    <!-- Header (Standard) -->
+    <!-- Header -->
     <header
-        class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
-        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-accent">
-                    <path d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        class="sticky top-0 z-[100] bg-secondary/80 dark:bg-dark-bg/80 backdrop-blur-md border-b border-border-light dark:border-dark-border h-[64px] md:h-[72px] flex items-center px-4 md:px-8">
+        <div class="container mx-auto flex items-center justify-between w-full">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="text-accent">
+                    <path
+                        d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
-                <span class="font-premium font-bold text-xl uppercase">Aurore Sourdough</span>
-            </div>
-            <nav class="hidden xl:flex items-center space-x-8">
-                <a href="index.html" class="hover:text-primary transition-colors font-medium">Home</a>
-                <a href="home-2.html" class="hover:text-primary transition-colors font-medium">Home 2</a>
-                <a href="shop.html" class="hover:text-primary transition-colors font-medium text-primary">Shop</a>
-                <a href="pricing.html" class="hover:text-primary transition-colors font-medium">Pricing</a>
-                <a href="blog.html" class="hover:text-primary transition-colors font-medium">Blog</a>
-                <a href="gallery.html" class="hover:text-primary transition-colors font-medium">Gallery</a>
-                <a href="dashboard.html" class="hover:text-primary transition-colors font-medium">Dashboard</a>
+                <span class="font-playfair text-xl md:text-2xl font-bold">Aurore Sourdough</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden xl:flex items-center gap-6">
+                <a href="index.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home</a>
+                <a href="home-2.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Home 2</a>
+                <a href="about.html" class="nav-link-underline font-medium hover:text-accent transition-colors">About</a>
+                <a href="service.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Service</a>
+                <a href="blog.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Blog</a>
+                <a href="pricing.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Pricing</a>
+                <a href="shop.html" class="nav-link-underline font-medium text-accent">Shop</a>
+                <a href="contact.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Contact</a>
+                <a href="dashboard.html" class="nav-link-underline font-medium hover:text-accent transition-colors">Dashboard</a>
             </nav>
-            <div class="flex items-center space-x-4">
-                <button type="button"
-                    class="hidden xl:flex px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-widest text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rtl-toggle"
-                    title="Toggle RTL layout">RTL</button>
-                <button id="theme-toggle"
-                    class="hidden xl:flex p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors theme-toggle">
-                    <svg class="w-6 h-6 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3 md:gap-4">
+                <a href="shop.html"
+                    class="relative p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors group"
+                    aria-label="View Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent group-hover:scale-110 transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-                        </path>
+                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                    <svg class="w-6 h-6 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-                        </path>
+                    <span
+                        class="absolute top-0 right-0 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-white shadow-sm">0</span>
+                </a>
+                <button id="theme-toggle"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg id="theme-moon" class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-sun" class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
                     </svg>
                 </button>
+                <button id="rtl-toggle"
+                    class="hidden xl:flex p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-sm rtl-toggle"
+                    aria-label="Toggle RTL">RTL</button>
+
                 <div class="hidden xl:flex items-center gap-3">
-                    <a href="login.html" class="btn-secondary py-2 text-sm">Sign In</a>
-                    <a href="shop.html" class="btn-primary py-2 text-sm">Explore</a>
+                    <a href="login.html" class="btn-secondary py-2 px-4 text-sm">Sign In</a>
                 </div>
-            </div>
-            <div class="flex items-center gap-2 xl:hidden">
-                <button id="menu-btn"
-                    class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7">
-                        </path>
-                    </svg>
+
+                <!-- Hamburger -->
+                <button id="hamburger-btn"
+                    class="xl:hidden p-2 flex items-center justify-center w-[40px] h-[40px] relative transition-colors"
+                    aria-label="Menu" aria-expanded="false">
+                    <span class="navbar-toggler-icon pointer-events-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </span>
                 </button>
             </div>
         </div>
     </header>
 
-    <div id="overlay" class="fixed inset-0 bg-black/50 z-[60] hidden"></div>
-    <div id="mobile-drawer"
-        class="fixed top-0 right-0 h-full w-80 bg-white dark:bg-dark-bg z-[70] shadow-2xl p-8 flex flex-col">
-        <div class="flex items-center justify-between mb-12">
-            <span class="font-premium font-bold text-xl uppercase">Aurore Sourdough</span>
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay bg-black/60 backdrop-blur-sm"></div>
+    <aside id="sidebar-nav" class="sidebar-nav flex flex-col pt-6 px-6" role="dialog" aria-modal="true"
+        aria-label="Navigation Menu">
+        <div class="flex items-center justify-between mb-8">
+            <span class="font-playfair text-xl font-bold">Menu</span>
             <div class="flex items-center gap-2">
                 <button
-                    class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors theme-toggle">
-                    <svg class="w-6 h-6 dark:hidden text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-                        </path>
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors theme-toggle"
+                    aria-label="Toggle Theme">
+                    <svg class="w-6 h-6 hidden dark:block text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                     </svg>
-                    <svg class="w-6 h-6 hidden dark:block text-accent" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-                        </path>
+                    <svg class="w-6 h-6 block dark:hidden text-accent-gold" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
                     </svg>
                 </button>
                 <button
-                    class="px-3 py-2 rounded-full border border-gray-200 dark:border-gray-800 text-xs font-bold uppercase tracking-widest text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors rtl-toggle">RTL</button>
-                <button id="close-btn" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full">
+                    class="p-2 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 rounded-full transition-colors font-bold text-xs rtl-toggle"
+                    aria-label="Toggle RTL">RTL</button>
+                <button id="sidebar-close" class="p-2 hover:bg-black/5 rounded-full dark:text-white"
+                    aria-label="Close Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                         </path>
@@ -106,329 +157,270 @@
                 </button>
             </div>
         </div>
-        <nav class="flex flex-col space-y-6 text-lg font-medium">
-            <a href="index.html">Home</a>
-            <a href="home-2.html">Home 2</a>
-            <a href="shop.html" class="text-primary">Shop</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="blog.html">Blog</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="dashboard.html">Dashboard</a>
-            <hr class="border-gray-100 dark:border-gray-800">
-            <a href="login.html" class="btn-secondary text-center">Sign In</a>
-            <a href="shop.html" class="btn-primary text-center">Shop Now</a>
+        <nav class="flex flex-col gap-4 text-lg font-medium">
+            <a href="index.html" class="py-3 border-b border-border-light dark:border-dark-border">Home</a>
+            <a href="home-2.html" class="py-3 border-b border-border-light dark:border-dark-border">Home 2</a>
+            <a href="about.html" class="py-3 border-b border-border-light dark:border-dark-border">About</a>
+            <a href="service.html" class="py-3 border-b border-border-light dark:border-dark-border">Service</a>
+            <a href="blog.html" class="py-3 border-b border-border-light dark:border-dark-border">Blog</a>
+            <a href="pricing.html" class="py-3 border-b border-border-light dark:border-dark-border">Pricing</a>
+            <a href="shop.html" class="py-3 border-b border-border-light dark:border-dark-border text-accent">Shop</a>
+            <a href="contact.html" class="py-3 border-b border-border-light dark:border-dark-border">Contact</a>
+            <a href="dashboard.html" class="py-3 border-b border-border-light dark:border-dark-border">Dashboard</a>
+            <div class="mt-6 flex flex-col gap-4">
+                <a href="login.html" class="btn-secondary text-center">Sign In</a>
+            </div>
         </nav>
-    </div>
+    </aside>
 
-    <!-- Shop Hero -->
-    <section
-        class="h-[50vh] bg-secondary dark:bg-dark-bg/50 pt-32 flex items-center justify-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-[url('assets/images/natural_ingredients.jpg')] bg-fixed bg-cover bg-center brightness-90 animate-pulse"
-            style="animation-duration: 8s"></div>
-        <div class="absolute inset-0 bg-white/40 dark:bg-dark-bg/70 backdrop-blur-sm"></div>
-        <div class="relative z-10 text-center p-4 scroll-animate">
-            <h1 class="text-5xl md:text-7xl font-bold uppercase tracking-tight mb-4">Artisan Collection</h1>
-            <p class="text-lg text-gray-600 dark:text-gray-400">Pure, organic, and crafted with conscious intention.</p>
-        </div>
-    </section>
-
-    <!-- 1. Seasonal Spotlight Section -->
-    <section class="py-24 bg-white dark:bg-dark-bg overflow-hidden">
-        <div class="container mx-auto px-4">
-            <div class="spotlight-card scroll-animate group">
-                <div class="flex flex-col lg:flex-row items-center">
-                    <div class="w-full lg:w-1/2 p-12 lg:p-24 space-y-8 relative z-10 text-center lg:text-left">
-                        <span class="spotlight-badge">Limited Edition</span>
-                        <h2 class="text-5xl md:text-7xl font-bold leading-tight">The Lavender <br> <span
-                                class="text-primary italic">Solstice Bloom</span></h2>
-                        <p class="text-xl text-gray-500 leading-relaxed">Our mid-summer harvest has arrived. Every bar
-                            in this collection is infused with wild lavender picked during the peak of the solstice for
-                            maximum potency.</p>
-                        <div
-                            class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6 pt-4">
-                            <a href="product-details.html" class="btn-primary px-10 py-5 rounded-full text-lg">Shop The
-                                Bloom</a>
-                            <div class="h-px w-20 bg-gray-200 dark:bg-gray-800 animate-draw-line scroll-animate"></div>
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-1/2 relative min-h-[500px] lg:min-h-[700px]">
-                        <img src="C:\Users\admin\.gemini\antigravity\brain\a74941a6-c263-4a64-beee-2035c4175031\seasonal_lavender_collection_1774939094693.png"
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-white dark:from-dark-card via-transparent to-transparent lg:block hidden">
-                        </div>
-                    </div>
-                </div>
+    <main>
+        <!-- 1. Hero Section -->
+        <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&q=80" alt="Shop Hero"
+                    class="w-full h-full object-cover object-center">
+                <div class="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/50 to-primary/85"></div>
             </div>
-        </div>
-    </section>
-
-    <!-- 2. The Unboxing Ritual Section -->
-    <section class="py-24 bg-secondary/30 dark:bg-dark-card/20 border-y border-gray-100 dark:border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16 scroll-animate">
-                <span class="foundation-badge shop-experience-badge">The Experience</span>
-                <h2 class="text-5xl font-bold mb-6">More Than a Purchase, <br> <span class="text-primary">A Moment of
-                        Renewal.</span></h2>
+            <div class="relative z-10 text-center px-6 animate-heroReveal">
+                <p class="text-accent-gold font-bold uppercase tracking-[0.4em] text-sm mb-4">Aurore Sourdough</p>
+                <h1 class="font-playfair text-6xl md:text-8xl font-bold text-white mb-6 italic leading-tight">The Baker's
+                    <span class="text-accent">Pantry</span>
+                </h1>
+                <p class="text-white/70 max-w-xl mx-auto text-lg italic leading-relaxed">Artisan loaves, curated kits,
+                    and the magic of slow fermentation.</p>
             </div>
+        </section>
 
-            <div class="unboxing-card animate-unboxing scroll-animate group">
-                <div
-                    class="w-full md:w-1/2 rounded-[3.5rem] overflow-hidden shadow-2xl relative h-[400px] md:h-[600px]">
-                    <img src="C:\Users\admin\.gemini\antigravity\brain\a74941a6-c263-4a64-beee-2035c4175031\premium_skincare_unboxing_detail_1774939127537.png"
-                        class="w-full h-full object-cover group-hover:rotate-2 transition-transform duration-[1s]">
-                    <div class="absolute inset-0 bg-primary/10 group-hover:opacity-0 transition-opacity"></div>
-                </div>
-                <div class="w-full md:w-1/2 space-y-10 py-8">
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-6">
-                            <span
-                                class="w-12 h-12 rounded-full bg-white dark:bg-dark-bg flex items-center justify-center font-bold shadow-md">01</span>
-                            <h3 class="text-2xl font-bold">Nature's Wrapper</h3>
-                        </div>
-                        <p class="text-gray-500 pl-[4.5rem]">Every item is hand-wrapped in compostable seed paper that
-                            you can plant in your own garden after unboxing.</p>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-6">
-                            <span
-                                class="w-12 h-12 rounded-full bg-white dark:bg-dark-bg flex items-center justify-center font-bold shadow-md">02</span>
-                            <h3 class="text-2xl font-bold">The Artisan's Note</h3>
-                        </div>
-                        <p class="text-gray-500 pl-[4.5rem]">Your package includes a handwritten distillation log
-                            showing exactly which batch your product came from.</p>
-                    </div>
-                    <div class="pt-6 pl-[4.5rem]">
-                        <p class="italic text-primary font-medium">"Sustainability is the highest form of luxury."</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Filters & Shop Grid -->
-    <section class="py-20 bg-white dark:bg-dark-bg">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row gap-12">
-                <!-- Filters Sidebar -->
-                <aside class="w-full lg:w-64 scroll-animate">
-                    <div class="mb-12">
-                        <h4 class="font-bold uppercase tracking-widest text-primary mb-6">Categories</h4>
-                        <ul class="space-y-4">
-                            <li><label class="flex items-center space-x-3 cursor-poOutfit group"><input type="checkbox"
-                                         checked class="w-5 h-5 rounded accent-primary"><span
-                                        class="group-hover:text-primary transition-colors">All Products</span></label>
-                            </li>
-                            <li><label class="flex items-center space-x-3 cursor-poOutfit group"><input type="checkbox"
-                                         class="w-5 h-5 rounded accent-primary"><span
-                                        class="group-hover:text-primary transition-colors">Artisan Soap</span></label>
-                            </li>
-                            <li><label class="flex items-center space-x-3 cursor-poOutfit group"><input type="checkbox"
-                                         class="w-5 h-5 rounded accent-primary"><span
-                                        class="group-hover:text-primary transition-colors">Body Oils</span></label></li>
-                            <li><label class="flex items-center space-x-3 cursor-poOutfit group"><input type="checkbox"
-                                         class="w-5 h-5 rounded accent-primary"><span
-                                        class="group-hover:text-primary transition-colors">Skincare Tools</span></label>
-                            </li>
-                            <li><label class="flex items-center space-x-3 cursor-poOutfit group"><input type="checkbox"
-                                         class="w-5 h-5 rounded accent-primary"><span
-                                        class="group-hover:text-primary transition-colors">Bath Salts</span></label>
-                            </li>
-                        </ul>
-                    </div>
-
+        <!-- 2. Signature Loaves (Featured Products) -->
+        <section class="py-24 px-6 md:px-12 bg-secondary dark:bg-dark-bg">
+            <div class="container mx-auto">
+                <div class="flex justify-between items-end mb-16 scroll-reveal">
                     <div>
-                        <h4 class="font-bold uppercase tracking-widest text-primary mb-6">Sort By</h4>
-                        <select
-                            class="w-full bg-secondary dark:bg-dark-card border-none p-4 rounded-2xl outline-none focus:ring-2 focus:ring-primary">
-                            <option>Newest Arrivals</option>
-                            <option>Price: Low to High</option>
-                            <option>Price: High to Low</option>
-                            <option>Most Popular</option>
-                        </select>
+                        <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-4">Signature <span class="text-accent italic">Bakes</span></h2>
+                        <p class="opacity-70">Baked fresh at 4:00 AM every single morning.</p>
                     </div>
-                </aside>
+                    <a href="#" class="hidden md:block nav-link-underline font-bold text-accent">View All Bakes →</a>
+                </div>
 
-                <!-- Product Grid -->
-                <div class="flex-1">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-load">
-                        <!-- Product Item 1 -->
-                        <div
-                            class="group relative bg-white dark:bg-dark-card rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-700">
-                            <div class="relative h-[350px] overflow-hidden">
-                                <img src="assets/images/hero_soap_making.jpg"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                                <div
-                                    class="absolute top-4 right-4 bg-primary text-white text-xs font-bold uppercase px-4 py-2 rounded-full">
-                                    Bestseller</div>
-                                <div
-                                    class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <a href="product-details.html"
-                                        class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:scale-110 transition-transform">View
-                                        Details</a>
-                                </div>
-                            </div>
-                            <div class="p-8 text-center">
-                                <h3 class="text-xl mb-2">Ocean Mist Soap</h3>
-                                <p class="text-gray-500 mb-4 text-sm font-light">Natural Seaweed & Peppermint</p>
-                                <p class="text-primary font-bold text-2xl">$16.00</p>
-                                <button
-                                    class="mt-6 w-full border-2 border-primary text-primary py-3 rounded-xl hover:bg-primary hover:text-white transition-all font-bold">Add
-                                    to Cart</button>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Product Card 1 -->
+                    <div class="bread-card group scroll-reveal">
+                        <div class="relative aspect-[4/5] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=800&q=80" alt="Country Loaf"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Bestseller</span>
                             </div>
                         </div>
-                        <!-- Product Item 2 -->
-                        <div
-                            class="group relative bg-white dark:bg-dark-card rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-700">
-                            <div class="relative h-[350px] overflow-hidden">
-                                <img src="assets/images/skincare_oils.jpg"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                                <div
-                                    class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <a href="product-details.html"
-                                        class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:scale-110 transition-transform">View
-                                        Details</a>
-                                </div>
-                            </div>
-                            <div class="p-8 text-center">
-                                <h3 class="text-xl mb-2">Wildflower Serum</h3>
-                                <p class="text-gray-500 mb-4 text-sm font-light">Organic Rosehip & Jojoba</p>
-                                <p class="text-primary font-bold text-2xl">$48.00</p>
-                                <button
-                                    class="mt-6 w-full border-2 border-primary text-primary py-3 rounded-xl hover:bg-primary hover:text-white transition-all font-bold">Add
-                                    to Cart</button>
-                            </div>
-                        </div>
-                        <!-- Product Item 3 -->
-                        <div
-                            class="group relative bg-white dark:bg-dark-card rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-700">
-                            <div class="relative h-[350px] overflow-hidden">
-                                <img src="assets/images/natural_ingredients.jpg"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                                <div
-                                    class="absolute top-4 right-4 bg-accent text-white text-xs font-bold uppercase px-4 py-2 rounded-full">
-                                    New</div>
-                                <div
-                                    class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <a href="product-details.html"
-                                        class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:scale-110 transition-transform">View
-                                        Details</a>
-                                </div>
-                            </div>
-                            <div class="p-8 text-center">
-                                <h3 class="text-xl mb-2">Herb Garden Bath Salts</h3>
-                                <p class="text-gray-500 mb-4 text-sm font-light">Eucalyptus & Rosemary</p>
-                                <p class="text-primary font-bold text-2xl">$24.00</p>
-                                <button
-                                    class="mt-6 w-full border-2 border-primary text-primary py-3 rounded-xl hover:bg-primary hover:text-white transition-all font-bold">Add
-                                    to Cart</button>
-                            </div>
-                        </div>
-                        <!-- Repeat items for grid completeness ... 4...5...6... -->
-                        <div
-                            class="group relative bg-white dark:bg-dark-card rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-700 lg:col-start-2">
-                            <div class="relative h-[350px] overflow-hidden">
-                                <img src="assets/images/hero_soap_making.jpg"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
-                                <div
-                                    class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <a href="product-details.html"
-                                        class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:scale-110 transition-transform">View
-                                        Details</a>
-                                </div>
-                            </div>
-                            <div class="p-8 text-center">
-                                <h3 class="text-xl mb-2">Honey Milk Lather</h3>
-                                <p class="text-gray-500 mb-4 text-sm font-light">Smooth Oats & Raw Honey</p>
-                                <p class="text-primary font-bold text-2xl">$15.00</p>
-                                <button
-                                    class="mt-6 w-full border-2 border-primary text-primary py-3 rounded-xl hover:bg-primary hover:text-white transition-all font-bold">Add
-                                    to Cart</button>
+                        <div class="p-8">
+                            <h3 class="font-playfair text-2xl font-bold mb-2">Heritage Country Loaf</h3>
+                            <p class="text-sm opacity-60 mb-6">Our flagship sourdough. 85% hydration, stone-milled flour.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-accent">$8.50</span>
+                                <button class="btn-primary py-2 px-6 text-sm">Add to Cart</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Pagination -->
-                    <div class="mt-16 flex items-center justify-center space-x-4 scroll-animate">
-                        <button
-                            class="w-12 h-12 rounded-2xl border border-gray-100 dark:border-gray-800 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">←</button>
-                        <button
-                            class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center font-bold">1</button>
-                        <button
-                            class="w-12 h-12 rounded-2xl border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all">2</button>
-                        <button
-                            class="w-12 h-12 rounded-2xl border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all">3</button>
-                        <button
-                            class="w-12 h-12 rounded-2xl border border-gray-100 dark:border-gray-800 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">→</button>
+                    <!-- Product Card 2 -->
+                    <div class="bread-card group scroll-reveal" style="transition-delay: 0.1s;">
+                        <div class="relative aspect-[4/5] overflow-hidden">
+                            <img src="https://chefindisguise.com/wp-content/uploads/2011/04/rosemary-and-salt-focaccia.jpg?w=800" alt="Focaccia"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Daily Bake</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-playfair text-2xl font-bold mb-2">Rosemary & Sea Salt Focaccia</h3>
+                            <p class="text-sm opacity-60 mb-6">Organic olive oil, flaky sea salt, garden rosemary.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-accent">$12.00</span>
+                                <button class="btn-primary py-2 px-6 text-sm">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="bread-card group scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="relative aspect-[4/5] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80" alt="Rye Batard"
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="font-playfair text-2xl font-bold mb-2">Dark Heritage Rye Batard</h3>
+                            <p class="text-sm opacity-60 mb-6">Deep, earthy notes of caraway and organic molasses.</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-accent">$9.50</span>
+                                <button class="btn-primary py-2 px-6 text-sm">Add to Cart</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- 3. Baking Essentials -->
+        <section class="py-24 px-6 md:px-12 bg-primary dark:bg-dark-surface text-secondary overflow-hidden">
+            <div class="container mx-auto">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="lg:w-1/2 scroll-reveal">
+                        <h2 class="font-playfair text-4xl md:text-6xl font-bold mb-8 italic text-white">Baking <span class="text-accent">Essentials</span></h2>
+                        <p class="text-lg opacity-70 mb-10 leading-relaxed">Bring the Aurore magic home. We've curated the exact tools and ingredients Elise uses in our micro-bakery.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-6 p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors group cursor-pointer">
+                                <div class="w-16 h-16 rounded-xl overflow-hidden bg-white/10 flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1595475207225-428b62bda831?w=200&q=80" alt="Starter" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold text-white group-hover:text-accent transition-colors">Maurice Starter Kit</h4>
+                                    <p class="text-xs opacity-50">Dehydrated 4-year mother + guide.</p>
+                                </div>
+                                <span class="text-xl font-bold text-accent">$25</span>
+                            </div>
+                            
+                            <div class="flex items-center gap-6 p-6 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors group cursor-pointer">
+                                <div class="w-16 h-16 rounded-xl overflow-hidden bg-white/10 flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=200&q=80" alt="Flour" class="w-full h-full object-cover">
+                                </div>
+                                <div class="flex-grow">
+                                    <h4 class="font-bold text-white group-hover:text-accent transition-colors">Stone-Milled Heritage Flour</h4>
+                                    <p class="text-xs opacity-50">5kg bag of our signature blend.</p>
+                                </div>
+                                <span class="text-xl font-bold text-accent">$18</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 relative scroll-reveal" style="transition-delay: 0.2s;">
+                        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800&q=80" alt="Baking Tools"
+                            class="rounded-3xl shadow-2xl w-full h-[600px] object-cover animate-breadRise">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Bread Subscriptions -->
+        <section class="py-24 px-6 md:px-12 bg-secondary dark:bg-dark-bg">
+            <div class="container mx-auto">
+                <div class="max-w-4xl mx-auto text-center mb-16 scroll-reveal">
+                    <h2 class="font-playfair text-4xl md:text-5xl font-bold mb-6">The Bread <span class="text-accent italic">Club</span></h2>
+                    <p class="text-lg opacity-70 mb-10">Never miss a bake. Join our community of bread lovers and get priority access to our dawn dispatch.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <div class="subscription-card p-12 bg-white dark:bg-dark-surface rounded-3xl border border-border-light dark:border-dark-border scroll-reveal">
+                        <div class="flex justify-between items-start mb-8">
+                            <div>
+                                <h3 class="font-playfair text-3xl font-bold mb-2">Weekly Loaf</h3>
+                                <p class="text-sm opacity-50 uppercase tracking-widest">Most Popular</p>
+                            </div>
+                            <span class="text-4xl font-bold text-accent">$28<span class="text-sm opacity-40">/mo</span></span>
+                        </div>
+                        <p class="mb-10 opacity-70 leading-relaxed">One signature sourdough loaf delivered every Tuesday morning. Guaranteed fresh.</p>
+                        <a href="pricing.html" class="btn-primary w-full block text-center py-4">Join the Club</a>
+                    </div>
+                    
+                    <div class="subscription-card p-12 bg-primary text-white rounded-3xl border border-primary scroll-reveal" style="transition-delay: 0.1s;">
+                        <div class="flex justify-between items-start mb-8">
+                            <div>
+                                <h3 class="font-playfair text-3xl font-bold mb-2 text-white">Baker's Dozen</h3>
+                                <p class="text-sm opacity-50 uppercase tracking-widest text-accent-gold">Curated Box</p>
+                            </div>
+                            <span class="text-4xl font-bold text-accent-gold">$45<span class="text-sm opacity-40">/mo</span></span>
+                        </div>
+                        <p class="mb-10 opacity-70 leading-relaxed text-white/80">A rotating selection of pastries and special seasonal bakes delivered monthly.</p>
+                        <a href="pricing.html" class="bg-accent-gold text-primary font-bold w-full block text-center py-4 rounded-md hover:bg-white transition-colors">Join the Club</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Freshness Guarantee / CTA -->
+        <section class="py-24 px-6 md:px-12 bg-[#FDF8F0] dark:bg-dark-surface/5 relative overflow-hidden">
+            <div class="container mx-auto relative z-10 text-center scroll-reveal">
+                <div class="mb-12 inline-flex items-center gap-3 px-6 py-2 rounded-full bg-accent/10 text-accent font-bold text-sm tracking-widest uppercase">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                    </span>
+                    The 9:00 PM Deadline
+                </div>
+                <h2 class="font-playfair text-5xl md:text-7xl font-bold mb-8">Baked Today, <br> <span class="text-accent italic">At Your Door</span> Tomorrow</h2>
+                <p class="text-xl max-w-2xl mx-auto opacity-70 mb-12 italic leading-relaxed">Our bread is a living thing. We close orders at 9:00 PM to ensure every loaf gets the full 36-hour cold-ferment it deserves before dawn.</p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="pre-orders.html" class="btn-primary px-12 py-5 text-xl shadow-2xl shadow-accent/20">Pre-Order Now</a>
+                    <a href="blog.html" class="btn-secondary px-12 py-5 text-xl">Learn Our Process</a>
+                </div>
+            </div>
+            
+            <!-- Floating Bread Icons/Elements -->
+            <div class="absolute -bottom-20 -left-20 opacity-10 blur-sm pointer-events-none">
+                <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400" class="w-64 h-64 rotate-12">
+            </div>
+            <div class="absolute -top-20 -right-20 opacity-10 blur-sm pointer-events-none">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400" class="w-64 h-64 -rotate-12">
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-secondary dark:bg-black py-20 border-t border-gray-100 dark:border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 stagger-load">
-                <div class="flex flex-col">
-                    <div class="flex items-center space-x-2 mb-6">
-                        <span class="text-primary text-2xl">🌱</span>
-                        <span
-                            class="font-premium font-bold text-xl uppercase tracking-tighter text-gray-800 dark:text-white">Handmade
-                            Soap</span>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-xs">Naturally crafted skincare for the
-                        conscious soul. Pure, sustainable, and organic.</p>
-                    <div class="flex space-x-4">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">FB</a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">IG</a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-full border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">TW</a>
-                    </div>
+    <footer class="bg-primary pt-20 pb-8 px-6 md:px-12 text-[#D4B896]">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <!-- About -->
+            <div class="flex flex-col gap-6">
+                <div class="flex items-center gap-2">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" class="text-accent">
+                        <path
+                            d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span class="font-playfair text-2xl font-bold text-accent">Aurore Sourdough</span>
                 </div>
-
-                <div class="text-center md:text-left">
-                    <h4 class="font-premium font-bold uppercase mb-8 text-primary">Quick Links</h4>
-                    <ul class="space-y-4">
-                        <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Shop</a></li>
-                        <li><a href="subscription.html" class="hover:text-primary transition-colors">Subscriptions</a>
-                        </li>
-                        <li><a href="gallery.html" class="hover:text-primary transition-colors">Gallery</a></li>
-                    </ul>
-                </div>
-
-                <div class="text-center md:text-left">
-                    <h4 class="font-premium font-bold uppercase mb-8 text-primary">Categories</h4>
-                    <ul class="space-y-4">
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Artisan Soaps</a></li>
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Body Lotions</a></li>
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Serum Oils</a></li>
-                        <li><a href="shop.html" class="hover:text-primary transition-colors">Bath Salts</a></li>
-                    </ul>
-                </div>
-
-                <div class="text-center md:text-left">
-                    <h4 class="font-premium font-bold uppercase mb-8 text-primary">Newsletter</h4>
-                    <p class="text-gray-600 dark:text-gray-400 mb-6">Join for 10% off your first artisan order.</p>
-                    <form class="flex flex-col space-y-4">
-                        <input type="email" placeholder="Email Address"
-                            class="bg-white dark:bg-dark-card border border-gray-200 dark:border-gray-700 py-3 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-primary transition-all">
-                        <button type="submit" class="btn-primary">Subscribe</button>
-                    </form>
-                </div>
+                <p class="text-sm leading-relaxed opacity-70">Slow-fermented. Wildly alive. Honestly baked. We are a
+                    neighborhood micro-bakery dedicated to the craft of artisan bread.</p>
             </div>
 
-            <div
-                class="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
-                <p>© 2026 Handmade Soap & Skincare Company. All rights reserved.</p>
-                <div class="flex space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-primary">Privacy Policy</a>
-                    <a href="#" class="hover:text-primary">Terms of Service</a>
-                </div>
+            <!-- Shop Categories -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Shop Collection</h4>
+                <ul class="flex flex-col gap-3 text-sm">
+                    <li><a href="#" class="hover:text-accent transition-colors">Daily Loaves</a></li>
+                    <li><a href="#" class="hover:text-accent transition-colors">Artisan Pastries</a></li>
+                    <li><a href="#" class="hover:text-accent transition-colors">Baking Tools</a></li>
+                    <li><a href="#" class="hover:text-accent transition-colors">Gift Cards</a></li>
+                </ul>
             </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Support</h4>
+                <ul class="flex flex-col gap-3 text-sm">
+                    <li><a href="faq.html" class="hover:text-accent transition-colors">Shipping & Delivery</a></li>
+                    <li><a href="contact.html" class="hover:text-accent transition-colors">Contact Us</a></li>
+                    <li><a href="pricing.html" class="hover:text-accent transition-colors">Bread Club Plans</a></li>
+                    <li><a href="terms.html" class="hover:text-accent transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h4 class="font-playfair text-xl font-bold text-white mb-6">Visit Us</h4>
+                <ul class="flex flex-col gap-4 text-sm">
+                    <li class="flex items-start gap-3">
+                        <span>📍</span>
+                        <span>123 Baker St, Flour District<br>Paris, FR 75001</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span>✉️</span>
+                        <span>hello@aurore-sourdough.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="border-t border-[#D4B896]/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-50">
+            <p>&copy; 2026 Aurore Sourdough Artisan Bakery. All rights reserved.</p>
         </div>
     </footer>
 

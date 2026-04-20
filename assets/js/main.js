@@ -9,7 +9,38 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounters();
     initTestimonialCarousel();
     initComingSoonTimer();
+    initScrollTop();
 });
+
+// --- SCROLL TO TOP ---
+function initScrollTop() {
+    // Create button
+    const btn = document.createElement('div');
+    btn.className = 'scroll-to-top';
+    btn.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    `;
+    document.body.appendChild(btn);
+
+    // Show/Hide on scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    });
+
+    // Click to scroll
+    btn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
 
 // --- HEADER SCROLL ---
 function initHeaderScroll() {

@@ -21,12 +21,13 @@
             --primary-crust: #8b5e3c;
             --secondary-dough: #fdf5e6;
             --bg-light: #faf9f6;
-            --sidebar-width: 280px;
+            --sidebar-width: 320px;
             --right-panel-width: 320px;
             --glass-white: rgba(255, 255, 255, 0.7);
             --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             --soft-shadow: 0 10px 30px rgba(139, 94, 60, 0.08);
             --glow-shadow: 0 15px 40px rgba(176, 125, 80, 0.2);
+            --accent: #C8602A;
         }
 
         body {
@@ -423,7 +424,7 @@
         /* Responsive */
         @media (max-width: 1400px) {
             :root {
-                --sidebar-width: 240px;
+                --sidebar-width: 280px;
                 --right-panel-width: 280px;
             }
         }
@@ -667,7 +668,7 @@
 
     <div class="wrapper">
         <aside class="sidebar">
-            <a href="index.html" class="logo-area text-decoration-none d-block">
+            <a href="index.html" class="logo-area text-decoration-none">
                 <svg class="dashboard-brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M16 4C16 4 14 10 14 14C14 18 16 22 16 22M16 4C16 4 18 10 18 14C18 18 16 22 16 22M16 4V2M16 22V28M12 8C12 8 10 12 10 16C10 20 12 24 12 24M20 8C20 8 22 12 22 16C22 20 20 24 20 24"
@@ -690,6 +691,7 @@
                         Reservations</a></li>
                 <li class="nav-item"><a href="#view-downloads" class="nav-link dashboard-nav-link"
                         data-view="downloads"><i class="bi bi-download"></i> Downloads</a></li>
+                <li class="nav-item"><a href="shop.html" class="nav-link"><i class="bi bi-shop"></i> Visit Shop</a></li>
                 <div class="my-4 border-top opacity-25"></div>
                 <li class="nav-item"><a href="#view-profile" class="nav-link dashboard-nav-link" data-view="profile"><i
                             class="bi bi-person-circle"></i> Profile</a></li>
@@ -723,6 +725,14 @@
                         nicely.</p>
                 </div>
                 <div class="d-flex gap-3 align-items-center">
+                    <a href="shop.html" class="btn btn-outline-secondary rounded-pill px-3 border-light-subtle position-relative" title="View Cart">
+                        <i class="bi bi-cart3"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
+                    </a>
+                    <button class="btn btn-outline-secondary rounded-pill px-3 border-light-subtle" title="Search"><i
+                            class="bi bi-search"></i></button>
+                    <button class="btn btn-outline-secondary rounded-pill px-3 border-light-subtle" title="Notifications"><i
+                            class="bi bi-bell"></i></button>
                     <button id="theme-toggle"
                         class="d-none d-xl-inline-flex btn btn-outline-secondary rounded-pill px-3 border-light-subtle theme-toggle"
                         title="Toggle Theme">
@@ -732,10 +742,6 @@
                     <button id="rtl-toggle"
                         class="d-none d-xl-inline-flex btn btn-outline-secondary rounded-pill px-3 border-light-subtle font-bold text-xs rtl-toggle"
                         title="Toggle RTL Layout">RTL</button>
-                    <button class="btn btn-outline-secondary rounded-pill px-3 border-light-subtle"><i
-                            class="bi bi-search"></i></button>
-                    <button class="btn btn-outline-secondary rounded-pill px-3 border-light-subtle"><i
-                            class="bi bi-bell"></i></button>
                     <button class="hamburger-btn d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
                         <i class="bi bi-list"></i>
                     </button>
